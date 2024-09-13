@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="x-icon" href="img/logo.webp"></link>
+    <title>Dream Day</title>
+    <link rel="stylesheet" href="dreamday.css">
+    <script src="dreamday.js"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+
+    <!-- Navigation bar -->
+    <nav>
+        <p>DREAM DAY</p>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Categories</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Contact Us</a></li>
+        </ul>
+        <div>
+            <button onclick="toggleForm('login')">Log In</button>
+            <button onclick="toggleForm('register')">Sign Up</button>
+        </div>
+    </nav>
+
+    <!-- Wrapper for forms -->
+     <section class="logreg-area">
+    <div class="wrapper">
+        <!-- Login Form -->
+        <form id="loginForm" style="display: block;">
+            <h1>Login</h1>
+            <div class="input-box">
+                <input type="text" placeholder="Username" required>
+                <i class='bx bx-user-circle'></i>
+            </div>
+            <div class="input-box">
+                <input type="password" placeholder="Password" required>
+                <i class='bx bx-lock-alt'></i>
+            </div>
+            <div class="remember-forgot">
+                <label><input type="checkbox"> Remember Me</label>
+                <a href="#">Forgot Password</a>
+            </div>
+            <button type="submit" class="btn">Login</button>
+            <div class="register-link">
+                <p>Don't have an account? <a href="#" onclick="toggleForm('register')">Register</a></p>
+            </div>
+        </form>
+
+        <!-- Register Form -->
+        <form id="registerForm" style="display: none;">
+            <h1>Register</h1>
+            <div class="input-box">
+                <input type="text" placeholder="Name" required>
+                <i class='bx bxs-user'></i>            
+            </div>
+            <div class="input-box">
+                <input type="email" placeholder="E-mail" required>
+                <i class='bx bx-envelope'></i>
+            </div>
+            <div class="input-box">
+                <input type="number" placeholder="Phone Number" required>
+                <i class='bx bxs-phone-call'></i>
+            </div>
+            <div class="input-box">
+                <input type="text" placeholder="Address" required>
+                <i class='bx bxs-location-plus'></i>
+            </div>
+            <div class="gender-box">
+                <h4>Gender</h4>
+                <div class="gender-option">
+                    <div class="gender">
+                        <input type="radio" id="check-male" name="gender" checked/>
+                        <label for="check-male">Male</label>
+                    </div>
+                    <div class="gender">
+                        <input type="radio" id="check-female" name="gender" />
+                        <label for="check-female">Female</label>
+                    </div>
+                    <div class="gender">
+                        <input type="radio" id="check-other" name="gender"/>
+                        <label for="check-other">Prefer not to say</label>
+                    </div>
+                </div>
+            </div>
+            <div class="input-box">
+                <input type="password" placeholder="Password" required>
+                <i class='bx bx-lock-alt'></i>
+            </div>
+            <button type="submit" class="btn">Create Account</button>
+            <div class="register-link">
+                <p>Already have an account? <a href="#" onclick="toggleForm('login')">Sign in</a></p>
+            </div>
+        </form>
+    </div>
+</section>
+
+<!-- Slider Section -->
+<section class="slide1">
+    <div class="text">
+        <h2> Pubudu Flora - Where Love Blooms </h2>
+        <p>Make your wedding day unforgettable with the perfect floral arrangements by Pubudu Flora! From breathtaking bridal bouquets to stunning floral arches, we specialize in crafting unique designs that bring your wedding vision to life.</p>
+        <br>
+        <p>📞 Contact Us Today to book your consultation and make your dream wedding bloom with Pubudu Flora! </p>
+        <p><strong>Phone:</strong>+94 123 456 789</p>
+        <p><strong>Email: </strong> info@pubuduflora.com</p>
+       
+    </div>
+
+    <div class="slider">
+        <div class="list">
+            <div class="item">
+                <img src="img/1.jpg" alt="">
+            </div>
+            <div class="item">
+                <img src="img/2.jpg" alt="">
+            </div>
+            <div class="item">
+                <img src="img/3.jpg" alt="">
+            </div>
+            <div class="item">
+                <img src="img/4.jpg" alt="">
+            </div>
+            <div class="item">
+                <img src="img/5.jpg" alt="">
+            </div>
+        </div>
+        <div class="buttons">
+            <button id="prev"> < </button>
+            <button id="next"> > </button>
+        </div>
+        <ul class="dots">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+</section>
+
+ <!-- Section for Description and Logo -->
+ <section class="description-section">
+    <div class="content">
+        <p>"Dream Day is your one-stop platform for stress-free wedding planning. We simplify the process by centralizing vendor selection, budget management, guest coordination, and scheduling, making collaboration between couples, planners, and vendors seamless. Let us turn your dream day into a beautifully organized reality."</p>
+        <div class="logo-section">
+            <div class="logo-container">
+                <img src="img/logo.webp" alt="Dream Day Logo" class="logo-image">
+            </div>
+            <p>"Your Vision, Our Passion - Crafting Perfect Weddings Together" </p>
+        </div>
+    </div>
+</section>
+
+<!-- Footer Section -->
+<footer class="footer-section">
+    <h2>DREAM DAY</h2>
+    <div class="footer-dots">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+    </div>
+    <p>Privacy — Terms</p>
+</footer>
+
+</body>
+</html>
