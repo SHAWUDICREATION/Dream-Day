@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms</title>
+    <link rel="shortcut icon" type="x-icon" href="Images/logo.webp"></link>
+    <script src="Java Script Files/formshome.js"></script>
+
+    <style>
+
+/* General reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+
+/* Login- Register form */
+.logreg-area{
+    display: flex;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background: url('Images/loghome.jpg') no-repeat;
+    background-size: cover;
+    background-position:center;
+}
+
+.wrapper {
+    margin-top: 100px;
+    margin-bottom: 100px;
+    width: 420px;
+    background: transparent;
+    border: 2px solid rgba(255,255,255,.2);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0,0,0,.2);
+    color: #fff;
+    padding: 30px 40px;
+    border-radius: 10px;
+}
+
+.wrapper h1{
+    font-size: 30px;
+    text-align: center;
+    font-family: cursive;
+}
+
+.wrapper .input-box{
+    position: relative;
+    width: 100%;
+    height: 50px;
+    margin: 30px 0;
+}
+
+.input-box input{
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(255,255,255,.2);
+    border-radius: 40px;
+    font-size: 16px;
+    color: #fff;
+    padding: 20px 45px 20px 20px;
+}
+
+.input-box input::placeholder{
+    color: #fff;
+}
+
+.input-box i {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+}
+
+.wrapper :where(.gender-option, .gender) {
+    display: flex;
+    align-items: center;
+    column-gap: 30px;
+    padding-top: 3px;
+}
+
+.wrapper .gender{
+    column-gap: 5px;
+}
+
+.wrapper :where(.gender input, .gender label) {
+    cursor: pointer;
+}
+
+.wrapper .remember-forgot {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14.5px;
+    margin: -15px 0 15px;
+}
+
+.remember-forgot label input{
+    accent-color: #fff;
+    margin-right: 3px;
+}
+
+.remember-forgot a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.remember-forgot a:hover{
+    text-decoration: underline;
+}
+
+.wrapper .btn{
+    width: 100%;
+    height: 45px;
+    background: #fff;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0,0,0,.1);
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+    margin: 15px;
+}
+
+.wrapper .register-link{
+    font-size: 14.5px;
+    text-align: center;
+    margin-top: 20px 0 15px;
+}
+
+.register-link p a{
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.register-link p a:hover{
+    text-decoration: underline;
+}
+
+
+    </style>
+</head>
+<body>
+
+
+    <!-- Wrapper for forms -->
+    <section class="logreg-area">
+        <div class="wrapper">
+           <!-- Login Form -->
+           <form id="loginForm" style="display: block;">
+               <h1>Login As User</h1>
+               <div class="input-box">
+                   <input type="email" placeholder="E-mail" required>
+                   <i class='bx bx-envelope'></i>
+               </div>
+               <div class="input-box">
+                   <input type="password" placeholder="Password" required>
+                   <i class='bx bx-lock-alt'></i>
+               </div>
+               <div class="remember-forgot">
+                   <label><input type="checkbox"> Remember Me</label>
+                   <a href="#">Forgot Password</a>
+               </div>
+               <button type="submit" class="btn">Login</button>
+               <div class="register-link">
+                   <p>Don't have an account? <a href="#" onclick="toggleForm('register')">Register</a></p>
+               </div>
+           </form>
+   
+   
+           <!-- Admin Login Form -->
+           <form id="adminloginForm" style="display: block;">
+               <h1>Login As Administrator</h1>
+               <div class="input-box">
+                   <input type="email" placeholder="E-mail" required>
+                   <i class='bx bx-envelope'></i>
+               </div>
+               <div class="input-box">
+                   <input type="password" placeholder="Password" required>
+                   <i class='bx bx-lock-alt'></i>
+               </div>
+               <button type="submit" class="btn">Login</button>
+           </form>
+   
+   
+           <!-- Register Form -->
+           <form id="registerForm" style="display: none;">
+               <h1>Register As User</h1>
+               <div class="input-box">
+                   <input type="text" placeholder="Name" required>
+                   <i class='bx bxs-user'></i>            
+               </div>
+               <div class="input-box">
+                   <input type="email" placeholder="E-mail" required>
+                   <i class='bx bx-envelope'></i>
+               </div>
+               <div class="input-box">
+                   <input type="number" placeholder="Phone Number" required>
+                   <i class='bx bxs-phone-call'></i>
+               </div>
+               <div class="input-box">
+                   <input type="text" placeholder="Address" required>
+                   <i class='bx bxs-location-plus'></i>
+               </div>
+               <div class="gender-box">
+                   <h4>Gender</h4>
+                   <div class="gender-option">
+                       <div class="gender">
+                           <input type="radio" id="check-male" name="gender" checked/>
+                           <label for="check-male">Male</label>
+                       </div>
+                       <div class="gender">
+                           <input type="radio" id="check-female" name="gender" />
+                           <label for="check-female">Female</label>
+                       </div>
+                       <div class="gender">
+                           <input type="radio" id="check-other" name="gender"/>
+                           <label for="check-other">Prefer not to say</label>
+                       </div>
+                   </div>
+               </div>
+               <div class="input-box">
+                   <input type="password" placeholder="Password" required>
+                   <i class='bx bx-lock-alt'></i>
+               </div>
+               <button type="submit" class="btn">Create Account</button>
+               <div class="register-link">
+                   <p>Already have an account? <a href="#" onclick="toggleForm('login')">Sign in</a></p>
+               </div>
+           </form>
+       </div>
+   </section>
+</body>
+</html>

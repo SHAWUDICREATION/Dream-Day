@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" type="x-icon" href="Images/logo.webp">
+  </link>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+
+
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+
+  <title>Our Vendors</title>
+  <style>
+    /* Google Fonts Link */
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+    * {
+      padding: 0;
+      margin: 0;
+      text-decoration: none;
+      list-style: none;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Montserrat", sans-serif;
+    }
+
+    /* Navigation bar */
+    nav {
+      position: fixed;
+      /* Fixed at the top */
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      /* Stays above other elements */
+      background: linear-gradient(to right, #ff7eb3, #ff758c, #ff91af);
+      height: 80px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+    }
+
+    /* Brand logo styling */
+    .navbar-brand {
+      font-family: 'Great Vibes', cursive;
+      font-size: 36px;
+      font-weight: bold;
+      color: #9603da;
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+      letter-spacing: 2px;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .navbar-brand:hover {
+      color: #ffffff;
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+    }
+
+
+
+    nav ul {
+      display: flex;
+      align-items: center;
+    }
+
+    nav ul li {
+      margin: 0 15px;
+      font-family: "Montserrat", sans-serif;
+      font-style: italic;
+
+    }
+
+    nav ul li a {
+      color: #ffffff;
+      font-size: 17px;
+      padding: 10px 15px;
+      border-radius: 5px;
+      font-weight: bold;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+    }
+
+    /* Hover and active link styles */
+    nav ul li a:hover,
+    nav ul li a.active {
+      background-color: #c62ef580;
+      color: rgb(0, 0, 0);
+    }
+
+    /* Hamburger menu button */
+    .checkbtn {
+      font-size: 22px;
+      color: white;
+      cursor: pointer;
+      display: none;
+    }
+
+    #check {
+      display: none;
+    }
+
+    /* Responsive menu styles */
+    @media (max-width: 1000px) {
+      .checkbtn {
+        display: block;
+      }
+
+      nav ul {
+        position: fixed;
+        top: 80px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 80px);
+        background: linear-gradient(to bottom, #ff7eb3, #ff758c);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        transition: all 0.5s ease;
+      }
+
+      nav ul li {
+        margin: 15px 0;
+      }
+
+      #check:checked~ul {
+        left: 0;
+      }
+    }
+
+    /* Additional spacing for the page content */
+    .content {
+      margin-top: 100px;
+      /* Prevent content from overlapping the navbar */
+      padding: 20px;
+      text-align: center;
+    }
+
+
+    /* General Styles */
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(to right, #fcb69f, #f6b3f6);
+    }
+
+    .fa {
+      text-align: center;
+      margin-top: 20px;
+      color: white;
+    }
+
+    /* ABOUT SECTION */
+    .about-sec {
+      max-width: 100%;
+      margin-bottom: 50px;
+      margin-top: 120px;
+      text-align: center;
+      font-family: Arial, Helvetica, sans-serif;
+      transition: 0.5s;
+    }
+
+    .aboutus h1 {
+      align-self: center;
+      color: #000000;
+      font-size: 50px;
+      margin-top: 10px;
+      font-family: 'Marck Script', cursive;
+    }
+
+    .row {
+      padding-top: 50px;
+      padding-bottom: 50px;
+      width: 1500px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .post {
+      width: 320px;
+      height: 550px;
+      max-height: 550spx;
+      background-color: #f33d98;
+      padding: 1rem;
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+      margin-top: 4rem;
+      margin-bottom: 4rem;
+      border-radius: 20px;
+      transition: transform 0.3s;
+    }
+
+    .post:hover {
+      transform: translateY(-15px);
+    }
+
+    .post img {
+
+      width: 400px;
+      height: 250px;
+      max-width: 250px;
+      border-radius: 5px;
+      transition: transform 0.3s;
+    }
+
+    .post img:hover {
+      transform: scale(1.2);
+    }
+
+    .post h2 {
+      font-size: 22px;
+      color: #58026d;
+      margin: 1rem 0;
+      padding-top: 15px;
+    }
+
+    .post p {
+      font-size: 14px;
+      line-height: 1.5;
+      justify-content: center;
+      color: #fff;
+      padding-bottom: 10px;
+
+    }
+
+    .read-more {
+      background-color: #f780bf;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      justify-content: center;
+    }
+
+    .read-more:hover {
+      background-color: #4e0027;
+      text-align: justify;
+    }
+
+/* Footer styling */
+footer {
+  background: linear-gradient(to right, #ff7eb3, #ff758c, #d351f3);
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+      box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3);
+
+    }
+
+
+    footer {
+      position: relative;
+      margin-top: auto;
+      z-index: 1;
+    }
+
+    .container {
+      max-width: 1140px;
+      margin: auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+
+    }
+
+    .footer-content {
+      flex: 1 1 250px;
+      margin: 10px;
+      color: white;
+      font-family: cursive;
+
+    }
+
+
+    h3 {
+      color: #000000 !important;
+      font-size: 28px;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    .footer-content p {
+      width: 300px;
+      margin: auto;
+      padding: 7px;
+      font-size: 18px;
+      transition: color 0.3s ease;
+    }
+
+
+    .footer-content a {
+      color: #f8f9fa;
+      text-decoration: none !important;
+      transition: color 0.3s ease;
+    }
+
+    .footer-content a:hover {
+      color: #380daf;
+      text-decoration: underline;
+    }
+
+
+
+    .footer-content ul {
+      text-align: center;
+    }
+
+    .footer-content p:hover {
+      color: #380daf;
+      cursor: pointer;
+    }
+
+    .list {
+      padding: 0;
+
+    }
+
+    .list li {
+      width: auto;
+      text-align: center;
+      list-style-type: none;
+      padding: 7px;
+      position: relative;
+      color: #f8f9fa;
+      font-size: 18px;
+    }
+
+    .list li::before {
+      content: '';
+      position: absolute;
+      transform: translate(-50%, -50%);
+      left: 50%;
+      top: 100%;
+      width: 0;
+      height: 2px;
+      background: #380daf;
+      transition-duration: .5s;
+    }
+
+    .list li:hover::before {
+      width: 70px;
+    }
+
+    .social-icons {
+      text-align: center;
+      padding: 0;
+    }
+
+    .social-icons li {
+      display: inline-block;
+      text-align: center;
+      padding: 5px;
+    }
+
+    .social-icons i {
+      color: white;
+      font-size: 25px;
+    }
+
+    a {
+      color: #f8f9fa;
+    }
+
+    a:hover {
+      color: #380daf;
+      ;
+    }
+
+    .social-icons i:hover {
+      color: #380daf;
+    }
+
+    .bottom-bar {
+      background: #f18930;
+      padding: 10px 0;
+    }
+
+    .bottom-bar p {
+      color: #343434;
+      font-size: 14px;
+      margin: 0;
+    }
+
+    /* Responsive Styles */
+
+    @media (max-width: 1350px) {
+      .row {
+        grid-template-columns: repeat(3, 1fr);
+        padding-top: 50px;
+        padding-bottom: 50px;
+        width: 1000px;
+      }
+
+      .post {
+        width: 300px;
+        height: 550px;
+        max-height: 550spx;
+        background-color: #f33d98;
+        padding: 1rem;
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+        border-radius: 20px;
+        transition: transform 0.3s;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .row {
+        grid-template-columns: repeat(3, 1fr);
+        padding-top: 50px;
+        padding-bottom: 50px;
+        width: 1000px;
+        margin: auto;
+        display: grid;
+
+        justify-content: space-between;
+        align-items: center;
+      }
+
+
+      @media (max-width: 750px),
+      (max-width: 670px) {
+        .post {
+          width: 300px;
+          height: 550px;
+          max-height: 550spx;
+          background-color: #f33d98;
+          padding: 1rem;
+          padding-top: 4rem;
+          padding-bottom: 4rem;
+          border-radius: 20px;
+          transition: transform 0.3s;
+        }
+      }
+
+      .row {
+        grid-template-columns: repeat(2, 1fr);
+        padding-top: 50px;
+        padding-bottom: 50px;
+        width: 850px;
+        margin: auto;
+        display: grid;
+
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      @media (max-width: 300px) {
+        .post {
+          width: 300px;
+          height: 550px;
+          max-height: 550spx;
+          background-color: #f33d98;
+          padding: 1rem;
+          padding-top: 4rem;
+          padding-bottom: 4rem;
+          padding-left: 2rem;
+          padding-right: 2rem;
+          border-radius: 20px;
+          transition: transform 0.3s;
+        }
+      }
+
+      .row {
+        grid-template-columns: repeat(1, 1fr);
+        padding-top: 50px;
+        padding-bottom: 50px;
+        width: 850px;
+        margin: auto;
+        display: grid;
+
+        justify-content: space-between;
+        align-items: center;
+      }
+
+
+      @media (max-width: 768px) {
+        .fan {
+          flex: 1 1 calc(100% - 40px);
+        }
+
+        .fan p {
+          font-size: 16px;
+        }
+
+        .footer-bottom {
+          flex-direction: column;
+        }
+
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Start header -->
+  <nav>
+    <!-- Checkbox for toggling menu -->
+    <input type="checkbox" id="check">
+
+    <!-- Hamburger icon -->
+    <label for="check" class="checkbtn">
+      <i class="fas fa-bars"></i>
+    </label>
+
+    <!-- Site logo -->
+    <a class="navbar-brand" href="index.html">Dream Day</a>
+
+    <!-- Navigation links -->
+    <ul>
+      <li><a class="nav-link" href="home.html">Home</a></li>
+      <li><a class="nav-link" href="our_services.html">Our Services</a></li>
+      <li><a class="nav-link active" class="nav-link" href="vendors.html">Vendors</a></li>   
+      <li><a class="nav-link" href="wedding_packages.html">Wedding Plans</a></li>
+      <li><a class="nav-link" href="about.html">About Us</a></li>
+      <li><a class="nav-link" class="nav-link" href="contact.html">Contact Us</a></li>
+    </ul>
+  </nav>
+
+  <!-- End header -->
+
+
+
+  <section class="about-sec" id="about-sec">
+    <div class="aboutus">
+      <h1>Our Vendors</h1>
+    </div>
+    <div class="row">
+      <div class="post">
+        <img src="Images/vendors Images/ashtaka.jpg" alt="Post Image">
+        <h2>Ashtaka</h2>
+        <p>Honor tradition with meaningful blessings delivered by experienced Ashtaka professionals.</p>
+        <button class="read-more" onclick="location.href='ven_list.html#ashtaka'">Read More</button>
+
+      </div>
+
+      <div class="post">
+        <img src="Images/vendors Images/astrology.jpg" alt="Post Image">
+        <h2>Astrology</h2>
+        <p> Choose your perfect day with astrological guidance tailored to align your wedding with the stars.</p>
+        <button class="read-more" onclick="location.href='ven_list.html#astrology'">Read More</button>
+      </div>
+
+      <div class="post">
+        <img src="Images/vendors Images/car.jpg" alt="Post Image">
+        <h2>Car Renters</h2>
+        <p>Arrive in style with luxurious cars, from vintage classics to modern luxury vehicles tailored to your wedding
+          theme.</p>
+          <button class="read-more" onclick="location.href='ven_list.html#carrenters'">Read More</button>
+      </div>
+
+      <div class="post">
+        <img src="Images/vendors Images/caters.jpg" alt="Post Image">
+        <h2>Caterers</h2>
+        <p> Delight your guests with world-class culinary experiences, offering customized menus to suit your preferences.</p>
+        <button class="read-more">Read More</button>
+      </div>
+
+      <div class="post">
+        <img src="Images/vendors Images/cenomatography.jpg" alt="Post Image">
+        <h2>Cinematography</h2>
+        <p>Preserve your precious moments in cinematic brilliance with professionally crafted wedding films.</p>
+        <button class="read-more">Read More</button>
+      </div>
+
+      <div class="post">
+        <img src="Images/vendors Images/photogrp.jpg" alt="Post Image">
+        <h2>Photography</h2>
+        <p> Capture timeless memories with our expert photographers, who specialize in wedding portraits and candid
+          shots.</p>
+        <button class="read-more">Read More</button>
+      </div>
+
+      <div class="post">
+        <img src="Images/vendors Images/cakes.jpg" alt="Post Image">
+        <h2>Wedding Cakes</h2>
+        <p>Indulge in exquisite, handcrafted cakes designed to complement your wedding’s aesthetic.</p>
+        <button class="read-more">Read More</button>
+      </div>
+
+      <div class="post">
+        <img src="Images/vendors Images/dance.jpg" alt="Post Image">
+        <h2>Dancing Groups</h2>
+        <p>Add a lively flair to your celebration with vibrant performances from skilled dancers.</p>
+        <button class="read-more">Read More</button>
+      </div>
+
+      <div class="post">
+        <img src="Images/vendors Images/dj.webp" alt="Post Image">
+        <h2>Bands / DJ</h2>
+        <p>Set the perfect mood with talented live bands or DJs who will keep the party alive.</p>
+        <button class="read-more">Read More</button>
+      </div>
+
+      <div class="post">
+        <img src="Images/vendors Images/salon.jpg" alt="Post Image">
+        <h2>Hair Beauty Salons & Spa</h2>
+        <p> Prepare to look your best with pampering spa treatments and expert beauty stylists for the bride, groom, and
+          party.</p>
+        <button class="read-more">Read More</button>
+      </div>
+
+      <div class="post">
+        <img src="Images/vendors Images/flowers.jpg" alt="Post Image">
+        <h2>Flowers</h2>
+        <p> Enhance your wedding with stunning floral arrangements, bouquets, and decorations that match your vision.
+        </p>
+        <button class="read-more">Read More</button>
+      </div>
+
+      <div class="post">
+        <img src="Images/vendors Images/album.webp" alt="Post Image">
+        <h2>Wedding Story Album</h2>
+        <p>Relive your big day with a beautifully designed album that captures every magical detail of your love story.
+        </p>
+        <button class="read-more">Read More</button>
+      </div>
+
+    </div>
+
+
+
+
+
+
+  </section>
+
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <h3>Contact Us</h3>
+        <p>Email: info@example.com</p>
+        <p>Phone: +121 56556 565556</p>
+        <p>Address: Your Address, 123 Street</p>
+      </div>
+      <div class="footer-content">
+        <h3>Quick Links</h3>
+        <ul class="list">
+          <li><a href="home.html">Home</a></li>
+          <li><a href="our_services.html">Our Services</a></li>
+          <li><a href="vendors.html">Vendors</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          
+        </ul>
+      </div>
+      <div class="footer-content">
+        <h3>Follow Us</h3>
+        <ul class="social-icons">
+          <li><i class="fab fa-facebook-f"></i></li>
+          <li><i class="fab fa-twitter"></i></li>
+          <li><i class="fab fa-instagram"></i></li>
+          <li><i class="fab fa-linkedin-in"></i></li>
+        </ul>
+      </div>
+    </div>
+    <div class="bottom-bar">
+      <p>© 2024 Dream Day Wedding Planner. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+
+
+
+</html>

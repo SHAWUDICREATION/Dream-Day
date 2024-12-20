@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="shortcut icon" type="x-icon" href="img/logo.webp">
+	</link>
+	<title>Dream Day</title>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<script src="Java Script Files/formshome.js"></script>
+	<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<!-- Pogo Slider CSS -->
+	<link rel="stylesheet" href="css/pogo-slider.min.css">
+	<!-- Site CSS -->
+	<link rel="stylesheet" href="css/style.css">
+	<!-- Responsive CSS -->
+
+
+	<style>
+		/* ----- Global styles ----- */
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+			font-family: 'Arial', sans-serif;
+		}
+
+		body {
+			background-color: #f7f7f7;
+			color: #333;
+		}
+
+
+		/*----- Footer ----- */
+		footer {
+			text-align: center;
+			padding: 17px;
+			background-color: #fcb69f;
+			color: white;
+			position: fixed;
+			width: 100%;
+			bottom: 0;
+		}
+
+		.d2 {
+			height: 100vh;
+			background: url('https://cdn.pixabay.com/photo/2017/01/09/02/02/pink-wine-1964457_1280.jpg') no-repeat center center/cover;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			position: relative;
+			padding-top: 60px;
+		}
+
+		/* ----- Themes Section ----- */
+		.themes {
+			padding: 60px 10px;
+			text-align: center;
+			background-color: beige;
+		}
+
+		.themes h2 {
+			font-size: 2.5rem;
+			color: #d966a5;
+		}
+
+		.themes p {
+			margin-top: 20px;
+			color: #666;
+			font-size: 1.1rem;
+		}
+
+		.theme-cards {
+			display: flex;
+			justify-content: space-around;
+			margin-top: 30px;
+		}
+
+		.theme-card {
+			text-align: center;
+		}
+
+		.theme-image1 {
+			width: 250px;
+			height: 200px;
+			background-color: #a82572;
+			background: url('https://images.pexels.com/photos/17386379/pexels-photo-17386379/free-photo-of-bride-wearing-jewelry.jpeg?auto=compress&cs=tinysrgb&w=600') no-repeat center center/cover;
+			margin-bottom: 20px;
+			border-radius: 15px;
+		}
+
+		.theme-image2 {
+			width: 250px;
+			height: 200px;
+			background-color: #a82572;
+			background: url('https://cdn.pixabay.com/photo/2017/08/06/20/11/wedding-2595862_640.jpg') no-repeat center center/cover;
+			margin-bottom: 20px;
+			border-radius: 15px;
+		}
+
+		.theme-image3 {
+			width: 250px;
+			height: 200px;
+			background-color: #a82572;
+			background: url('https://cdn.pixabay.com/photo/2023/09/12/11/14/customer-8248598_1280.jpg') no-repeat center center/cover;
+			margin-bottom: 20px;
+			border-radius: 15px;
+		}
+
+		@media (max-width: 768px) {
+			.intro {
+				flex-direction: column;
+			}
+
+			.intro-image {
+				width: 100%;
+				margin-top: 20px;
+			}
+
+			.theme-cards {
+				flex-direction: column;
+			}
+
+			.theme-card {
+				margin-bottom: 30px;
+			}
+
+			.footer-bottom {
+				flex-direction: column;
+			}
+		}
+
+		/* ----- Responsive Design ----- */
+		@media (max-width: 768px) {
+			nav {
+				padding: 0 30px;
+			}
+
+			.hero h1 {
+				font-size: 40px;
+			}
+
+			.hero p {
+				font-size: 18px;
+			}
+
+			button {
+				padding: 10px 20px;
+				font-size: 14px;
+			}
+		}
+
+		.top-header .navbar .navbar-brand {
+			font-family: 'Great Vibes', cursive;
+			font-size: 36px;
+			font-weight: bold;
+			color: #ff00ea;
+			text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+			letter-spacing: 2px;
+			transition: all 0.3s ease-in-out;
+		}
+
+		.top-header .navbar .navbar-brand:hover {
+			color: #ffffff;
+			text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+		}
+
+		/*----- Banner -----*/
+
+
+		.lbox-caption {
+			display: table;
+			height: 100%;
+			width: 100%;
+		}
+
+		.lbox-caption {
+			position: absolute;
+			margin: 0 auto;
+			left: 0;
+			right: 0;
+			z-index: 10;
+		}
+
+		.lbox-details {
+			display: table-cell;
+			text-align: center;
+			vertical-align: middle;
+			position: relative;
+		}
+
+		.lbox-details::before {
+			content: "";
+			background: rgba(0, 0, 0, 0.5);
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			width: 100%;
+			height: 100%;
+			z-index: 2;
+		}
+
+		.lbox-details h1 {
+			font-size: 70px;
+			font-family: 'Marck Script', cursive;
+			color: #ffffff;
+			position: relative;
+			z-index: 3;
+		}
+
+		.lbox-details p {
+			font-size: 30px;
+			color: #ffffff;
+			position: relative;
+			font-family: cursive;
+			z-index: 3;
+		}
+
+		.lbox-details p {
+			color: #ffffff;
+			position: relative;
+			z-index: 3;
+		}
+
+		.lbox-details p strong {
+			color: #dd666c;
+			font-size: 40px;
+			font-family: 'Marck Script', cursive;
+		}
+
+		.lbox-details a.btn {
+			background: #63c7bd;
+			padding: 10px 20px;
+			font-size: 20px;
+			text-transform: uppercase;
+			color: #ffffff;
+			border-radius: 0px;
+			position: relative;
+			z-index: 3;
+		}
+
+		.lbox-details a.btn:hover {
+			background: #dd666c;
+		}
+
+		/*----- Our Team -----*/
+		.our-team {
+			text-align: center;
+			padding: 50px 20px;
+			background-color: #f8f9fa;
+		}
+
+		.our-team h2 {
+			font-size: 2rem;
+			margin-bottom: 10px;
+			color: #2f2f2f;
+		}
+
+		.our-team .subheading {
+			font-size: 1.2rem;
+			margin-bottom: 40px;
+			color: #6c757d;
+		}
+
+		.team-members {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			gap: 20px;
+		}
+
+		.team-member {
+			background: #fff;
+			border: 1px solid #ddd;
+			border-radius: 8px;
+			text-align: center;
+			padding: 20px;
+			max-width: 250px;
+			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+		}
+
+		.team-member img {
+			width: 100%;
+			height: auto;
+			border-radius: 8px;
+			margin-bottom: 15px;
+		}
+
+		.team-member h3 {
+			font-size: 1.2rem;
+			color: #2f2f2f;
+			margin-bottom: 5px;
+		}
+
+		.team-member p {
+			font-size: 1rem;
+			color: #6c757d;
+		}
+
+		/*----- about section -----*/
+
+		.about {
+			background: url(../images/about_bg.jpg);
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: 100% 100%;
+			margin-top: 90px;
+			padding: 90px 0;
+		}
+
+		.about .titlepage {
+			text-align: left;
+			padding-bottom: 0;
+		}
+
+		.about .titlepage h2::before {
+			position: relative;
+			margin: inherit;
+		}
+
+		.about .titlepage span {
+			padding-bottom: 60px;
+			padding-top: 40px;
+			font-weight: 500;
+		}
+
+		.about_img {
+			margin-right: -38px;
+			padding-left: 50px;
+		}
+
+		.about_img figure {
+			margin: 0;
+		}
+
+		.about_img figure img {
+			width: 100%;
+		}
+
+		/*----- Gallery section -----*/
+		.gallery-box {
+			padding: 70px 0px;
+		}
+
+		.gallery-box ul li {
+			position: relative;
+			width: 25%;
+			margin: 0;
+			padding: 0;
+			float: left;
+			border: none;
+			overflow: hidden;
+		}
+
+		.gallery-box ul li a {
+			position: relative;
+			display: inline-block;
+		}
+
+		.gallery-box ul li a::before {
+			content: "";
+			position: absolute;
+			background: rgba(99, 199, 189, 0.5);
+			width: 100%;
+			height: 100%;
+			left: 0px;
+			top: 100%;
+			opacity: 0;
+			transition: all 0.3s ease-in-out;
+			-webkit-transition: all 0.3s ease-in-out;
+			-moz-transition: all 0.3s ease-in-out;
+			-o-transition: all 0.3s ease-in-out;
+			-moz-transition: all 0.3s ease-in-out;
+		}
+
+		.gallery-box ul li a .overlay {
+			background: #dd666c;
+			color: #ffffff;
+			font-size: 22px;
+			text-align: center;
+			width: 38px;
+			height: 38px;
+			display: inline-block;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+			opacity: 0;
+			transition: all 0.3s ease-in-out;
+			-webkit-transition: all 0.3s ease-in-out;
+			-moz-transition: all 0.3s ease-in-out;
+			-o-transition: all 0.3s ease-in-out;
+			-moz-transition: all 0.3s ease-in-out;
+		}
+
+		.gallery-box ul li a:hover::before {
+			top: 0;
+			opacity: 1;
+		}
+
+		.gallery-box ul li a:hover .overlay {
+			opacity: 1;
+		}
+
+		/*-----  Events -----*/
+
+		.events-box {
+			padding: 70px 0px;
+		}
+
+		.event-inner {
+			margin-bottom: 30px;
+			border: 10px solid #fff;
+			box-shadow: 0 2px 5px rgba(0, 0, 0, .1);
+		}
+
+		.event-img {
+			margin-bottom: 15px;
+		}
+
+		.event-inner a {
+			background: #dd666c;
+			color: #ffffff;
+			padding: 5px 10px;
+			display: inline-block;
+			font-size: 18px;
+			font-weight: 500;
+		}
+
+		.event-inner a:hover {
+			background: #63c7bd;
+		}
+
+		/*----- Wedding Package section -----*/
+		.wedding-packages {
+			display: flex;
+			justify-content: center;
+			gap: 20px;
+			padding: 20px;
+			background: #f9f9f9;
+		}
+
+		.package {
+			width: 250px;
+			border: 1px solid #ddd;
+			border-radius: 10px;
+			overflow: hidden;
+			text-align: center;
+			background: #fff;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+		}
+
+		.package img {
+			width: 100%;
+			height: 150px;
+			object-fit: cover;
+		}
+
+		.package h3 {
+			background: #ff4081;
+			color: white;
+			padding: 10px 0;
+			margin: 0;
+		}
+
+		.package ul {
+			list-style: none;
+			padding: 10px;
+			margin: 0;
+			text-align: left;
+		}
+
+		.package ul li {
+			margin: 5px 0;
+			font-size: 14px;
+		}
+
+		.event-inner button {
+			margin: 10px;
+			padding: 10px 20px;
+			border: none;
+			background: #ff4081;
+			color: white;
+			border-radius: 5px;
+			cursor: pointer;
+			font-weight: bold;
+		}
+
+		.package button:hover {
+			background: #e03060;
+		}
+
+
+		/* ----- Footer styling -----*/
+		footer {
+			background: linear-gradient(to right, #fcb69f, #f6b3f6);
+			color: white;
+			padding: 20px 0;
+			text-align: center;
+			box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3);
+		}
+
+		footer {
+			position: relative;
+			margin-top: auto;
+			z-index: 1;
+		}
+
+		.container {
+			max-width: 1140px;
+			margin: auto;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			gap: 15px;
+		}
+
+		.footer-content {
+			flex: 1 1 250px;
+			margin: 10px;
+			color: white;
+			font-family: cursive;
+		}
+
+		h3 {
+			font-size: 28px;
+			margin-bottom: 15px;
+			text-align: center;
+		}
+
+		.footer-content p {
+			width: 300px;
+			margin: auto;
+			padding: 7px;
+			font-size: 18px;
+			transition: color 0.3s ease;
+		}
+
+		.footer-content ul {
+			text-align: center;
+		}
+
+		.footer-content p:hover {
+			color: #380daf;
+			cursor: pointer;
+		}
+
+		.list {
+			padding: 0;
+
+		}
+
+		.list li {
+			width: auto;
+			text-align: center;
+			list-style-type: none;
+			padding: 7px;
+			position: relative;
+			color: #f8f9fa;
+			font-size: 18px;
+		}
+
+		.list li::before {
+			content: '';
+			position: absolute;
+			transform: translate(-50%, -50%);
+			left: 50%;
+			top: 100%;
+			width: 0;
+			height: 2px;
+			background: #380daf;
+			transition-duration: .5s;
+		}
+
+		.list li:hover::before {
+			width: 70px;
+		}
+
+		.social-icons {
+			text-align: center;
+			padding: 0;
+		}
+
+		.social-icons li {
+			display: inline-block;
+			text-align: center;
+			padding: 5px;
+		}
+
+		.social-icons i {
+			color: white;
+			font-size: 25px;
+		}
+
+		a {
+			color: #f8f9fa;
+		}
+
+		a:hover {
+			color: #380daf;
+			;
+		}
+
+		.social-icons i:hover {
+			color: #380daf;
+		}
+
+		.bottom-bar {
+			background: #f18930;
+			padding: 10px 0;
+		}
+
+		.bottom-bar p {
+			color: #343434;
+			font-size: 14px;
+			margin: 0;
+		}
+
+		html {
+			min-height: 100%;
+			display: flex;
+			flex-direction: column;
+		}
+
+		body {
+			margin: 0;
+			display: flex;
+			flex: 1;
+			flex-direction: column;
+		}
+
+		main {
+			flex: 1;
+			/* Pushes the footer to the bottom */
+		}
+
+
+		/* Media Queries for Responsiveness */
+		@media (max-width: 740px) {
+			.container {
+				flex-direction: column;
+			}
+		}
+
+		@media (max-width: 555px) {
+			.container {
+				padding: 0 15px;
+
+			}
+		}
+
+
+		/* ----- Advertistment Area ----- */
+		.slide1 {
+			width: 100%;
+			height: 100vh;
+			background: linear-gradient(45deg, #e6e3e3, #a45be0, #ff77cd, #e6e3e3);
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			padding: 0 20px;
+		}
+
+		.text {
+			flex: 2;
+			padding: 20px;
+			color: #333;
+			max-width: 40%;
+		}
+
+		.text h2 {
+			font-size: 2em;
+			margin-bottom: 15px;
+		}
+
+		.text p {
+			font-size: 1.2em;
+			line-height: 1.5;
+			font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+			font-style: italic;
+		}
+
+		.slider {
+			flex: 1;
+			max-width: 60%;
+			height: 700px;
+			position: relative;
+			overflow: hidden;
+		}
+
+		.slider .list {
+			position: absolute;
+			width: max-content;
+			height: 100%;
+			left: 0;
+			top: 0;
+			display: flex;
+			transition: 1s;
+		}
+
+		.slider .list img {
+			width: 1300px;
+			max-width: 100vw;
+			height: 100%;
+			object-fit: cover;
+		}
+
+		.slider .buttons {
+			position: absolute;
+			top: 45%;
+			left: 5%;
+			width: 90%;
+			display: flex;
+			justify-content: space-between;
+		}
+
+		.slider .buttons button {
+			width: 50px;
+			height: 50px;
+			border-radius: 50%;
+			background-color: #fff5;
+			color: #fff;
+			border: none;
+			font-family: monospace;
+			font-weight: bold;
+		}
+
+		.slider .dots {
+			position: absolute;
+			bottom: 10px;
+			left: 0;
+			color: #fff;
+			width: 100%;
+			margin: 0;
+			padding: 0;
+			display: flex;
+			justify-content: center;
+		}
+
+		.slider .dots li {
+			list-style: none;
+			width: 10px;
+			height: 10px;
+			background-color: #fff;
+			margin: 10px;
+			border-radius: 20px;
+			transition: 0.5s;
+		}
+
+		.slider .dots li.active {
+			width: 30px;
+		}
+	</style>
+</head>
+
+<body>
+	<!-- Start header -->
+	<header class="top-header">
+		<nav class="navbar header-nav navbar-expand-lg">
+			<div class="container">
+				<a class="navbar-brand" href="index.html">Dream Day</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-wd"
+					aria-controls="navbar-wd" aria-expanded="false" aria-label="Toggle navigation">
+					<span></span>
+					<span></span>
+					<span></span>
+				</button>
+				<div class="collapse navbar-collapse justify-content-end" id="navbar-wd">
+					<ul class="navbar-nav">
+						<li><a class="nav-link active" href="home.html">Home</a></li>
+						<li><a class="nav-link" href="our_services.html">Our Services</a></li>
+						<li><a class="nav-link" href="vendors.html">Vendors</a></li>
+						<li><a class="nav-link " href="wedding_packages.html">Wedding Plans</a></li>
+						<li><a class="nav-link" href="about.html">About Us</a></li>
+						<li><a class="nav-link" href="contact.html">Contact Us</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+	<!-- End header -->
+
+
+	<!-- Start Banner -->
+	<div class="ulockd-home-slider">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="pogoSlider" id="js-main-slider"> <!-- .pogoSlider -->
+					<div class="pogoSlider-slide" data-transition="zipReveal" data-duration="1500"
+						style="background-image:url(Images/home/slider01.jpg);">
+						<div class="lbox-caption">
+							<div class="lbox-details">
+								<h1>Your Dream Day, Perfectly Planned</h1>
+								<p>We bring your wedding day to life with elegance and style.</p>
+								<p><strong>Join Us</strong></p>
+								<a href="contact.html" class="btn ">Contact</a>
+							</div>
+						</div>
+					</div>
+					<div class="pogoSlider-slide" data-transition="blocksReveal" data-duration="1500"
+						style="background-image:url(Images/home/slider02.jpg);">
+						<div class="lbox-caption">
+							<div class="lbox-details">
+								<h1>Celebrate Love, Create Memories</h1>
+								<p>Your love story deserves a ceremony as unique as you.</p>
+								<p><strong>Join Us</strong></p>
+								<a href="contact.html" class="btn ">Contact</a>
+							</div>
+						</div>
+					</div>
+					<div class="pogoSlider-slide" data-transition="shrinkReveal" data-duration="2000"
+						style="background-image:url(Images/home/slider03.jpg);">
+						<div class="lbox-caption">
+							<div class="lbox-details">
+								<h1>Where Every Detail Speaks Perfection</h1>
+								<p>Transform your grand wedding day into a masterpiece.</p>
+								<p> <strong>Join Us</strong></p>
+								<a href="contact.html" class="btn">Contact</a>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End Banner -->
+
+
+	<!-- Our Team Section -->
+
+	<section class="our-team">
+		<h2>Our Team</h2>
+		<p class="subheading">Awesome Organizers</p>
+		<div class="team-members">
+			<div class="team-member">
+				<img src="Images/home/dp.png" alt="Jenny Wilson">
+				<h3>Asha</h3>
+				<p>Wedding Planner</p>
+			</div>
+			<div class="team-member">
+				<img src="Images/home/dp2.jpg" alt="Robert Fox">
+				<h3>Dilakshan</h3>
+				<p>Wedding Planner</p>
+			</div>
+			<div class="team-member">
+				<img src="Images/home/dp3.jpg" alt="Annette Black">
+				<h3>Chamadi</h3>
+				<p>Event Organizer</p>
+			</div>
+			<div class="team-member">
+				<img src="Images/home/dp4.jpg" alt="Jerome Bell">
+				<h3>Supun</h3>
+				<p>Event Manager</p>
+			</div>
+		</div>
+	</section>
+
+	<!-- Start Gallery -->
+	<div id="gallery" class="gallery-box">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="title-box">
+						<h2>Gallery</h2>
+						<p>Celebrate the beauty and joy of love with our curated wedding gallery. Browse through
+							stunning photographs that capture heartwarming moments, dreamy venues, elegant decor, and
+							timeless celebrations. </p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<ul class="popup-gallery clearfix">
+					<li>
+						<a href="Images/home/gallery-01.jpg">
+							<img class="img-fluid" src="Images/home/gallery-01.jpg" alt="single image">
+							<span class="overlay"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
+						</a>
+					</li>
+					<li>
+						<a href="Images/home/gallery-02.jpg">
+							<img class="img-fluid" src="Images/home/gallery-02.jpg" alt="single image">
+							<span class="overlay"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
+						</a>
+					</li>
+					<li>
+						<a href="Images/home/gallery-03.jpg">
+							<img class="img-fluid" src="Images/home/gallery-03.jpg" alt="single image">
+							<span class="overlay"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
+						</a>
+					</li>
+					<li>
+						<a href="Images/home/gallery-04.jp">
+							<img class="img-fluid" src="Images/home/gallery-04.jpg" alt="single image">
+							<span class="overlay"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
+						</a>
+					</li>
+					<li>
+						<a href="Images/home/gallery-05.jpg">
+							<img class="img-fluid" src="Images/home/gallery-05.jpg" alt="single image">
+							<span class="overlay"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
+						</a>
+					</li>
+					<li>
+						<a href="Images/home/gallery-06.jpg">
+							<img class="img-fluid" src="Images/home/gallery-06.jpg" alt="single image">
+							<span class="overlay"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
+						</a>
+					</li>
+					<li>
+						<a href="Images/home/gallery-07.jpg">
+							<img class="img-fluid" src="Images/home/gallery-07.jpg" alt="single image">
+							<span class="overlay"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
+						</a>
+					</li>
+					<li>
+						<a href="Images/home/gallery-08.jpg">
+							<img class="img-fluid" src="Images/home/gallery-08.jpg" alt="single image">
+							<span class="overlay"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- End Gallery -->
+
+
+	<!-- Start Wedding Plans -->
+	<div id="events" class="events-box">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="title-box">
+						<h2>Our Wedding Packages</h2>
+						<p>Discover our thoughtfully crafted wedding packages designed to make your special day seamless
+							and unforgettable. From intimate ceremonies to grand celebrations, we offer tailored plans
+							to suit your style, vision, and budget. </p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-4 col-md-6 col-sm-12">
+					<div class="event-inner">
+						<div class="event-img">
+							<img class="img-fluid" src="Images/home/classic.jpg" alt="" />
+						</div>
+						<h2>Classic Elegance Plan</h2>
+						<p>Ideal for couples seeking timeless style and sophistication.
+							Features include elegant venues, traditional floral arrangements, and a formal dinner
+							reception. </p>
+						<ul>
+							<li>Hair and Makeup</li>
+							<li>Car Rentals</li>
+							<li>Wedding Cake</li>
+							<li>Price: $24,000</li>
+						</ul>
+						<button>VIEW DETAILS</button>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6 col-sm-12">
+					<div class="event-inner">
+						<div class="event-img">
+							<img class="img-fluid" src="Images/home/rustic2.jpg" alt="" />
+						</div>
+						<h2>Rustic Charm Plan </h2>
+						<p>Perfect for outdoor and nature-inspired weddings.
+							Includes countryside venues, bohemian themes, and eco-friendly options. </p>
+						<ul>
+							<li>Hair and Makeup</li>
+							<li>Wedding Cake</li>
+							<li>Photographer</li>
+							<li>Appertizers & Meal Services</li>
+							<li>Reception Decor</li>
+							<li>Price: $39,500</li>
+						</ul>
+						<button>VIEW DETAILS</button>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6 col-sm-12">
+					<div class="event-inner">
+						<div class="event-img">
+							<img class="img-fluid" src="Images/home/luxary.avif" alt="" />
+						</div>
+						<h2>Luxury Extravaganza Plan </h2>
+						<p>Designed for grand celebrations with exclusive details.
+							Features luxury venues, top-tier vendors, and extravagant entertainment. </p>
+						<ul>
+							<li>Hair and Makeup</li>
+							<li>Appetizers and Meal Service</li>
+							<li>Wedding Cake</li>
+							<li>DJ & MC Services</li>
+							<li>Photobooth</li>
+							<li>Dancing Groups</li>
+							<li>Car Rentals</li>
+							<li>Price: $52,000</li>
+						</ul>
+						<button>VIEW DETAILS</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Slider Section -->
+	<section class="slide1">
+		<div class="text">
+			<h2> Pubudu Flora - Where Love Blooms </h2>
+			<p>Make your wedding day unforgettable with the perfect floral arrangements by Pubudu Flora! From
+				breathtaking bridal bouquets to stunning floral arches, we specialize in crafting unique designs that
+				bring your wedding vision to life.</p>
+			<br>
+			<p>📞 Contact Us Today to book your consultation and make your dream wedding bloom with Pubudu Flora! </p>
+			<p><strong>Phone:</strong>+94 123 456 789</p>
+			<p><strong>Email: </strong> info@pubuduflora.com</p>
+
+		</div>
+
+		<div class="slider">
+			<div class="list">
+				<div class="item">
+					<img src="Images/1.jpg" alt="">
+				</div>
+				<div class="item">
+					<img src="Images/2.jpg" alt="">
+				</div>
+				<div class="item">
+					<img src="Images/3.jpg" alt="">
+				</div>
+				<div class="item">
+					<img src="Images/4.jpg" alt="">
+				</div>
+				<div class="item">
+					<img src="Images/5.jpg" alt="">
+				</div>
+			</div>
+			<div class="buttons">
+				<button id="prev">
+					< </button>
+						<button id="next"> > </button>
+			</div>
+			<ul class="dots">
+				<li class="active"></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</div>
+	</section>
+
+	<!-- End Events -->
+	<footer>
+		<div class="container">
+			<div class="footer-content">
+				<h3>Contact Us</h3>
+				<p>Email: info@example.com</p>
+				<p>Phone: +121 56556 565556</p>
+				<p>Address: Your Address, 123 Street</p>
+			</div>
+			<div class="footer-content">
+				<h3>Quick Links</h3>
+				<ul class="list">
+					<li><a href="home.html">Home</a></li>
+					<li><a href="our_services.html">Our Services</a></li>
+					<li><a href="vendors.html">Vendors</a></li>
+					<li><a href="about.html">About</a></li>
+					<li><a href="contact.html">Contact</a></li>
+
+				</ul>
+			</div>
+			<div class="footer-content">
+				<h3>Follow Us</h3>
+				<ul class="social-icons">
+					<li><i class="fab fa-facebook-f"></i></li>
+					<li><i class="fab fa-twitter"></i></li>
+					<li><i class="fab fa-instagram"></i></li>
+					<li><i class="fab fa-linkedin-in"></i></li>
+				</ul>
+			</div>
+		</div>
+		<div class="bottom-bar">
+			<p>© 2024 Dream Day Wedding Planner. All rights reserved.</p>
+		</div>
+	</footer>
+
+	<!-- ALL JS FILES -->
+	<script src="js/jquery.min.js"></script>
+	<script src="js/popper.min.js"></script>
+
+	<!-- ALL PLUGINS -->
+	<script src="js/jquery.magnific-popup.min.js"></script>
+	<script src="js/jquery.pogo-slider.min.js"></script>
+	<script src="js/slider-index.js"></script>
+	<script src="js/smoothscroll.js"></script>
+
+
+</body>
+
+</html>
