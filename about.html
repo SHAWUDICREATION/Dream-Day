@@ -2,427 +2,590 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="x-icon" href="img/logo.webp">
-    <title>About Us</title>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
-    <!--scroll reveal-->
-    <script src="https://unpkg.com/scrollreveal"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" type="x-icon" href="img/logo.webp">
+  <title>About Us</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <!--scroll reveal-->
+  <script src="https://unpkg.com/scrollreveal"></script>
 
 
-    <style>
-        * {
-            padding: 0;
-            margin: 0;
-            text-decoration: none;
-            list-style: none;
-            box-sizing: border-box;
-        }
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      text-decoration: none;
+      list-style: none;
+      box-sizing: border-box;
+    }
 
-        body {
-            font-family: "Montserrat", sans-serif;
-        }
+    body {
+      font-family: "Montserrat", sans-serif;
+    }
 
-        /* Navigation bar */
-        nav {
-            position: fixed;
-            /* Fixed at the top */
-            top: 0;
-            left: 0;
-            z-index: 1000;
-            /* Stays above other elements */
-            background: linear-gradient(to right, #ff7eb3, #ff758c, #ff91af);
-            height: 80px;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 2rem;
-        }
+    /* Navigation bar */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      background: #222;
+      height: 80px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+    }
 
-        /* Brand logo styling */
-        .navbar-brand {
-            font-family: 'Great Vibes', cursive;
-            font-size: 36px;
-            font-weight: bold;
-            color: #9603da;
-            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
-            letter-spacing: 2px;
-            transition: all 0.3s ease-in-out;
-        }
+    /* Brand logo styling */
+    .navbar-brand {
+      font-family: 'Great Vibes', cursive;
+      font-size: 36px;
+      font-weight: bold;
+      color: #f44770;
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+      letter-spacing: 2px;
+      transition: all 0.3s ease-in-out;
+    }
 
-        .navbar-brand:hover {
-            color: #ffffff;
-            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
-        }
+    .navbar-brand:hover {
+      color: #ffffff;
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+    }
+
+    nav ul {
+      display: flex;
+      align-items: center;
+    }
+
+    nav ul li {
+      margin: 0 15px;
+      font-family: "Montserrat", sans-serif;
+    }
+
+    nav ul li a {
+      color: #ffffff;
+      font-size: 17px;
+      padding: 10px 15px;
+      border-radius: 5px;
+      font-weight: 200;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+    }
+
+    /* Hover and active link styles */
+    nav ul li a:hover,
+    nav ul li a.active {
+      background-color: #ff4081;
+      color: rgb(0, 0, 0);
+    }
+
+    /* menu button */
+    .checkbtn {
+      font-size: 22px;
+      color: white;
+      cursor: pointer;
+      display: none;
+    }
+
+    #check {
+      display: none;
+    }
+
+    /* Responsive menu styles */
+    @media (max-width: 1080px) {
+      .checkbtn {
+        display: block;
+      }
+
+      nav ul {
+        position: fixed;
+        top: 80px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 80px);
+        background: #222;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        transition: all 0.5s ease;
+      }
+
+      nav ul li {
+        margin: 15px 0;
+      }
+
+      #check:checked~ul {
+        left: 0;
+      }
+    }
+
+     /* Advertise section styles */
+     .advertise-section {
+        width: 100%;
+        margin: 0;
+        padding-top: 60px;
+        position: relative;
+        z-index: 1;
+    }
+
+    .advertise-banner {
+
+        background-color: #ff9000;
+        color: white;
+        text-align: center;
+        padding: 40px 0;
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .icon-container {
+        margin-bottom: 15px;
+        font-size: 60px;
+    }
+
+    .icon-container i {
+        color: white;
+    }
+
+    .advertise-banner h2, 
+.advertise-banner {
+    font-size: 36px;
+    margin: 10px 0;
+    color: #fff;
+    font-weight: 500;
+    text-decoration: none !important;
+}
+    .advertise-banner:hover {
+        cursor: pointer;
+        background-color: #ff7a00;
+    }
+
+    /*ABOUT SECTION*/
+    .about {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+      background-image: url("Images/home/about.webp");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      margin: 10rem;
+      padding: 5rem;
+    }
+
+    .about-img {
+      display: none;
+    }
+
+    .about-content {
+      background-color: rgba(0, 0, 0, 0.6);
+      border-radius: 10px;
+      padding: 4rem;
+      color: #ffffff;
+      max-width: 800px;
+      justify-content: center;
+    }
+
+    .heading {
+      font-size: 2.5rem;
+    }
+
+    .about-content h3 {
+      color: #e07b52;
+      font-family: cursive;
+      font-size: 1.5rem;
+    }
+
+    .about-content p {
+      /*font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;*/
+      font-family: 'PT Sans', sans-serif;
+      font-size: 14px;
+      text-align: center;
+      margin: 3rem 0;
+    }
+
+    /* CONTACT SECTION */
+    #contactsec-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background-color: #f3f6fa;
+      padding: 20px;
+    }
+
+    .form-wrap {
+      background: #ecf0f3;
+      border-radius: 0px 30px 30px 0px;
+      padding: 30px;
+      width: 100%;
+      max-width: 500x;
+      box-shadow: 8px 8px 16px #cbced1, -8px -8px 16px #ffffff;
+    }
+
+    .form-title {
+      text-align: left;
+      padding: 10px;
+      font-size: 28px;
+      letter-spacing: 0.5px;
+    }
+
+    .form-fields {
+      display: table;
+      width: 100%;
+      padding: 15px 5px 5px 5px;
+    }
+
+    .form-fields input,
+    .form-fields textarea {
+      border: none;
+      outline: none;
+      background: none;
+      font-size: 18px;
+      color: #555;
+      padding: 20px 10px 20px 5px;
+      width: 100%;
+    }
+
+    .form-fields textarea {
+      height: 100px;
+      resize: none;
+    }
+
+    .form-group {
+      width: 100%;
+      float: left;
+      padding: 0px 30px;
+      margin: 14px 12px;
+      border-radius: 25px;
+      box-shadow: inset 8px 8px 8px #cbced1, inset -8px -8px 8px #ffffff;
+    }
+
+    .form-fields .submit-button {
+      display: block;
+      margin: 20px auto;
+      width: 50%;
+      height: 60px;
+      border-radius: 30px;
+      font-size: 20px;
+      font-weight: 700;
+      outline: none;
+      border: none;
+      cursor: pointer;
+      color: #fff;
+      text-align: center;
+      background: #f44770;
+      box-shadow: none;
+      transition: 0.5s;
+    }
+
+    .submit-button:hover {
+      background: rgb(240, 94, 215);
+    }
+
+    /* Footer styling */
+    footer {
+      background-color: #222;
+      color: #fff;
+      padding: 40px 0 10px 0;
+    }
+
+    footer .container {
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-start;
+      text-align: left;
+      gap: 30px;
+      padding: auto;
+    }
+
+    .footer-content {
+      flex: 1;
+      max-width: 300px;
+    }
+
+    .footer-content h3 {
+      margin-bottom: 20px;
+      font-size: 20px;
+      font-weight: bold;
+      font-family: 'PT Sans', sans-serif;
+    }
+
+    .info-details,
+    .list,
+    .social-icons {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .info-details li,
+    .list li,
+    .social-icons li {
+      margin-bottom: 10px;
+
+    }
+
+    .info-details li i,
+    .social-icons li i {
+      margin-right: 10px;
+      color: #ffffff;
+    }
 
 
+    .info-details li i {
+      background: #f44770;
+      padding: 12px;
+      border-radius: 50%;
+      margin-right: 5px;
+    }
 
-        nav ul {
-            display: flex;
-            align-items: center;
-        }
+    .list li a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 16px;
+      text-transform: uppercase;
 
-        nav ul li {
-            margin: 0 15px;
-            font-family: "Montserrat", sans-serif;
-            font-style: italic;
+    }
 
-        }
+    .list li a:hover {
+      color: #ff4081;
+      /* Add hover effect */
+    }
 
-        nav ul li a {
-            color: #ffffff;
-            font-size: 17px;
-            padding: 10px 15px;
-            border-radius: 5px;
-            font-weight: bold;
-            text-transform: uppercase;
-            transition: all 0.3s ease;
-        }
+    .social-icons {
+      display: flex;
+      gap: 10px;
+    }
 
-        /* Hover and active link styles */
-        nav ul li a:hover,
-        nav ul li a.active {
-            background-color: #c62ef580;
-            color: rgb(0, 0, 0);
-        }
+    .social-icons li i {
+      font-size: 20px;
+      background-color: #ff4081;
+      color: #fff;
+      padding: 10px;
+      border-radius: 50%;
+      display: inline-block;
+      text-align: center;
+      line-height: 20px;
+      width: 40px;
+      height: 40px;
+    }
 
-        /* Hamburger menu button */
-        .checkbtn {
-            font-size: 22px;
-            color: white;
-            cursor: pointer;
-            display: none;
-        }
+    .bottom-bar {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 14px;
+      color: #aaa;
+      border-top: 1px solid #444;
+      padding-top: 10px;
+    }
 
-        #check {
-            display: none;
-        }
+    .bottom-bar {
+      background: #ff4081;
+      padding: 10px 0;
+    }
 
-        /* Responsive menu styles */
-        @media (max-width: 1000px) {
-            .checkbtn {
-                display: block;
-            }
+    .bottom-bar p {
+      color: #343434;
+      font-size: 14px;
+      margin: 0;
+    }
 
-            nav ul {
-                position: fixed;
-                top: 80px;
-                left: -100%;
-                width: 100%;
-                height: calc(100vh - 80px);
-                background: linear-gradient(to bottom, #ff7eb3, #ff758c);
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                text-align: center;
-                transition: all 0.5s ease;
-            }
-
-            nav ul li {
-                margin: 15px 0;
-            }
-
-            #check:checked~ul {
-                left: 0;
-            }
-        }
+    @media (max-width: 768px) {
+      .container {
+        margin: 10px;
+        padding: 15px;
+      }
+    }
 
 
-        /*ABOUT SECTION*/
+    /* Responsive Media Queries */
+@media (min-width: 768px) {
+  .about {
+    flex-direction: row;
+    margin: 10rem;
+    padding: 5rem;
+  }
 
-        .about {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 2rem;
-            background: coral;
-            margin: 10rem;
-        }
+  .about-img {
+    display: block;
+    max-width: 50%;
+    border-radius: 10px;
+  }
 
-        .about-img img {
-            width: 30vw;
-            border-radius: 10px;
-            padding-left: 4rem;
+  .about-content {
+    padding: 2rem;
+    max-width: 500px;
+    text-align: left;
+  }
 
-        }
+  .heading {
+    font-size: 1.5rem;
+  }
 
-        .about-content {
-            padding: 10rem;
-            color: #ffffff;
-        }
+  .about-content p {
+    font-size: 1.4rem;
+  }
 
-        .heading {
-            text-align: center;
-            font-size: 3rem;
-        }
+  footer .container {
+    justify-content: space-around;
+    text-align: left;
+  }
+}
 
-        .about-content h3 {
-            color: #e07b52;
-            font-family: cursive;
-            text-align: center;
-            font-size: 2rem;
-        }
+@media (min-width: 1024px) {
+  .form-wrap {
+    padding: 40px;
+    max-width: 600px;
+  }
 
-        .about-content p {
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-            font-style: italic;
-            font-size: 1.8rem;
-            margin: 3rem 0 3rem;
-            text-align: center;
-        }
-
-
-        /* Footer styling */
-        footer {
-            background: linear-gradient(to right, #ff7eb3, #ff758c, #d351f3);
-            color: white;
-            padding: 20px 0;
-            text-align: center;
-            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3);
-
-        }
-
-
-        footer {
-            position: relative;
-            margin-top: auto;
-            z-index: 1;
-        }
-
-        .container {
-            max-width: 1140px;
-            margin: auto;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
-
-        }
-
-        .footer-content {
-            flex: 1 1 250px;
-            margin: 10px;
-            color: white;
-            font-family: cursive;
-
-        }
-
-
-        h3 {
-            color: #000000 !important;
-            font-size: 28px;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-
-        .footer-content p {
-            width: 300px;
-            margin: auto;
-            padding: 7px;
-            font-size: 18px;
-            transition: color 0.3s ease;
-        }
-
-
-        .footer-content a {
-            color: #f8f9fa;
-            text-decoration: none !important;
-            transition: color 0.3s ease;
-        }
-
-        .footer-content a:hover {
-            color: #380daf;
-            text-decoration: underline;
-        }
-
-
-
-        .footer-content ul {
-            text-align: center;
-        }
-
-        .footer-content p:hover {
-            color: #380daf;
-            cursor: pointer;
-        }
-
-        .list {
-            padding: 0;
-
-        }
-
-        .list li {
-            width: auto;
-            text-align: center;
-            list-style-type: none;
-            padding: 7px;
-            position: relative;
-            color: #f8f9fa;
-            font-size: 18px;
-        }
-
-        .list li::before {
-            content: '';
-            position: absolute;
-            transform: translate(-50%, -50%);
-            left: 50%;
-            top: 100%;
-            width: 0;
-            height: 2px;
-            background: #380daf;
-            transition-duration: .5s;
-        }
-
-        .list li:hover::before {
-            width: 70px;
-        }
-
-        .social-icons {
-            text-align: center;
-            padding: 0;
-        }
-
-        .social-icons li {
-            display: inline-block;
-            text-align: center;
-            padding: 5px;
-        }
-
-        .social-icons i {
-            color: white;
-            font-size: 25px;
-        }
-
-        a {
-            color: #f8f9fa;
-        }
-
-        a:hover {
-            color: #380daf;
-            ;
-        }
-
-        .social-icons i:hover {
-            color: #380daf;
-        }
-
-        .bottom-bar {
-            background: #f18930;
-            padding: 10px 0;
-        }
-
-        .bottom-bar p {
-            color: #343434;
-            font-size: 14px;
-            margin: 0;
-        }
-    </style>
+  .submit-button {
+    width: 40%;
+    height: 60px;
+    font-size: 20px;
+  }
+}
+  </style>
 </head>
 
 <body>
-    <!-- Start header -->
-    <nav>
-        <!-- Checkbox for toggling menu -->
-        <input type="checkbox" id="check">
+  <!-- Start header -->
+  <nav>
+    <!-- Checkbox for toggling menu -->
+    <input type="checkbox" id="check">
 
-        <!-- Hamburger icon -->
-        <label for="check" class="checkbtn">
-            <i class="fas fa-bars"></i>
-        </label>
+    <!-- Menu icon -->
+    <label for="check" class="checkbtn">
+      <i class="fas fa-bars"></i>
+    </label>
 
-        <!-- Site logo -->
-        <a class="navbar-brand" href="index.html">Dream Day</a>
+    <!-- Site logo -->
+    <a class="navbar-brand" href="home_main.html">Dream Day</a>
 
-        <!-- Navigation links -->
-        <ul>
-            <li><a class="nav-link " href="home.html">Home</a></li>
-            <li><a class="nav-link" href="our_services.html">Our Services</a></li>
-            <li><a class="nav-link" href="vendors.html">Vendors</a></li>
-            <li><a class="nav-link" href="wedding_packages.html">Wedding Plans</a></li>
-            <li><a class="nav-link active" href="about.html">About Us</a></li>
-            <li><a class="nav-link" class="nav-link" href="contact.html">Contact Us</a></li>
+    <!-- Navigation links -->
+    <ul>
+      <li><a class="nav-link" href="home_main.html">Home</a></li>
+      <li><a class="nav-link " class="nav-link" href="directory.html">Directory</a></li>
+      <li><a class="nav-link" href="wedding_plans.html">Wedding Plans</a></li>
+      <li><a class="nav-link active" href="about.html">About Us</a></li>
+    </ul>
+  </nav>
+
+  <!-- End header -->
+
+   <!--ADVERTISE SECTION-->
+
+   <div class="advertise-section">
+    <a href="forms.html" class="advertise-banner">
+        <div class="icon-container">
+            <i class="fas fa-hand-pointer"></i>
+        </div>
+        <h2>Advertise with us.</h2>
+    </a>
+</div>
+
+  <!--ABOUT US SECTION-->
+  <section class="about" id="about">
+
+    <div class="about-content">
+      <h2 class=heading> About <span>Us</span></h2>
+      <h3> " Welcome to Dream Wedding! " </h3>
+      <p>At Dream Wedding, we specialize in making your big day unforgettable. Our team of experienced planners
+        and designers works tirelessly to bring your dream wedding to life. Whether you prefer a traditional
+        celebration or a modern theme, we’ve got you covered.
+        With years of experience in the wedding industry, we understand how important this day is for you.
+        That’s why we offer personalized services to match your preferences, style, and culture. From venue
+        decoration to bridal attire, we handle it all with care and creativity.
+        Let us help you create memories that last a lifetime. Your happiness is our mission!
+      </p>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section id="contactsec-wrapper">
+    <h2 class="form-title">Send Us a Message</h2>
+    <p class="contact-description">Feel free to contact us for any queries or assistance!</p>
+    <form class="contact-form">
+      <div class="form-fields">
+        <div class="form-group">
+          <input type="text" name="name" placeholder="Your Name" required>
+        </div>
+        <div class="form-group">
+          <input type="email" name="email" placeholder="Your Email" required>
+        </div>
+        <div class="form-group">
+          <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+        </div>
+        <button type="submit" class="submit-button">Send Message</button>
+      </div>
+    </form>
+    </div>
+  </section>
+
+
+  <!-- FOOTER SECTION -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <h3>Contact Us</h3>
+        <ul class="info-details">
+          <li><i class="fas fa-map-marker-alt"></i><span>123 Pink Street, Nawala, Colombo</span></li>
+          <li><i class="fas fa-phone-alt"></i><span>(123) 456-7890</span></li>
+          <li><i class="fas fa-envelope"></i><span>info@dreamday.com</span></li>
         </ul>
-    </nav>
-
-    <!-- End header -->
-
-    <!--ABOUT US SECTION-->
-    <section class="about" id="about">
-        <div class="about-img">
-            <img src="Images/home/about.webp" alt="">
-        </div>
-
-        <div class="about-content">
-            <h2 class=heading> About <span>Us</span></h2>
-            <h3> " Welcome to Dream Wedding! " </h3>
-            <p>At Dream Wedding, we specialize in making your big day unforgettable. Our team of experienced planners
-                and designers works tirelessly to bring your dream wedding to life. Whether you prefer a traditional
-                celebration or a modern theme, we’ve got you covered.
-                With years of experience in the wedding industry, we understand how important this day is for you.
-                That’s why we offer personalized services to match your preferences, style, and culture. From venue
-                decoration to bridal attire, we handle it all with care and creativity.
-                Let us help you create memories that last a lifetime. Your happiness is our mission!
-            </p>
-        </div>
-    </section>
-
-
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <h3>Contact Us</h3>
-                <p>Email: info@example.com</p>
-                <p>Phone: +121 56556 565556</p>
-                <p>Address: Your Address, 123 Street</p>
-            </div>
-            <div class="footer-content">
-                <h3>Quick Links</h3>
-                <ul class="list">
-                    <li><a href="home.html">Home</a></li>
-                    <li><a href="our_services.html">Our Services</a></li>
-                    <li><a href="vendors.html">Vendors</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-
-                </ul>
-            </div>
-            <div class="footer-content">
-                <h3>Follow Us</h3>
-                <ul class="social-icons">
-                    <li><i class="fab fa-facebook-f"></i></li>
-                    <li><i class="fab fa-twitter"></i></li>
-                    <li><i class="fab fa-instagram"></i></li>
-                    <li><i class="fab fa-linkedin-in"></i></li>
-                </ul>
-            </div>
-        </div>
-        <div class="bottom-bar">
-            <p>© 2024 Dream Day Wedding Planner. All rights reserved.</p>
-        </div>
-    </footer>
+      </div>
+      <div class="footer-content">
+        <h3>Quick Links</h3>
+        <ul class="list">
+          <li><a href="home_main.html">Home</a></li>
+          <li><a href="directory.html">Our Services</a></li>
+          <li><a href="vendors_list.html">Our Vendors List</a></li>
+          <li><a href="wedding_plans.html">Wedding Plans</a></li>
+          <li><a href="about.html">About Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-content">
+        <h3>Follow Us</h3>
+        <ul class="social-icons">
+          <li><i class="fab fa-facebook-f"></i></li>
+          <li><i class="fab fa-twitter"></i></li>
+          <li><i class="fab fa-instagram"></i></li>
+          <li><i class="fab fa-linkedin-in"></i></li>
+        </ul>
+      </div>
+    </div>
+    <div class="bottom-bar">
+      <p>© 2024 Dream Day Wedding Planner. All rights reserved.</p>
+    </div>
+  </footer>
 </body>
 
 <!--SCROLL REVEAL-->
 <script src="https://unpkg.com/scrollreveal"></script>
 
 <script>
-    // Configure global settings
-    ScrollReveal({
-        reset: true,
-        distance: '80px',
-        duration: 2000,
-        delay: 300
-    });
+  // Configure global settings
+  ScrollReveal({
+    reset: true,
+    distance: '80px',
+    duration: 2000,
+    delay: 300
+  });
 
-    // Reveal specific elements
-    ScrollReveal().reveal('.home img, .heading', { origin: 'top' });
-    ScrollReveal().reveal(' .delicacies-container, .gallery-container , .gallery-box, .about-content', { origin: 'bottom' });
+  // Reveal specific elements
+  ScrollReveal().reveal(' .about-content, .list, .contact-form', { origin: 'left' });
 
-    ScrollReveal().reveal(' .about-img, .list, .contact-info', { origin: 'left' });
-    ScrollReveal().reveal('.input-box', { origin: 'right' });
 
 </script>
 

@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" type="x-icon" href="Images/logo.webp">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+  <title>Dream Day</title>
+
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      box-sizing: border-box;
+      text-decoration: none;
+    }
+
+    body {
+      font-family: 'PT Sans', sans-serif;
+      margin: 0;
+    }
+
+
+
+    /* Loader */
+    .loader-container {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background: white;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    .flipping-cards {
+      display: flex;
+      justify-content: space-between;
+      width: 500px;
+      /* Adjust based on the number of cards and their width */
+    }
+
+    .card {
+      width: 250px;
+      height: 100px;
+      margin: 5px;
+      background-color: #f52fe4;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 32px;
+      font-weight: bold;
+      border-radius: 4px;
+      backface-visibility: none;
+      transform-style: preserve-3d;
+      animation: flip 3s infinite;
+    }
+
+    .card:nth-child(1) {
+      animation-delay: 0s;
+    }
+
+    .card:nth-child(2) {
+      animation-delay: 0.3s;
+    }
+
+    .card:nth-child(3) {
+      animation-delay: 0.6s;
+    }
+
+    .card:nth-child(4) {
+      animation-delay: 0.9s;
+    }
+
+    .card:nth-child(5) {
+      animation-delay: 1.2s;
+    }
+
+    .card:nth-child(6) {
+      animation-delay: 1.5s;
+    }
+
+    .card:nth-child(7) {
+      animation-delay: 1.8s;
+    }
+
+    .card:nth-child(8) {
+      animation-delay: 2.1s;
+    }
+
+    @keyframes flip {
+
+      0%,
+      100% {
+        transform: rotateY(0deg);
+      }
+
+      50% {
+        transform: rotateY(180deg);
+      }
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+    }
+
+
+    /* Navigation bar */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      background: #222;
+      height: 80px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+    }
+
+    .nav-buttons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn-login,
+    .btn-register {
+      font-size: 14px;
+      padding: 8px 16px;
+      border: 2px solid #ff4081;
+      border-radius: 5px;
+      text-transform: uppercase;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      color: #ffffff;
+      text-align: center;
+      font-family: 'PT Sans', sans-serif;
+    }
+
+    .btn-login {
+      background-color: transparent;
+    }
+
+    .btn-login:hover {
+      background-color: #ff4081;
+      color: #000000;
+    }
+
+    .btn-register {
+      background-color: #ff4081;
+    }
+
+    .btn-register:hover {
+      background-color: #ffffff;
+      color: #ff4081;
+      border-color: #ffffff;
+    }
+
+    /* Brand logo styling */
+    .navbar-brand {
+      font-family: 'Great Vibes', cursive;
+      font-size: 36px;
+      font-weight: bold;
+      color: #f44770;
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+      letter-spacing: 2px;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .navbar-brand:hover {
+      color: #ffffff;
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+    }
+
+    nav ul {
+      display: flex;
+      align-items: center;
+    }
+
+    nav ul li {
+      margin: 0 15px;
+      font-family: "Montserrat", sans-serif;
+    }
+
+    nav ul li a {
+      color: #ffffff;
+      font-size: 17px;
+      padding: 10px 15px;
+      border-radius: 5px;
+      font-weight: 400;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+    }
+
+    /* Hover and active link styles */
+    nav ul li a:hover,
+    nav ul li a.active {
+      background-color: #ff4081;
+      color: rgb(0, 0, 0);
+    }
+
+    /* menu button */
+    .checkbtn {
+      font-size: 22px;
+      color: white;
+      cursor: pointer;
+      display: none;
+    }
+
+    #check {
+      display: none;
+    }
+
+    /* Responsive menu styles */
+    @media (max-width: 1080px) {
+      .checkbtn {
+        display: block;
+      }
+
+      nav ul {
+        position: fixed;
+        top: 80px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 80px);
+        background: #222;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        transition: all 0.5s ease;
+      }
+
+      nav ul li {
+        margin: 15px 0;
+      }
+
+      #check:checked~ul {
+        left: 0;
+      }
+    }
+
+    /* Advertise section styles */
+    .advertise-section {
+      width: 100%;
+      margin: 0;
+      padding-top: 60px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .advertise-banner {
+
+      background-color: #ff9000;
+      color: white;
+      text-align: center;
+      padding: 40px 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .icon-container {
+      margin-bottom: 15px;
+      font-size: 60px;
+    }
+
+    .icon-container i {
+      color: white;
+    }
+
+    .advertise-banner h2,
+    .advertise-banner {
+      font-size: 36px;
+      margin: 10px 0;
+      color: #fff;
+      font-weight: 500;
+      text-decoration: none !important;
+    }
+
+    .advertise-banner:hover {
+      cursor: pointer;
+      background-color: #ff7a00;
+    }
+
+
+    /* Slider section styles */
+
+    /* carousel */
+    .carousel {
+      width: 100vw;
+      height: 90vh;
+      margin-top: 80px;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+    }
+
+
+    .carousel .list .item {
+      width: 180px;
+      height: 250px;
+      position: absolute;
+      top: 80%;
+      transform: translateY(-70%);
+      left: 70%;
+      border-radius: 20px;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+      background-position: 50% 50%;
+      background-size: cover;
+      z-index: 100;
+      transition: 1s;
+    }
+
+    .carousel .list .item:nth-child(1),
+    .carousel .list .item:nth-child(2) {
+      top: 0;
+      left: 0;
+      transform: translate(0, 0);
+      border-radius: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .carousel .list .item:nth-child(3) {
+      left: 67%;
+    }
+
+    .carousel .list .item:nth-child(4) {
+      left: calc(67% + 200px);
+    }
+
+    .carousel .list .item:nth-child(5) {
+      left: calc(67% + 400px);
+    }
+
+    .carousel .list .item:nth-child(6) {
+      left: calc(67% + 600px);
+    }
+
+    .carousel .list .item:nth-child(n+7) {
+      left: calc(67% + 800px);
+      opacity: 0;
+    }
+
+    .list .item .content {
+      position: absolute;
+      top: 50%;
+      left: 100px;
+      transform: translateY(-50%);
+      width: 600px;
+      text-align: left;
+      color: #fff;
+      display: none;
+    }
+
+    .list .item:nth-child(2) .content {
+      display: block;
+    }
+
+    .content .title {
+      font-size: 45px;
+      text-transform: uppercase;
+      color: #000000cb;
+      font-weight: bold;
+      line-height: 1;
+      opacity: 0;
+      animation: animate 1s ease-in-out 0.3s 1 forwards;
+    }
+
+    .content .name {
+      font-size: 40px;
+      text-transform: uppercase;
+      font-weight: bold;
+      line-height: 1;
+      text-shadow: 3px 4px 4px rgba(255, 255, 255, 0.8);
+      color: #000;
+      opacity: 0;
+      animation: animate 1s ease-in-out 0.6s 1 forwards;
+    }
+
+   
+
+
+    @keyframes animate {
+
+      from {
+        opacity: 0;
+        transform: translate(0, 100px);
+        filter: blur(33px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translate(0);
+        filter: blur(0);
+      }
+    }
+
+    /* Carousel */
+
+
+
+
+
+
+    /* next prev arrows */
+
+    .arrows {
+      position: absolute;
+      top: 80%;
+      right: 52%;
+      z-index: 100;
+      width: 300px;
+      max-width: 30%;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .arrows button {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: #f55fdccb;
+      color: #fff;
+      border: none;
+      outline: none;
+      font-size: 16px;
+      font-family: monospace;
+      font-weight: bold;
+      transition: .5s;
+      cursor: pointer;
+    }
+
+    .arrows button:hover {
+      background: #fff;
+      color: #000;
+    }
+
+
+    /* time running */
+    .carousel .timeRunning {
+      position: absolute;
+      z-index: 1000;
+      width: 0%;
+      height: 4px;
+      background-color: #f55fdccb;
+      left: 0;
+      top: 0;
+      animation: runningTime 7s linear 1 forwards;
+    }
+
+    @keyframes runningTime {
+
+      from {
+        width: 0%;
+      }
+
+      to {
+        width: 100%;
+      }
+
+    }
+
+
+    /* Responsive Design */
+
+    @media screen and (max-width: 999px) {
+
+      header {
+        padding-left: 50px;
+      }
+
+      .list .item .content {
+        left: 50px;
+      }
+
+      .content .title,
+      .content .name {
+        display: none;
+      }
+
+  
+
+    }
+
+    @media screen and (max-width: 690px) {
+      header nav a {
+        font-size: 14px;
+        margin-right: 0;
+      }
+
+      .list .item .content {
+        top: 40%;
+      }
+
+      .content .title,
+      .content .name {
+        display: none;
+      }
+
+      .content .btn button {
+        display: none;
+      }
+    }
+
+    /* Gallery styles */
+    .gallery-box {
+      padding: 70px 0;
+      text-align: center;
+    }
+
+    .gallery-box h2 {
+      font-size: 35px;
+      font-family: 'PT Sans', sans-serif;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .title-box p {
+      font-size: 19px;
+      font-family: 'PT Sans', sans-serif;
+      margin: 15px;
+    }
+
+    .gallery-box ul {
+      list-style: none;
+      margin: 0;
+      padding: 10;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .gallery-box ul li {
+      position: relative;
+      flex: 0 0 25%;
+      /* 4 images per row */
+      overflow: hidden;
+      border: none;
+    }
+
+    .gallery-box ul li img {
+      width: 100%;
+      height: auto;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .gallery-box ul li a {
+      display: block;
+      position: relative;
+    }
+
+    .gallery-box ul li a::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(221, 102, 108, 0.6);
+      /* Highlight color */
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+      pointer-events: none;
+      /* Prevent overlay interference */
+    }
+
+    .gallery-box ul li:hover a::before {
+      opacity: 1;
+      /* Show overlay on hover */
+      cursor: pointer;
+      /* Change cursor to pointer */
+    }
+
+    .gallery-box ul li img {
+      width: 100%;
+      height: auto;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .gallery-box ul li:hover img {
+      transform: scale(1.1);
+      /* Zoom effect */
+    }
+
+    /* General section styles */
+    .wedding-packages {
+      text-align: center;
+      padding: 40px 20px;
+      background-color: #f9f9f9;
+    }
+
+    .packages-title {
+      font-size: 35px;
+      font-family: 'PT Sans', sans-serif;
+      margin-bottom: 10px;
+    }
+
+    .packages-description {
+      font-size: 16px;
+      color: #666;
+      margin-bottom: 30px;
+    }
+
+    .packages-container {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 20px;
+      background: #f9f9f9;
+    }
+
+    .package-card {
+      width: 400px;
+      border: 2px solid #ddd;
+      border-radius: 10px;
+      overflow: hidden;
+      text-align: center;
+      background: #fff;
+      height: fit-content;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+
+    .package-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .package-card h3 {
+      font-size: 20px;
+      margin: 15px;
+      font-family: 'PT Sans', sans-serif;
+    }
+
+    .package-card p {
+      font-size: 15px;
+      color: #555;
+      margin: 15px;
+      font-family: 'PT Sans', sans-serif;
+    }
+
+    .details-button {
+      display: block;
+      margin: 15px auto;
+      /* Centers the button horizontally */
+      padding: 10px 20px;
+      background-color: #ff4081;
+      color: #fff;
+      text-align: center;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .details-button:hover {
+      background-color: #e0356f;
+    }
+
+    /* ----- Advertistment Area ----- */
+    .slide1 {
+      width: 100%;
+      height: 100vh;
+      background: linear-gradient(45deg, #e6e3e3, #a45be0, #ff77cd, #e6e3e3);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+    }
+
+    .text {
+      flex: 2;
+      padding: 20px;
+      color: #333;
+      max-width: 40%;
+    }
+
+    .text h2 {
+      font-size: 2em;
+      margin-bottom: 15px;
+    }
+
+    .text p {
+      font-size: 1.2em;
+      line-height: 1.5;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      font-style: italic;
+    }
+
+    .slider {
+      flex: 1;
+      max-width: 60%;
+      height: 700px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .slider .list {
+      position: absolute;
+      width: max-content;
+      height: 100%;
+      left: 0;
+      top: 0;
+      display: flex;
+      transition: 1s;
+    }
+
+    .slider .list img {
+      width: 1300px;
+      max-width: 100vw;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .slider .buttons {
+      position: absolute;
+      top: 45%;
+      left: 5%;
+      width: 90%;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .slider .buttons button {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: #fff5;
+      color: #fff;
+      border: none;
+      font-family: monospace;
+      font-weight: bold;
+    }
+
+    .slider .dots {
+      position: absolute;
+      bottom: 10px;
+      left: 0;
+      color: #fff;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    .slider .dots li {
+      list-style: none;
+      width: 10px;
+      height: 10px;
+      background-color: #fff;
+      margin: 10px;
+      border-radius: 20px;
+      transition: 0.5s;
+    }
+
+    .slider .dots li.active {
+      width: 30px;
+    }
+
+
+    /* Footer styling */
+    footer {
+      background-color: #222;
+      color: #fff;
+      padding: 40px 0 10px 0;
+    }
+
+    footer .container {
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-start;
+      text-align: left;
+      gap: 30px;
+      padding: auto;
+
+    }
+
+    .footer-content {
+      flex: 1;
+      max-width: 300px;
+    }
+
+    .footer-content h3 {
+      margin-bottom: 20px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .info-details,
+    .list,
+    .social-icons {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .info-details li,
+    .list li,
+    .social-icons li {
+      margin-bottom: 10px;
+
+    }
+
+    .info-details li i,
+    .social-icons li i {
+      margin-right: 10px;
+      color: #ffffff;
+      /* Pink icon color */
+    }
+
+
+    .info-details li i {
+      background: #f44770;
+      padding: 12px;
+      border-radius: 50%;
+      margin-right: 5px;
+    }
+
+
+
+    .list li a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 16px;
+      text-transform: uppercase;
+
+    }
+
+    .list li a:hover {
+      color: #ff4081;
+      /* Add hover effect */
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .social-icons li i {
+      font-size: 20px;
+      background-color: #ff4081;
+      color: #fff;
+      padding: 10px;
+      border-radius: 50%;
+      display: inline-block;
+      text-align: center;
+      line-height: 20px;
+      width: 40px;
+      height: 40px;
+    }
+
+    .bottom-bar {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 14px;
+      color: #aaa;
+      border-top: 1px solid #444;
+      padding-top: 10px;
+    }
+
+
+    .bottom-bar {
+      background: #ff4081;
+      padding: 10px 0;
+    }
+
+    .bottom-bar p {
+      color: #343434;
+      font-size: 14px;
+      margin: 0;
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <!-- Loader -->
+  <div class="loader-container" id="loader">
+    <div class="flipping-cards">
+      <div class="card">D</div>
+      <div class="card">R</div>
+      <div class="card">E</div>
+      <div class="card">A</div>
+      <div class="card">M</div>
+      <div class="card">D</div>
+      <div class="card">A</div>
+      <div class="card">Y</div>
+    </div>
+  </div>
+
+  <!-- Page Content -->
+  <div class="home-main" id="homeContent" style="display: none;">
+    <!-- Start header -->
+    <nav>
+      <!-- Checkbox for toggling menu -->
+      <input type="checkbox" id="check">
+
+      <!-- Menu icon -->
+      <label for="check" class="checkbtn">
+        <i class="fas fa-bars"></i>
+      </label>
+
+      <!-- Site logo -->
+      <a class="navbar-brand" href="index.html">Dream Day</a>
+      <ul>
+        <li><a class="nav-link active" href="home.html">Home</a></li>
+        <li><a class="nav-link" href="directory.html">Directory</a></li>
+        <li><a class="nav-link" href="wedding_plans.html">Wedding Plans</a></li>
+        <li><a class="nav-link" href="about.html">About Us</a></li>
+      </ul>
+      <div class="nav-buttons">
+        <a href="forms.html#loginForm" class="btn-login">Login</a>
+        <a href="forms.html#registerForm" class="btn-register">Register</a>
+      </div>
+
+    </nav>
+
+    <!-- End header -->
+
+
+    <div class="carousel">
+      <div class="list">
+        <div class="overlay">
+          <div class="item" style="background-image: url(Images/home/1.webp);">
+            <div class="overlay"></div>
+            <div class="content">
+              <div class="title">Your Dream Day</div>
+              <div class="name"> Perfectly Planned</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="item" style="background-image: url(Images/home/rustic.jpg);">
+          <div class="content">
+            <div class="title">Celebrate Love </div>
+            <div class="name">Create Memories</div>
+          </div>
+
+        </div>
+
+        <div class="item" style="background-image: url(Images/home/slider02.jpg);">
+
+          <div class="content">
+            <div class="title">Where Every Detail Speaks Perfection</div>
+          </div>
+
+        </div>
+
+        <div class="item" style="background-image: url(Images/home/4.jpg);">
+
+          <div class="content">
+            <div class="title">Experience the Perfect Day</div>
+            <div class="name">Turn your dreams into reality.</div>
+            <div class="des"></div>
+          </div>
+
+        </div>
+
+        <div class="item" style="background-image: url(Images/home/5.jpg);">
+
+          <div class="content">
+            <div class="title">Begin Your Journey</div>
+            <div class="name">Let's make it unforgettable.</div>
+          </div>
+
+        </div>
+      </div>
+
+      <!--next prev button-->
+      <div class="arrows">
+        <button class="prev">
+          < </button>
+            <button class="next"> > </button>
+      </div>
+
+
+      <!-- time running -->
+      <div class="timeRunning"></div>
+
+    </div>
+
+
+    <!--ADVERTISE SECTION-->
+    <div class="advertise-section">
+      <a href="forms.html" class="advertise-banner">
+        <div class="icon-container">
+          <i class="fas fa-hand-pointer"></i>
+        </div>
+        <h2>Advertise with us.</h2>
+      </a>
+    </div>
+
+
+    <div id="gallery" class="gallery-box">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="title-box">
+              <h2>Gallery</h2>
+              <p>Celebrate the beauty and joy of love with our curated wedding gallery.</p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <ul class="popup-gallery clearfix">
+            <li>
+              <a href="Images/home/gallery-01.jpg">
+                <img class="img-fluid" src="Images/home/gallery-01.jpg" alt="Image 1">
+                <span class="overlay"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
+              </a>
+            </li>
+            <li>
+              <a href="Images/home/gallery-02.jpg">
+                <img class="img-fluid" src="Images/home/gallery-02.jpg" alt="Image 2">
+                <span class="overlay"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
+              </a>
+            </li>
+            <li>
+              <a href="Images/home/gallery-03.jpg">
+                <img class="img-fluid" src="Images/home/gallery-03.jpg" alt="Image 3">
+                <span class="overlay"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
+              </a>
+            </li>
+            <li>
+              <a href="Images/home/gallery-04.jpg">
+                <img class="img-fluid" src="Images/home/gallery-04.jpg" alt="Image 4">
+                <span class="overlay"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
+              </a>
+            </li>
+            <li>
+              <a href="Images/home/gallery-05.jpg">
+                <img class="img-fluid" src="Images/home/gallery-05.jpg" alt="Image 5">
+                <span class="overlay"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
+              </a>
+            </li>
+            <li>
+              <a href="Images/home/gallery-06.jpg">
+                <img class="img-fluid" src="Images/home/gallery-06.jpg" alt="Image 6">
+                <span class="overlay"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
+              </a>
+            </li>
+            <li>
+              <a href="Images/home/gallery-07.jpg">
+                <img class="img-fluid" src="Images/home/gallery-07.jpg" alt="Image 7">
+                <span class="overlay"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
+              </a>
+            </li>
+            <li>
+              <a href="Images/home/gallery-08.jpg">
+                <img class="img-fluid" src="Images/home/gallery-08.jpg" alt="Image 8">
+                <span class="overlay"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+
+    <section class="wedding-packages">
+      <h2 class="packages-title">Our Wedding Packages</h2>
+      <p class="packages-description">
+        Discover our thoughtfully crafted wedding packages designed to make your special day seamless and unforgettable.
+      </p>
+      <div class="packages-container">
+        <div class="package-card">
+          <img src="Images/home/classic.jpg" alt="Classic Elegance Plan">
+          <h3>Classic Elegance Plan</h3>
+          <p>Ideal for couples seeking timeless style and sophistication. Features include elegant venues, traditional
+            floral arrangements, and a formal dinner reception.</p>
+          <button class="details-button">View Details</button>
+        </div>
+        <div class="package-card">
+          <img src="Images/home/rustic2.jpg" alt="Rustic Charm Plan">
+          <h3>Rustic Charm Plan</h3>
+          <p>Perfect for outdoor and nature-inspired weddings. Includes countryside venues, bohemian themes, and
+            eco-friendly options.</p>
+          <button class="details-button">View Details</button>
+        </div>
+        <div class="package-card">
+          <img src="Images/home/luxary.avif" alt="Luxury Extravaganza Plan">
+          <h3>Luxury Extravaganza Plan</h3>
+          <p>Designed for grand celebrations with exclusive details. Features luxury venues, top-tier vendors, and
+            extravagant entertainment.</p>
+          <button class="details-button">View Details</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slider Section -->
+    <section class="slide1">
+      <div class="text">
+        <h1>Our Main Sponsor</h1>
+        <h2> Pubudu Flora - Where Love Blooms </h2>
+        <p>Make your wedding day unforgettable with the perfect floral arrangements by Pubudu Flora! From
+          breathtaking bridal bouquets to stunning floral arches, we specialize in crafting unique designs that
+          bring your wedding vision to life.</p>
+        <br>
+        <p>📞 Contact Us Today to book your consultation and make your dream wedding bloom with Pubudu Flora! </p>
+        <p><strong>Phone:</strong>+94 123 456 789</p>
+        <p><strong>Email: </strong> info@pubuduflora.com</p>
+
+      </div>
+
+      <div class="slider">
+        <div class="list">
+          <div class="item">
+            <img src="Images/S1.jpg" alt="">
+          </div>
+          <div class="item">
+            <img src="Images/S2.jpg" alt="">
+          </div>
+          <div class="item">
+            <img src="Images/S3.jpg" alt="">
+          </div>
+          <div class="item">
+            <img src="Images/S5.jpg" alt="">
+          </div>
+          <div class="item">
+            <img src="Images/S6.jpg" alt="">
+          </div>
+        </div>
+        <div class="buttons">
+          <button id="prev"> < </button>
+              <button id="next"> > </button>
+        </div>
+        <ul class="dots">
+          <li class="active"></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+      </div>
+    </section>
+
+    <!--FOOTER SECTION-->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <h3>Contact Us</h3>
+          <ul class="info-details">
+            <li><i class="fas fa-map-marker-alt"></i><span>123 Pink Street, Nawala, Colombo</span></li>
+            <li><i class="fas fa-phone-alt"></i><span>(123) 456-7890</span></li>
+            <li><i class="fas fa-envelope"></i><span>info@dreamday.com</span></li>
+          </ul>
+        </div>
+        <div class="footer-content">
+          <h3>Quick Links</h3>
+          <ul class="list">
+            <li><a href="home_main.html">Home</a></li>
+            <li><a href="directory.html">Our Services</a></li>
+            <li><a href="vendors_list.html">Our Vendors List</a></li>
+            <li><a href="wedding_plans.html">Wedding Plans</a></li>
+            <li><a href="about.html">About Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-content">
+          <h3>Follow Us</h3>
+          <ul class="social-icons">
+            <li><i class="fab fa-facebook-f"></i></li>
+            <li><i class="fab fa-twitter"></i></li>
+            <li><i class="fab fa-instagram"></i></li>
+            <li><i class="fab fa-linkedin-in"></i></li>
+          </ul>
+        </div>
+      </div>
+      <div class="bottom-bar">
+        <p>© 2024 Dream Day Wedding Planner. All rights reserved.</p>
+      </div>
+    </footer>
+  </div>
+
+  <script src="Java Script Files/formshome.js"></script>
+</body>
+
+
+
+</html>

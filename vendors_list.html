@@ -1,0 +1,1593 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendors List</title>
+    <link rel="shortcut icon" type="x-icon" href="Images/logo.webp">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+
+
+
+</head>
+<style>
+    body {
+        font-family: 'PT Sans', sans-serif;
+        margin: 0;
+    }
+
+    /* Navigation bar */
+    .navigation {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+        background: #222;
+        height: 80px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 2rem;
+    }
+
+    /* Brand logo styling */
+    .navbar-brand {
+        font-family: 'Great Vibes', cursive;
+        font-size: 36px;
+        font-weight: bold;
+        color: #f44770;
+        text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+        letter-spacing: 2px;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .navbar-brand:hover {
+        color: #ffffff;
+        text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+    }
+
+    .navigation ul {
+        display: flex;
+        align-items: center;
+    }
+
+    .navigation ul li {
+        margin: 0 15px;
+        font-family: "Montserrat", sans-serif;
+    }
+
+    .navigation ul li a {
+        color: #ffffff;
+        font-size: 17px;
+        padding: 10px 15px;
+        border-radius: 5px;
+        font-weight: 400;
+        text-transform: uppercase;
+        transition: all 0.3s ease;
+    }
+
+    /* Hover and active link styles */
+    .navigation ul li a:hover,
+    .navigation ul li a.active {
+        background-color: #ff4081;
+        color: rgb(0, 0, 0);
+    }
+
+    /* menu button */
+    .checkbtn {
+        font-size: 22px;
+        color: white;
+        cursor: pointer;
+        display: none;
+    }
+
+    #check {
+        display: none;
+    }
+
+    /* Responsive menu styles */
+    @media (max-width: 1080px) {
+        .checkbtn {
+            display: block;
+        }
+
+        .navigation ul {
+            position: fixed;
+            top: 80px;
+            left: -100%;
+            width: 100%;
+            height: calc(100vh - 80px);
+            background: #222;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            transition: all 0.5s ease;
+        }
+
+        .navigation ul li {
+            margin: 15px 0;
+        }
+
+        #check:checked~ul {
+            left: 0;
+        }
+    }
+
+
+    /* Advertise section styles */
+    .advertise-section {
+        width: 100%;
+        margin: 0;
+        padding-top: 60px;
+        position: relative;
+        z-index: 1;
+    }
+
+    .advertise-banner {
+
+        background-color: #ff9000;
+        color: white;
+        text-align: center;
+        padding: 40px 0;
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .icon-container {
+        margin-bottom: 15px;
+        font-size: 60px;
+    }
+
+    .icon-container i {
+        color: white;
+    }
+
+    .advertise-banner h2,
+    .advertise-banner {
+        font-size: 36px;
+        margin: 10px 0;
+        color: #fff;
+        font-weight: 500;
+        text-decoration: none !important;
+    }
+
+    .advertise-banner:hover {
+        cursor: pointer;
+        background-color: #ff7a00;
+    }
+
+    /* sidebar section styles */
+    .sidebar {
+        background-color: #f8f9fa;
+        padding: 15px;
+        border-right: 1px solid #ddd;
+        height: 100%;
+    }
+
+    .sidebar h3 {
+        text-align: center;
+    }
+
+    .sidebar ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .sidebar ul li {
+        margin-bottom: 10px;
+    }
+
+    .sidebar ul li a {
+        text-decoration: none;
+        color: #f85f92;
+        font-size: 16px;
+        display: block;
+        padding: 10px;
+        background-color: #f1f1f1;
+        border-radius: 4px;
+        transition: background-color 0.3s;
+    }
+
+    .sidebar ul li a:hover {
+        background-color: #f85f92;
+        color: white;
+    }
+
+    .main-content {
+        display: none;
+    }
+
+    .main-content h2 {
+        color: #333;
+    }
+
+    .service-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .service {
+        width: 30%;
+        height: fit-content;
+        border: 1px solid #ddd;
+        padding: 15px;
+        border-radius: 8px;
+        text-align: center;
+    }
+
+    .service img {
+        width: 100%;
+        height: 300px;
+        border-radius: 8px;
+    }
+
+    .service h3 {
+        font-size: 18px;
+        margin: 15px 0;
+    }
+
+    .service button {
+        background-color: #f85f92;
+        color: #fff;
+        border: none;
+        padding: 3px 60px;
+        margin: 5px 0;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+    }
+
+    /* Overlay */
+    .popup {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        z-index: 1000;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Popup Content */
+    .popup-content {
+        background: #fff;
+        padding: 20px;
+        width: 90%;
+        max-width: 500px;
+        border-radius: 10px;
+        text-align: center;
+        position: relative;
+    }
+
+    .popup-content .close {
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+    .popup-content h2 {
+        color: #ff4081;
+        margin-bottom: 15px;
+    }
+
+
+    .popup h2 {
+        font-size: 20px;
+        font-family: 'PT Sans', sans-serif;
+        color: #ff4081;
+    }
+
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+  /* Responsive Adjustments */
+@media (max-width: 1024px) {
+    .service {
+        width: 45%;
+    }
+}
+
+@media (max-width: 768px) {
+    .service {
+        width: 100%;
+    }
+
+    .sidebar {
+        border-right: none;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .service button {
+        font-size: 12px;
+        padding: 6px 15px;
+    }
+
+    .popup-content {
+        width: 95%;
+        padding: 15px;
+    }
+
+    .popup-content h2 {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .service img {
+        height: 200px;
+    }
+
+    .service h3 {
+        font-size: 16px;
+    }
+
+    .popup-content {
+        width: 90%;
+        padding: 10px;
+    }
+
+    .popup-content h2 {
+        font-size: 16px;
+    }
+
+    .popup-content .close {
+        font-size: 20px;
+    }
+}
+
+</style>
+
+<body>
+    <!-- Start header -->
+    <div class="navigation">
+        <!-- Checkbox for toggling menu -->
+        <input type="checkbox" id="check">
+
+        <!-- Menu icon -->
+        <label for="check" class="checkbtn">
+            <i class="fas fa-bars"></i>
+        </label>
+
+        <!-- Site logo -->
+        <a class="navbar-brand" href="index.html">Dream Day</a>
+
+        <!-- Navigation links -->
+        <ul>
+            <li><a class="nav-link active" href="home_main.html">Home</a></li>
+            <li><a class="nav-link " class="nav-link" href="directory.html">Directory</a></li>
+            <li><a class="nav-link" href="wedding_plans.html">Wedding Plans</a></li>
+            <li><a class="nav-link " href="about.html">About Us</a></li>
+        </ul>
+    </div>
+
+    <!--ADVERTISE SECTION-->
+    <div class="advertise-section">
+        <a href="forms.html" class="advertise-banner">
+            <div class="icon-container">
+                <i class="fas fa-hand-pointer"></i>
+            </div>
+            <h2>Advertise with us.</h2>
+        </a>
+    </div>
+
+    <!-- End header -->
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-3 sidebar">
+                <h3>Our Services</h3>
+                <ul>
+                    <li><a href="javascript:void(0)" onclick="showService('ashtaka')">Ashtaka</a></li>
+                    <li><a href="javascript:void(0)" onclick="showService('astrology')">Astrology</a></li>
+                    <li><a href="javascript:void(0)" onclick="showService('carrenters')">Car Rentals</a></li>
+                    <li><a href="javascript:void(0)" onclick="showService('caterers')">Caterers</a></li>
+                    <li><a href="javascript:void(0)" onclick="showService('cinematography')">Cinematography</a></li>
+                    <li><a href="javascript:void(0)" onclick="showService('photography')">Photography</a></li>
+                    <li><a href="javascript:void(0)" onclick="showService('weddingcakes')">Wedding Cakes</a></li>
+                    <li><a href="javascript:void(0)" onclick="showService('dancinggroups')">Dancing Groups</a></li>
+                    <li><a href="javascript:void(0)" onclick="showService('bands')">Bands/DJ</a></li>
+                    <li><a href="javascript:void(0)" onclick="showService('salon')">Hair Beauty Salons & Spa</a></li>
+                    <li><a href="javascript:void(0)" onclick="showService('flowers')">Flowers</a></li>
+                    <li><a href="javascript:void(0)" onclick="showService('album')">Wedding Album</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-9">
+                <!-- Ashtaka Section -->
+                <div id="ashtaka" class="main-content active">
+                    <h2>Ashtaka Vendors</h2>
+                    <p>Infuse your wedding with sacred traditions through expert Ashtaka services, ensuring blessings
+                        and cultural
+                        depth.</p>
+                    <div class="service-list">
+                        <div class="service">
+                            <img src="Images/vendors Images/ashtaka1.png" alt="ashtaka">
+                            <h3>Vipula Kalayathanaya</h3>
+                            <button onclick="showPopup('popup1')">View Details</button>
+
+                        </div>
+
+                        <!-- Popup -->
+                        <div id="popup1" class="popup">
+                            <div class="popup-content">
+                                <span class="close" onclick="closePopup('popup1')">&times;</span>
+                                <h2>Vipula Kalayathanaya</h2>
+                                <p><strong>Email:</strong> vipula@gmail.com</p>
+                                <p><strong>Phone:</strong> +94 77 888 8888</p>
+                                <p><strong>Website:</strong> <a
+                                        href="https://www.vishviweddings.com">www.vipulaweddings.com</a></p>
+                                <p><strong>Price:</strong> Rs.10 000</p>
+                            </div>
+                        </div>
+
+                        <div class="service">
+                            <img src="Images/vendors Images/ashtaka2.png" alt="ashtaka">
+                            <h3>Vishvi Weddings Ashtaka</h3>
+                            <button onclick="showPopup('popup2')">View Details</button>
+                        </div>
+                        <!-- Popup -->
+                        <div id="popup2" class="popup">
+                            <div class="popup-content">
+                                <span class="close" onclick="closePopup('popup2')">&times;</span>
+                                <h2>Vishvi Weddings Ashtaka</h2>
+                                <p><strong>Email:</strong> vishvi@gmail.com</p>
+                                <p><strong>Phone:</strong> +94 77 888 8888</p>
+                                <p><strong>Website:</strong> <a
+                                        href="https://www.vishviweddings.com">www.Vishviweddings.com</a></p>
+                                <p><strong>Price:</strong> Rs.15 000</p>
+                            </div>
+                        </div>
+
+
+                        <div class="service">
+                            <img src="Images/vendors Images/ashtaka3.jpg" alt="ashtaka">
+                            <h3>Brilliant Ceylon</h3>
+                            <button onclick="showPopup('popup3')">View Details</button>
+                        </div>
+
+                        <!-- Popup -->
+                        <div id="popup3" class="popup">
+                            <div class="popup-content">
+                                <span class="close" onclick="closePopup('popup3')">&times;</span>
+                                <h2>Brilliant Ceylon</h2>
+                                <p><strong>Email:</strong> brilliantceylon@gmail.com</p>
+                                <p><strong>Phone:</strong> +94 77 888 8888</p>
+                                <p><strong>Website:</strong> <a
+                                        href="https://www.vishviweddings.com">www.brilliantceylonweddings.com</a></p>
+                                <p><strong>Price:</strong> Rs.16 000</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <!-- Astrology Section -->
+                <div id="astrology" class="main-content">
+                    <h2>Astrology Vendors</h2>
+                    <p>Choose your perfect day with astrological guidance tailored to align your wedding with the stars.
+                    </p>
+                    <div class="service-list">
+                        <!-- Service 1 -->
+                        <div class="service">
+                            <img src="Images/vendors Images/astro1.jpg" alt="astrology">
+                            <h3>Janasetha Astrology</h3>
+                            <button onclick="showPopup('popup-astro1')">View Details</button>
+                        </div>
+
+                        <!-- Popup -->
+                        <div id="popup-astro1" class="popup">
+                            <div class="popup-content">
+                                <span class="close" onclick="closePopup('popup-astro1')">&times;</span>
+                                <h2>Janasetha Astrology</h2>
+                                <p><strong>Email:</strong> janasetha@gmail.com</p>
+                                <p><strong>Phone:</strong> +94 77 999 9999</p>
+                                <p><strong>Website:</strong> <a
+                                        href="https://www.janasethaweddings.com">www.janasethaweddings.com</a></p>
+                                <p><strong>Price:</strong> Rs.8000</p>
+                            </div>
+                        </div>
+
+                        <!-- Service 2 -->
+                        <div class="service">
+                            <img src="Images/vendors Images/astro2.jpg" alt="astrology">
+                            <h3>Manjula Perera</h3>
+                            <button onclick="showPopup('popup-astro2')">View Details</button>
+                        </div>
+
+                        <!-- Popup -->
+                        <div id="popup-astro2" class="popup">
+                            <div class="popup-content">
+                                <span class="close" onclick="closePopup('popup-astro2')">&times;</span>
+                                <h2>Manjula Perera</h2>
+                                <p><strong>Email:</strong> manjula@gmail.com</p>
+                                <p><strong>Phone:</strong> +94 77 888 8888</p>
+                                <p><strong>Website:</strong> <a
+                                        href="https://www.manjulaweddings.com">www.manjulaweddings.com</a></p>
+                                <p><strong>Price:</strong> Rs.10 000</p>
+                            </div>
+                        </div>
+
+                        <!-- Service 3 -->
+                        <div class="service">
+                            <img src="Images/vendors Images/astro3.jpg" alt="astrology">
+                            <h3>Iranama Lanka</h3>
+                            <button onclick="showPopup('popup-astro3')">View Details</button>
+                        </div>
+
+                        <!-- Popup -->
+                        <div id="popup-astro3" class="popup">
+                            <div class="popup-content">
+                                <span class="close" onclick="closePopup('popup-astro3')">&times;</span>
+                                <h2>Iranama Lanka</h2>
+                                <p><strong>Email:</strong> iranama@gmail.com</p>
+                                <p><strong>Phone:</strong> +94 77 777 7777</p>
+                                <p><strong>Website:</strong>
+                                    <ahref="https: //www.iranamaweddings.com">www.iranamaweddings.com</a>
+                                </p>
+                                <p><strong>Price:</strong> Rs.5000</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Car Rentals Section -->
+                <div id="carrenters" class="main-content">
+                    <h2>Car Rentals Vendors</h2>
+                    <p>Arrive in style with our premium wedding car rentals, designed for elegance and comfort.</p>
+                    <div class="service-list">
+                        <div class="service">
+                            <img src="Images/vendors Images/car1.jpeg" alt="carrenters">
+                            <h3>Malkey rent-a-car</h3>
+                            <button onclick="showPopup('popup-car1')">View Details</button>
+                        </div>
+
+                        <!-- Popup -->
+                        <div id="popup-car1" class="popup">
+                            <div class="popup-content">
+                                <span class="close" onclick="closePopup('popup-car1')">&times;</span>
+                                <h2>Malkey rent-a-car</h2>
+                                <p><strong>Email:</strong> malkey@gmail.com</p>
+                                <p><strong>Phone:</strong> +94 77 999 9999</p>
+                                <p><strong>Website:</strong> <a
+                                        href="https://www.Malkey rent-a-car.com">www.janasethaweddings.com</a> </p>
+                                        <p><strong>Price:</strong> Rs.10 000</p>
+                            </div>
+                        </div>
+                        <div class="service">
+                            <img src="Images/vendors Images/car2.jpg" alt="carrenters">
+                            <h3>Ameri Rent A Car</h3>
+                            <button onclick="showPopup('popup-car2')">View Details</button>
+                        </div>
+
+
+                        <!-- Popup -->
+                        <div id="popup-car2" class="popup">
+                            <div class="popup-content">
+                                <span class="close" onclick="closePopup('popup-car2')">&times;</span>
+                                <h2>Ameri Rent A Car</h2>
+                                <p><strong>Email:</strong> americar@gmail.com</p>
+                                <p><strong>Phone:</strong> +94 77 999 9999</p>
+                                <p><strong>Website:</strong> <a
+                                        href="https://www.americar.com">www.janasethaweddings.com</a>
+                                </p>
+                                <p><strong>Price:</strong> Rs.15 000</p>
+                            </div>
+                        </div>
+
+                        <div class="service">
+                            <img src="Images/vendors Images/car3.png" alt="carrenters">
+                            <h3>Dream Wedding Car</h3>
+                            <button onclick="showPopup('popup-car3')">View Details</button>
+                        </div>
+
+                        <!-- Popup -->
+                        <div id="popup-car3" class="popup">
+                            <div class="popup-content">
+                                <span class="close" onclick="closePopup('popup-car3')">&times;</span>
+                                <h2>Dream Wedding Car</h2>
+                                <p><strong>Email:</strong> dreamweddingcar@gmail.com</p>
+                                <p><strong>Phone:</strong> +94 77 999 9999</p>
+                                <p><strong>Website:</strong> <a
+                                        href="https://www.Dream Wedding Car.com">www.janasethaweddings.com</a>
+                                </p>
+                                <p><strong>Price:</strong> Rs.20 000</p>
+                            </div>
+                        </div>
+
+                        <div class="service">
+                            <img src="Images/vendors Images/car4.jpeg" alt="carrenters">
+                            <h3>Mustang Wedding Cars</h3>
+                            <button onclick="showPopup('popup-car4')">View Details</button>
+                        </div>
+
+
+                        <!-- Popup -->
+                        <div id="popup-astro4" class="popup">
+                            <div class="popup-content">
+                                <span class="close" onclick="closePopup('popup-astro4')">&times;</span>
+                                <h2>Mustang Wedding Cars</h2>
+                                <p><strong>Email:</strong> mustangweddingcars@gmail.com</p>
+                                <p><strong>Phone:</strong> +94 77 999 9999</p>
+                                <p><strong>Website:</strong> <a
+                                        href="https://www.Mustang Wedding Cars.com">www.janasethaweddings.com</a>
+                                        <p><strong>Price:</strong> Rs.18 000</p>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="service">
+                            <img src="Images/vendors Images/car5.jpg" alt="carrenters">
+                            <h3>Shan Luxury Wedding Cars</h3>
+                            <button onclick="showPopup('popup-car4')">View Details</button>
+                        </div>
+
+
+                        <!-- Popup -->
+                        <div id="popup-astro5" class="popup">
+                            <div class="popup-content">
+                                <span class="close" onclick="closePopup('popup-astro5')">&times;</span>
+                                <h2>Shan Luxury Wedding Cars</h2>
+                                <p><strong>Email:</strong> shanluxuryweddingcars@gmail.com</p>
+                                <p><strong>Phone:</strong> +94 77 999 9999</p>
+                                <p><strong>Website:</strong> <a href="https://www.janasethaweddings.com">www.Shan LuxuryWeddingCars.com</a>
+                                    <p><strong>Price:</strong> Rs.21 000</p>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="service">
+                            <img src="Images/vendors Images/car6.jpg" alt="carrenters">
+                            <h3>Benchmark Rent a Car</h3>
+                            <button onclick="showPopup('popup-car6')">View Details</button>
+                        </div>
+
+
+                        <!-- Popup -->
+                        <div id="popup-astro6" class="popup">
+                            <div class="popup-content">
+                                <span class="close" onclick="closePopup('popup-astro6')">&times;</span>
+                                <h2>Benchmark Rent a Car</h2>
+                                <p><strong>Email:</strong> benchmarkrentcar@gmail.com</p>
+                                <p><strong>Phone:</strong> +94 77 999 9999</p>
+                                <p><strong>Website:</strong> <a
+                                        href="https://www.Benchmark Rent a Car.com">www.benchmarkcar.com</a>   </p>
+                                <p><strong>Price:</strong> Rs.10 000</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Caterers Section -->
+                <div id="caterers" class="main-content">
+                    <h2>Caterers Vendors</h2>
+                    <p>Delight your guests with mouthwatering menus tailored to suit your wedding's unique style.</p>
+                    <div class="service-list">
+                        <!-- Service 1 -->
+                        <div class="service">
+                            <img src="Images/vendors Images/caters1.jpg" alt="caterers">
+                            <h3>Asiri Hotel</h3>
+                            <button onclick="showPopup('popup-caterers1')">View Details</button>
+                        </div>
+
+                        <!-- Popup -->
+                        <div id="popup-caterers1" class="popup">
+                            <div class="popup-content">
+                                <span class="close" onclick="closePopup('popup-caterers1')">&times;</span>
+                                <h2>Asiri Hotel</h2>
+                                <p><strong>Email:</strong> asiri@gmail.com</p>
+                                <p><strong>Phone:</strong> +94 71 234 5678</p>
+                                <p><strong>Website:</strong> <a href="https://www.asirihotel.com">www.asirihotel.com</a>  </p>
+                                <p><strong>Price:</strong> Rs.10 000</p>
+                            </div>
+                        </div>
+
+                        <!-- Service 2 -->
+                        <div class="service">
+                            <img src="Images/vendors Images/caters2.jpeg" alt="caterers">
+                            <h3>Kavi Sri Lankan Catering</h3>
+                            <button onclick="showPopup('popup-caterers2')">View Details</button>
+                        </div>
+
+                        <!-- Popup -->
+                        <div id="popup-caterers2" class="popup">
+                            <div class="popup-content">
+                                <span class="close" onclick="closePopup('popup-caterers2')">&times;</span>
+                                <h2>Kavi Sri Lankan Catering</h2>
+                                <p><strong>Email:</strong> kavi@gmail.com</p>
+                                <p><strong>Phone:</strong> +94 77 456 7890</p>
+                                <p><strong>Website:</strong> <a
+                                        href="https://www.kavicatering.com">www.kavicatering.com</a></p>
+                                        <p><strong>Price:</strong> Rs.15 000</p>
+                            </div>
+                        </div>
+
+                        <!-- Service 3 -->
+                        <div class="service">
+                            <img src="Images/vendors Images/caters3.jpeg" alt="caterers">
+                            <h3>Dushan Caterers</h3>
+                            <button onclick="showPopup('popup-caterers3')">View Details</button>
+                        </div>
+
+                        <!-- Popup -->
+                        <div id="popup-caterers3" class="popup">
+                            <div class="popup-content">
+                                <span class="close" onclick="closePopup('popup-caterers3')">&times;</span>
+                                <h2>Dushan Caterers</h2>
+                                <p><strong>Email:</strong> dushan@gmail.com</p>
+                                <p><strong>Phone:</strong> +94 76 567 8901</p>
+                                <p><strong>Website:</strong> <a
+                                        href="https://www.dushancaterers.com">www.dushancaterers.com</a></p>
+                                        <p><strong>Price:</strong> Rs.25 000</p>
+                            </div>
+                        </div>
+
+                        <!-- Service 4 -->
+                        <div class="service">
+                            <img src="Images/vendors Images/caters4.jpeg" alt="caterers">
+                            <h3>Wasantha Caterers</h3>
+                            <button onclick="showPopup('popup-caterers4')">View Details</button>
+                        </div>
+
+                        <!-- Popup -->
+                        <div id="popup-caterers4" class="popup">
+                            <div class="popup-content">
+                                <span class="close" onclick="closePopup('popup-caterers4')">&times;</span>
+                                <h2>Wasantha Caterers</h2>
+                                <p><strong>Email:</strong> wasantha@gmail.com</p>
+                                <p><strong>Phone:</strong> +94 77 678 9012</p>
+                                <p><strong>Website:</strong> <a
+                                        href="https://www.wasanthacaterers.com">www.wasanthacaterers.com</a></p>
+                                        <p><strong>Price:</strong> Rs.30 000</p>
+                            </div>
+                        </div>
+
+                        <!-- Service 5 -->
+                        <div class="service">
+                            <img src="Images/vendors Images/caters5.jpeg" alt="caterers">
+                            <h3>Ilma Caterers</h3>
+                            <button onclick="showPopup('popup-caterers5')">View Details</button>
+                        </div>
+
+                        <!-- Popup -->
+                        <div id="popup-caterers5" class="popup">
+                            <div class="popup-content">
+                                <span class="close" onclick="closePopup('popup-caterers5')">&times;</span>
+                                <h2>Ilma Caterers</h2>
+                                <p><strong>Email:</strong> ilmacaterers@gmail.com</p>
+                                <p><strong>Phone:</strong> +94 77 678 9012</p>
+                                <p><strong>Website:</strong> <a href="https://www.wasanthacaterers.com">www.IlmaCaterers.com</a></p>
+                                <p><strong>Price:</strong> Rs.25 000</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cinematography Section -->
+                <div id="cinematography" class="main-content">
+                    <h2>Cinematography Vendors</h2>
+                    <p>Relive every magical moment with stunning cinematography capturing your wedding day.</p>
+                    <div class="service-list">
+                        <!-- Service 1 -->
+                        <div class="service">
+                            <img src="Images/vendors Images/cine1.png" alt="cinematography">
+                            <h3>Native Tribe Studios</h3>
+                            <button onclick="showPopup('popup-cine1')">View Details</button>
+                        </div>
+
+                        <!-- Popup -->
+                        <div id="popup-cine1" class="popup">
+                            <div class="popup-content">
+                                <span class="close" onclick="closePopup('popup-cine1')">&times;</span>
+                                <h2>Native Tribe Studios</h2>
+                                <p><strong>Email:</strong> nativetribe@gmail.com</p>
+                                <p><strong>Phone:</strong> +94 71 123 4567</p>
+                                <p><strong>Website:</strong> <a
+                                        href="https://www.nativetribestudios.com">www.nativetribestudios.com</a>
+                                </p>
+                                <p><strong>Price:</strong> Rs.20 000</p>
+                            </div>
+                        </div>
+
+                        <!-- Service 2 -->
+                        <div class="service">
+                            <img src="Images/vendors Images/cine2.png" alt="cinematography">
+                            <h3>Studio Siyakroo</h3>
+                            <button onclick="showPopup('popup-cine2')">View Details</button>
+                        </div>
+
+                        <!-- Popup -->
+                        <div id="popup-cine2" class="popup">
+                            <div class="popup-content">
+                                <span class="close" onclick="closePopup('popup-cine2')">&times;</span>
+                                <h2>Studio Siyakroo</h2>
+                                <p><strong>Email:</strong> siyakroo@gmail.com</p>
+                                <p><strong>Phone:</strong> +94 71 234 5678</p>
+                                <p><strong>Website:</strong> <a
+                                        href="https://www.studiosiyakroo.com">www.studiosiyakroo.com</a></p>
+                                        <p><strong>Price:</strong> Rs.30 000</p>
+                            </div>
+                        </div>
+
+                        <!-- Service 3 -->
+                        <div class="service">
+                            <img src="Images/vendors Images/cine3.jpg" alt="cinematography">
+                            <h3>ShadowFace Studio</h3>
+                            <button onclick="showPopup('popup-cine3')">View Details</button>
+                        </div>
+
+                        <!-- Popup -->
+                        <div id="popup-cine3" class="popup">
+                            <div class="popup-content">
+                                <span class="close" onclick="closePopup('popup-cine3')">&times;</span>
+                                <h2>ShadowFace Studio</h2>
+                                <p><strong>Email:</strong> shadowface@gmail.com</p>
+                                <p><strong>Phone:</strong> +94 71 345 6789</p>
+                                <p><strong>Website:</strong> <a href="https://www.shadowface.com">www.shadowface.com</a>
+                                </p>      <p><strong>Price:</strong> Rs.35 000</p>
+                            </div>
+                        </div>
+
+                        <!-- Service 4 -->
+                        <div class="service">
+                            <img src="Images/vendors Images/cine4.jpg" alt="cinematography">
+                            <h3>Sharp Vision Studio</h3>
+                            <button onclick="showPopup('popup-cine4')">View Details</button>
+                        </div>
+
+                        <!-- Popup -->
+                        <div id="popup-cine4" class="popup">
+                            <div class="popup-content">
+                                <span class="close" onclick="closePopup('popup-cine4')">&times;</span>
+                                <h2>Sharp Vision Studio</h2>
+                                <p><strong>Email:</strong> sharpvision@gmail.com</p>
+                                <p><strong>Phone:</strong> +94 71 456 7890</p>
+                                <p><strong>Website:</strong> <a
+                                        href="https://www.sharpvision.com">www.sharpvision.com</a></p>
+                                        <p><strong>Price:</strong> Rs.40 000</p>
+                            </div>
+                        </div>
+
+                        <!-- Service 5 -->
+                        <div class="service">
+                            <img src="Images/vendors Images/cine5.jpg" alt="cinematography">
+                            <h3>Sandun Gamage SA Studio</h3>
+                            <button onclick="showPopup('popup-cine5')">View Details</button>
+                        </div>
+
+                        <!-- Popup -->
+                        <div id="popup-cine5" class="popup">
+                            <div class="popup-content">
+                                <span class="close" onclick="closePopup('popup-cine5')">&times;</span>
+                                <h2>Sandun Gamage SA Studio</h2>
+                                <p><strong>Email:</strong> sandungamage@gmail.com</p>
+                                <p><strong>Phone:</strong> +94 71 567 8901</p>
+                                <p><strong>Website:</strong> <a
+                                        href="https://www.sandungamagesa.com">www.sandungamagesa.com</a></p>
+                                        <p><strong>Price:</strong> Rs.35 000</p>
+                            </div>
+                        </div>
+
+                        <!-- Service 6 -->
+                        <div class="service">
+                            <img src="Images/vendors Images/cine6.jpg" alt="cinematography">
+                            <h3>SNAPKING</h3>
+                            <button onclick="showPopup('popup-cine6')">View Details</button>
+                        </div>
+
+                        <!-- Popup -->
+                        <div id="popup-cine6" class="popup">
+                            <div class="popup-content">
+                                <span class="close" onclick="closePopup('popup-cine6')">&times;</span>
+                                <h2>SNAPKING</h2>
+                                <p><strong>Email:</strong> snapking@gmail.com</p>
+                                <p><strong>Phone:</strong> +94 71 678 9012</p>
+                                <p><strong>Website:</strong> <a href="https://www.snapking.com">www.snapking.com</a></p>
+                                <p><strong>Price:</strong> Rs.40 000</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Photography Section -->
+                <div id="photography" class="main-content">
+                    <h2>Photography Vendors</h2>
+                    <p>Capture the magic of your wedding day with our expert photographers, turning moments into
+                        timeless
+                        memories.</p>
+                    <div class="service-list">
+                        <!-- Vendor 1 -->
+                        <div class="service">
+                            <img src="Images/vendors Images/photo1.png" alt="photography">
+                            <h3>Anne Fernando Photography</h3>
+                            <button onclick="showPopup('popup-photo1')">View Details</button>
+                        </div>
+
+                        <!-- Popup for Vendor 1 -->
+                        <div id="popup-photo1" class="popup">
+                            <div class="popup-content">
+                                <span class="close" onclick="closePopup('popup-photo1')">&times;</span>
+                                <h2>Anne Fernando Photography</h2>
+                                <p><strong>Email:</strong> annefernando@gmail.com</p>
+                                <p><strong>Phone:</strong> +94 76 112 2233</p>
+                                <p><strong>Website:</strong> <a href="https://www.annefernando.com"
+                                        target="_blank">www.annefernando.com</a></p>
+                                        <p><strong>Price:</strong> Rs.45 000</p>
+                            </div>
+                        </div>
+
+                        <!-- Vendor 2 -->
+                        <div class="service">
+                            <img src="Images/vendors Images/photo2.jpg" alt="photography">
+                            <h3>Studio Siyakroo</h3>
+                            <button onclick="showPopup('popup-photo2')">View Details</button>
+                        </div>
+
+                        <!-- Popup for Vendor 2 -->
+                        <div id="popup-photo2" class="popup">
+                            <div class="popup-content">
+                                <span class="close" onclick="closePopup('popup-photo2')">&times;</span>
+                                <h2>Studio Siyakroo</h2>
+                                <p><strong>Email:</strong> siyakroo.studio@gmail.com</p>
+                                <p><strong>Phone:</strong> +94 77 334 5566</p>
+                                <p><strong>Website:</strong> <a href="https://www.studiosiyakroo.com"
+                                        target="_blank">www.studiosiyakroo.com</a></p>
+                                        <p><strong>Price:</strong> Rs.50 000</p>
+                            </div>
+                        </div>
+
+                        <!-- Vendor 3 -->
+                        <div class="service">
+                            <img src="Images/vendors Images/photo3.png" alt="photography">
+                            <h3>Derana Photo House</h3>
+                            <button onclick="showPopup('popup-photo3')">View Details</button>
+                        </div>
+
+                        <!-- Popup for Vendor 3 -->
+                        <div id="popup-photo3" class="popup">
+                            <div class="popup-content">
+                                <span class="close" onclick="closePopup('popup-photo3')">&times;</span>
+                                <h2>Derana Photo House</h2>
+                                <p><strong>Email:</strong> derana.photos@gmail.com</p>
+                                <p><strong>Phone:</strong> +94 75 667 8899</p>
+                                <p><strong>Website:</strong> <a href="https://www.deranaphotohouse.com" target="_blank">www.deranaphotohouse.com</a></p>
+                                        <p><strong>Price:</strong> Rs.100 000</p>
+                            </div>
+                        </div>
+
+                        <!-- Vendor 4 -->
+                        <div class="service">
+                            <img src="Images/vendors Images/photo4.png" alt="photography">
+                            <h3>Studio Fantasy</h3>
+                            <button onclick="showPopup('popup-photo4')">View Details</button>
+                        </div>
+
+                        <!-- Popup for Vendor 4 -->
+                        <div id="popup-photo4" class="popup">
+                            <div class="popup-content">
+                                <span class="close" onclick="closePopup('popup-photo4')">&times;</span>
+                                <h2>Studio Fantasy</h2>
+                                <p><strong>Email:</strong> studio.fantasy@gmail.com</p>
+                                <p><strong>Phone:</strong> +94 74 221 3344</p>
+                                <p><strong>Website:</strong> <a href="https://www.studiofantasy.com" target="_blank">www.studiofantasy.com</a></p>
+                                        <p><strong>Price:</strong> Rs.55 000</p>
+                            </div>
+                        </div>
+
+                        <!-- Vendor 5 -->
+                        <div class="service">
+                            <img src="Images/vendors Images/photo5.jpg" alt="photography">
+                            <h3>Mahesh Mannapperuma</h3>
+                            <button onclick="showPopup('popup-photo5')">View Details</button>
+                        </div>
+
+                        <!-- Popup for Vendor 5 -->
+                        <div id="popup-photo5" class="popup">
+                            <div class="popup-content">
+                                <span class="close" onclick="closePopup('popup-photo5')">&times;</span>
+                                <h2>Mahesh Mannapperuma</h2>
+                                <p><strong>Email:</strong> mahesh.mphoto@gmail.com</p>
+                                <p><strong>Phone:</strong> +94 73 998 7766</p>
+                                <p><strong>Website:</strong> <a href="https://www.maheshmannapperuma.com" target="_blank">www.maheshmannapperuma.com</a></p>
+                                        <p><strong>Price:</strong> Rs.60 000</p>
+                            </div>
+                        </div>
+
+                        <!-- Vendor 6 -->
+                        <div class="service">
+                            <img src="Images/vendors Images/photo6.PNG" alt="photography">
+                            <h3>Prabath Kanishka Photography</h3>
+                            <button onclick="showPopup('popup-photo6')">View Details</button>
+                        </div>
+
+                        <!-- Popup for Vendor 6 -->
+                        <div id="popup-photo6" class="popup">
+                            <div class="popup-content">
+                                <span class="close" onclick="closePopup('popup-photo6')">&times;</span>
+                                <h2>Prabath Kanishka Photography</h2>
+                                <p><strong>Email:</strong> prabath.kanishka@gmail.com</p>
+                                <p><strong>Phone:</strong> +94 72 443 2211</p>
+                                <p><strong>Website:</strong> <a href="https://www.prabathkanishka.com"
+                                        target="_blank">www.prabathkanishka.com</a></p>
+                                        <p><strong>Price:</strong> Rs.70 000</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Wedding Cakes Section -->
+                <div id="weddingcakes" class="main-content">
+                    <h2>Wedding Cakes Vendors</h2>
+                    <p>Elevate your celebration with exquisite, theme-inspired cake designs crafted to perfection.</p>
+                    <div class="service-list">
+                        <!-- Vendor 1 -->
+                        <div class="service">
+                            <img src="Images/vendors Images/cake1.jpg" alt="weddingcakes">
+                            <h3>Cake Dreams</h3>
+                            <button onclick="showPopup('popup-cake1')">View Details</button>
+                        </div>
+
+                        <!-- Popup for Vendor 1 -->
+                        <div id="popup-cake1" class="popup">
+                            <div class="popup-content">
+                                <span class="close" onclick="closePopup('popup-cake1')">&times;</span>
+                                <h2>Cake Dreams</h2>
+                                <p><strong>Email:</strong> cakedreams@gmail.com</p>
+                                <p><strong>Phone:</strong> +94 76 111 2233</p>
+                                <p><strong>Website:</strong> <a href="https://www.cakedreams.com"
+                                        target="_blank">www.cakedreams.com</a>
+                                        <p><strong>Price:</strong> Rs.10 000</p>
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Vendor 2 -->
+                        <div class="service">
+                            <img src="Images/vendors Images/cake2.png" alt="weddingcakes">
+                            <h3>Party Treats</h3>
+                            <button onclick="showPopup('popup-cake2')">View Details</button>
+                        </div>
+
+                        <!-- Popup for Vendor 2 -->
+                        <div id="popup-cake2" class="popup">
+                            <div class="popup-content">
+                                <span class="close" onclick="closePopup('popup-cake2')">&times;</span>
+                                <h2>Party Treats</h2>
+                                <p><strong>Email:</strong> partytreats@gmail.com</p>
+                                <p><strong>Phone:</strong> +94 77 333 4455</p>
+                                <p><strong>Website:</strong> <a href="https://www.partytreats.com"
+                                        target="_blank">www.partytreats.com</a></p>
+                                        <p><strong>Price:</strong> Rs.15 000</p>
+                            </div>
+                        </div>
+
+                        <!-- Vendor 3 -->
+                        <div class="service">
+                            <img src="Images/vendors Images/cake3.png" alt="weddingcakes">
+                            <h3>Feather Cakes</h3>
+                            <button onclick="showPopup('popup-cake3')">View Details</button>
+                        </div>
+
+                        <!-- Popup for Vendor 3 -->
+                        <div id="popup-cake3" class="popup">
+                            <div class="popup-content">
+                                <span class="close" onclick="closePopup('popup-cake3')">&times;</span>
+                                <h2>Feather Cakes</h2>
+                                <p><strong>Email:</strong> feathercakes@gmail.com</p>
+                                <p><strong>Phone:</strong> +94 75 555 6677</p>
+                                <p><strong>Website:</strong> <a href="https://www.feathercakes.com"
+                                        target="_blank">www.feathercakes.com</a></p>
+                                        <p><strong>Price:</strong> Rs.16 000</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Dancing Groups Section -->
+                <div id="dancinggroups" class="main-content">
+                    <h2>Dancing Groups Vendors</h2>
+                    <p>Enchant your guests with dazzling performances by skilled and vibrant dance groups.</p>
+                    <div class="service-list">
+                        <!-- Vendor 1 -->
+                        <div class="service">
+                            <img src="Images/vendors Images/dance1.png" alt="dancinggroups">
+                            <h3>Uththarangi Dancing Ensemble</h3>
+                            <button onclick="showPopup('popup-dance1')">View Details</button>
+                        </div>
+
+                        <!-- Popup for Vendor 1 -->
+                        <div id="popup-dance1" class="popup">
+                            <div class="popup-content">
+                                <span class="close" onclick="closePopup('popup-dance1')">&times;</span>
+                                <h2>Uththarangi Dancing Ensemble</h2>
+                                <p><strong>Email:</strong> uththarangidance@gmail.com</p>
+                                <p><strong>Phone:</strong> +94 71 222 3344</p>
+                                <p><strong>Website:</strong> <a href="https://www.uththarangidance.com"
+                                        target="_blank">www.uththarangidance.com</a></p>
+                                        <p><strong>Price:</strong> Rs.40 000</p>
+                            </div>
+                        </div>
+
+                        <!-- Vendor 2 -->
+                        <div class="service">
+                            <img src="Images/vendors Images/dance2.png" alt="dancinggroups">
+                            <h3>Harshala Dance Academy</h3>
+                            <button onclick="showPopup('popup-dance2')">View Details</button>
+                        </div>
+
+                        <!-- Popup for Vendor 2 -->
+                        <div id="popup-dance2" class="popup">
+                            <div class="popup-content">
+                                <span class="close" onclick="closePopup('popup-dance2')">&times;</span>
+                                <h2>Harshala Dance Academy</h2>
+                                <p><strong>Email:</strong> harshaladanceacademy@gmail.com</p>
+                                <p><strong>Phone:</strong> +94 72 444 5566</p>
+                                <p><strong>Website:</strong> <a href="https://www.harshaladanceacademy.com"
+                                        target="_blank">www.harshaladanceacademy.com</a></p>
+                                        <p><strong>Price:</strong> Rs.50 000</p>
+                            </div>
+                        </div>
+
+                        <!-- Vendor 3 -->
+                        <div class="service">
+                            <img src="Images/vendors Images/dance3.png" alt="dancinggroups">
+                            <h3>Nethroo Dance</h3>
+                            <button onclick="showPopup('popup-dance3')">View Details</button>
+                        </div>
+
+                        <!-- Popup for Vendor 3 -->
+                        <div id="popup-dance3" class="popup">
+                            <div class="popup-content">
+                                <span class="close" onclick="closePopup('popup-dance3')">&times;</span>
+                                <h2>Nethroo Dance</h2>
+                                <p><strong>Email:</strong> nethroodance@gmail.com</p>
+                                <p><strong>Phone:</strong> +94 73 666 7788</p>
+                                <p><strong>Website:</strong> <a href="https://www.nethroodance.com"
+                                        target="_blank">www.nethroodance.com</a></p>
+                                        <p><strong>Price:</strong> Rs.45 000</p>
+                            </div>
+                        </div>
+
+                        <!-- Vendor 4 -->
+                        <div class="service">
+                            <img src="Images/vendors Images/dance4.png" alt="dancinggroups">
+                            <h3>Sparrows Dance Troupe</h3>
+                            <button onclick="showPopup('popup-dance4')">View Details</button>
+                        </div>
+
+                        <!-- Popup for Vendor 4 -->
+                        <div id="popup-dance4" class="popup">
+                            <div class="popup-content">
+                                <span class="close" onclick="closePopup('popup-dance4')">&times;</span>
+                                <h2>Sparrows Dance Troupe</h2>
+                                <p><strong>Email:</strong> sparrowsdancetroupe@gmail.com</p>
+                                <p><strong>Phone:</strong> +94 74 888 9900</p>
+                                <p><strong>Website:</strong> <a href="https://www.sparrowsdancetroupe.com"
+                                        target="_blank">www.sparrowsdancetroupe.com</a></p>
+                                        <p><strong>Price:</strong> Rs.35 000</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!-- Bands/DJ Section -->
+                <div id="bands" class="main-content">
+                    <h2>Bands and DJs</h2>
+                    <p>Bring life to your wedding with vibrant music and entertainment by our expert bands and DJs.</p>
+                    <div class="service-list">
+                        <!-- Vendor 1 -->
+                        <div class="service">
+                            <img src="Images/vendors Images/band1.png" alt="Bands/DJ">
+                            <h3>Flash Music Band</h3>
+                            <button onclick="showPopup('popup-band1')">View Details</button>
+                        </div>
+
+                        <!-- Popup for Vendor 1 -->
+                        <div id="popup-band1" class="popup">
+                            <div class="popup-content">
+                                <span class="close" onclick="closePopup('popup-band1')">&times;</span>
+                                <h2>Flash Music Band</h2>
+                                <p><strong>Email:</strong> flashmusicband@gmail.com</p>
+                                <p><strong>Phone:</strong> +94 76 112 2233</p>
+                                <p><strong>Website:</strong> <a href="https://www.flashmusicband.com"
+                                        target="_blank">www.flashmusicband.com</a></p>
+                                        <p><strong>Price:</strong> Rs.25 000</p>
+                            </div>
+                        </div>
+
+                        <!-- Vendor 2 -->
+                        <div class="service">
+                            <img src="Images/vendors Images/band2.jpg" alt="Bands/DJ">
+                            <h3>Xtreme Band</h3>
+                            <button onclick="showPopup('popup-band2')">View Details</button>
+                        </div>
+
+                        <!-- Popup for Vendor 2 -->
+                        <div id="popup-band2" class="popup">
+                            <div class="popup-content">
+                                <span class="close" onclick="closePopup('popup-band2')">&times;</span>
+                                <h2>Xtreme Band</h2>
+                                <p><strong>Email:</strong> xtremeband@gmail.com</p>
+                                <p><strong>Phone:</strong> +94 77 223 3344</p>
+                                <p><strong>Website:</strong> <a href="https://www.xtremeband.com"
+                                        target="_blank">www.xtremeband.com</a>
+                                        <p><strong>Price:</strong> Rs.30 000</p>
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Vendor 3 -->
+                        <div class="service">
+                            <img src="Images/vendors Images/band3.png" alt="Bands/DJ">
+                            <h3>H2 DJ ENTERTAINMENT</h3>
+                            <button onclick="showPopup('popup-band3')">View Details</button>
+                        </div>
+
+                        <!-- Popup for Vendor 3 -->
+                        <div id="popup-band3" class="popup">
+                            <div class="popup-content">
+                                <span class="close" onclick="closePopup('popup-band3')">&times;</span>
+                                <h2>H2 DJ ENTERTAINMENT</h2>
+                                <p><strong>Email:</strong> h2djentertainment@gmail.com</p>
+                                <p><strong>Phone:</strong> +94 78 334 4455</p>
+                                <p><strong>Website:</strong> <a href="https://www.h2djentertainment.com"
+                                        target="_blank">www.h2djentertainment.com</a></p>
+                                        <p><strong>Price:</strong> Rs.45 000</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Salons Section -->
+                <div id="salon" class="main-content">
+                    <h2>Hair Beauty Salons & Spa</h2>
+                    <p>Radiate elegance on your big day with our top-tier salon services, bringing your bridal beauty
+                        vision to
+                        life.</p>
+                    <div class="service-list">
+                        <!-- Vendor 1 -->
+                        <div class="service">
+                            <img src="Images/vendors Images/salon1.png" alt="salon">
+                            <h3>Salon Manaali</h3>
+                            <button onclick="showPopup('popup-salon1')">View Details</button>
+                        </div>
+
+                        <!-- Popup for Vendor 1 -->
+                        <div id="popup-salon1" class="popup">
+                            <div class="popup-content">
+                                <span class="close" onclick="closePopup('popup-salon1')">&times;</span>
+                                <h2>Salon Manaali</h2>
+                                <p><strong>Email:</strong> salonmanaali@gmail.com</p>
+                                <p><strong>Phone:</strong> +94 71 234 5678</p>
+                                <p><strong>Website:</strong> <a href="https://www.salonmanaali.com"
+                                        target="_blank">www.salonmanaali.com</a></p>
+                                        <p><strong>Price:</strong> Rs.100 000</p>
+                            </div>
+                        </div>
+
+                        <!-- Vendor 2 -->
+                        <div class="service">
+                            <img src="Images/vendors Images/salon2.png" alt="salon">
+                            <h3>Salon Nisuki</h3>
+                            <button onclick="showPopup('popup-salon2')">View Details</button>
+                        </div>
+
+                        <!-- Popup for Vendor 2 -->
+                        <div id="popup-salon2" class="popup">
+                            <div class="popup-content">
+                                <span class="close" onclick="closePopup('popup-salon2')">&times;</span>
+                                <h2>Salon Nisuki</h2>
+                                <p><strong>Email:</strong> salonnisuki@gmail.com</p>
+                                <p><strong>Phone:</strong> +94 72 345 6789</p>
+                                <p><strong>Website:</strong> <a href="https://www.salonnisuki.com"
+                                        target="_blank">www.salonnisuki.com</a></p>
+                                        <p><strong>Price:</strong> Rs.90 000</p>
+                            </div>
+                        </div>
+
+                        <!-- Vendor 3 -->
+                        <div class="service">
+                            <img src="Images/vendors Images/salon3.jpg" alt="salon">
+                            <h3>Salon Manik</h3>
+                            <button onclick="showPopup('popup-salon3')">View Details</button>
+                        </div>
+
+                        <!-- Popup for Vendor 3 -->
+                        <div id="popup-salon3" class="popup">
+                            <div class="popup-content">
+                                <span class="close" onclick="closePopup('popup-salon3')">&times;</span>
+                                <h2>Salon Manik</h2>
+                                <p><strong>Email:</strong> salonmanik@gmail.com</p>
+                                <p><strong>Phone:</strong> +94 73 456 7890</p>
+                                <p><strong>Website:</strong> <a href="https://www.salonmanik.com"
+                                        target="_blank">www.salonmanik.com</a>
+                                        <p><strong>Price:</strong> Rs.120 000</p>
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Vendor 4 -->
+                        <div class="service">
+                            <img src="Images/vendors Images/salon4.jpg" alt="salon">
+                            <h3>Asia Bridal Salon</h3>
+                            <button onclick="showPopup('popup-salon4')">View Details</button>
+                        </div>
+
+                        <!-- Popup for Vendor 4 -->
+                        <div id="popup-salon4" class="popup">
+                            <div class="popup-content">
+                                <span class="close" onclick="closePopup('popup-salon4')">&times;</span>
+                                <h2>Asia Bridal Salon</h2>
+                                <p><strong>Email:</strong> asiabridalsalon@gmail.com</p>
+                                <p><strong>Phone:</strong> +94 74 567 8901</p>
+                                <p><strong>Website:</strong> <a href="https://www.asiabridalsalon.com"
+                                        target="_blank">www.asiabridalsalon.com</a></p>
+                                        <p><strong>Price:</strong> Rs.130 000</p>
+                            </div>
+                        </div>
+
+                        <!-- Vendor 5 -->
+                        <div class="service">
+                            <img src="Images/vendors Images/salon5.jpg" alt="salon">
+                            <h3>Nimalee Bridal</h3>
+                            <button onclick="showPopup('popup-salon5')">View Details</button>
+                        </div>
+
+                        <!-- Popup for Vendor 5 -->
+                        <div id="popup-salon5" class="popup">
+                            <div class="popup-content">
+                                <span class="close" onclick="closePopup('popup-salon5')">&times;</span>
+                                <h2>Nimalee Bridal</h2>
+                                <p><strong>Email:</strong> nimaleebridalsalon@gmail.com</p>
+                                <p><strong>Phone:</strong> +94 75 678 9012</p>
+                                <p><strong>Website:</strong> <a href="https://www.nimaleebridalsalon.com"
+                                        target="_blank">www.nimaleebridalsalon.com</a></p>
+                                        <p><strong>Price:</strong> Rs.150 000</p>
+                            </div>
+                        </div>
+
+                        <!-- Vendor 6 -->
+                        <div class="service">
+                            <img src="Images/vendors Images/salon6.jpg" alt="salon">
+                            <h3>Salon InRoo</h3>
+                            <button onclick="showPopup('popup-salon6')">View Details</button>
+                        </div>
+
+                        <!-- Popup for Vendor 6 -->
+                        <div id="popup-salon6" class="popup">
+                            <div class="popup-content">
+                                <span class="close" onclick="closePopup('popup-salon6')">&times;</span>
+                                <h2>Salon InRoo</h2>
+                                <p><strong>Email:</strong> saloninroo@gmail.com</p>
+                                <p><strong>Phone:</strong> +94 76 789 0123</p>
+                                <p><strong>Website:</strong> <a href="https://www.saloninroo.com"
+                                        target="_blank">www.saloninroo.com</a>
+                                        <p><strong>Price:</strong> Rs.140 000</p>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Flowers Section -->
+                <div id="flowers" class="main-content">
+                    <h2>Flowers Vendors</h2>
+                    <p>Create a romantic ambiance with breathtaking floral arrangements crafted for your dream wedding.
+                    </p>
+                    <div class="service-list">
+                        <!-- Vendor 1 -->
+                        <div class="service">
+                            <img src="Images/vendors Images/flower1.jpg" alt="flowers">
+                            <h3>Artist’s Flora</h3>
+                            <button onclick="showPopup('popup-flower1')">View Details</button>
+                        </div>
+
+                        <!-- Popup for Vendor 1 -->
+                        <div id="popup-flower1" class="popup">
+                            <div class="popup-content">
+                                <span class="close" onclick="closePopup('popup-flower1')">&times;</span>
+                                <h2>Artist’s Flora</h2>
+                                <p><strong>Email:</strong> artistsflora@gmail.com</p>
+                                <p><strong>Phone:</strong> +94 71 234 5678</p>
+                                <p><strong>Website:</strong> <a href="https://www.artistsflora.com"
+                                        target="_blank">www.artistsflora.com</a></p>
+                                        <p><strong>Price:</strong> Rs.70 000</p>
+                            </div>
+                        </div>
+
+                        <!-- Vendor 2 -->
+                        <div class="service">
+                            <img src="Images/vendors Images/flowers2.png" alt="flowers">
+                            <h3>Dilshi Flowers</h3>
+                            <button onclick="showPopup('popup-flower2')">View Details</button>
+                        </div>
+
+                        <!-- Popup for Vendor 2 -->
+                        <div id="popup-flower2" class="popup">
+                            <div class="popup-content">
+                                <span class="close" onclick="closePopup('popup-flower2')">&times;</span>
+                                <h2>Dilshi Flowers</h2>
+                                <p><strong>Email:</strong> dilshiflowers@gmail.com</p>
+                                <p><strong>Phone:</strong> +94 72 345 6789</p>
+                                <p><strong>Website:</strong> <a href="https://www.dilshiflowers.com"
+                                        target="_blank">www.dilshiflowers.com</a></p>
+                                        <p><strong>Price:</strong> Rs.80 000</p>
+                            </div>
+                        </div>
+
+                        <!-- Vendor 3 -->
+                        <div class="service">
+                            <img src="Images/vendors Images/flower3.png" alt="flowers">
+                            <h3>Chamathkara Flora</h3>
+                            <button onclick="showPopup('popup-flower3')">View Details</button>
+                        </div>
+
+                        <!-- Popup for Vendor 3 -->
+                        <div id="popup-flower3" class="popup">
+                            <div class="popup-content">
+                                <span class="close" onclick="closePopup('popup-flower3')">&times;</span>
+                                <h2>Chamathkara Flora</h2>
+                                <p><strong>Email:</strong> chamathkaraflora@gmail.com</p>
+                                <p><strong>Phone:</strong> +94 73 456 7890</p>
+                                <p><strong>Website:</strong> <a href="https://www.chamathkaraflora.com"
+                                        target="_blank">www.chamathkaraflora.com</a></p>
+                                        <p><strong>Price:</strong> Rs.100 000</p>
+                            </div>
+                        </div>
+
+                        <!-- Vendor 4 -->
+                        <div class="service">
+                            <img src="Images/vendors Images/flower4.png" alt="flowers">
+                            <h3>Leriza Flowers</h3>
+                            <button onclick="showPopup('popup-flower4')">View Details</button>
+                        </div>
+
+                        <!-- Popup for Vendor 4 -->
+                        <div id="popup-flower4" class="popup">
+                            <div class="popup-content">
+                                <span class="close" onclick="closePopup('popup-flower4')">&times;</span>
+                                <h2>Leriza Flowers</h2>
+                                <p><strong>Email:</strong> lerizaflowers@gmail.com</p>
+                                <p><strong>Phone:</strong> +94 74 567 8901</p>
+                                <p><strong>Website:</strong> <a href="https://www.lerizaflowers.com"
+                                        target="_blank">www.lerizaflowers.com</a></p>
+                                        <p><strong>Price:</strong> Rs.95 000</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Wedding Album Section -->
+                <div id="album" class="main-content">
+                    <h2>Wedding Album Vendors</h2>
+                    <p>Relive your special day with exquisite wedding albums, crafted to tell your love story
+                        beautifully.</p>
+                    <div class="service-list">
+                        <!-- Vendor 1 -->
+                        <div class="service">
+                            <img src="Images/vendors Images/album1.jpeg" alt="album">
+                            <h3>Austriya Printing</h3>
+                            <button onclick="showPopup('popup-album1')">View Details</button>
+                        </div>
+
+                        <!-- Popup for Vendor 1 -->
+                        <div id="popup-album1" class="popup">
+                            <div class="popup-content">
+                                <span class="close" onclick="closePopup('popup-album1')">&times;</span>
+                                <h2>Austriya Printing</h2>
+                                <p><strong>Email:</strong> austriyaprinting@gmail.com</p>
+                                <p><strong>Phone:</strong> +94 71 123 4567</p>
+                                <p><strong>Website:</strong> <a href="https://www.austriyaprinting.com"
+                                        target="_blank">www.austriyaprinting.com</a></p>
+                                        <p><strong>Price:</strong> Rs.35 000</p>
+                            </div>
+                        </div>
+
+                        <!-- Vendor 2 -->
+                        <div class="service">
+                            <img src="Images/vendors Images/album2.jpeg" alt="album">
+                            <h3>Daily Mirror</h3>
+                            <button onclick="showPopup('popup-album2')">View Details</button>
+                        </div>
+
+                        <!-- Popup for Vendor 2 -->
+                        <div id="popup-album2" class="popup">
+                            <div class="popup-content">
+                                <span class="close" onclick="closePopup('popup-album2')">&times;</span>
+                                <h2>Daily Mirror</h2>
+                                <p><strong>Email:</strong> dailymirror@gmail.com</p>
+                                <p><strong>Phone:</strong> +94 72 234 5678</p>
+                                <p><strong>Website:</strong> <a href="https://www.dailymirror.com"
+                                        target="_blank">www.dailymirror.com</a></p>
+                                        <p><strong>Price:</strong> Rs.40 000</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script src="scripts.js"></script>
+
+</body>
+<script>
+    function showService(service) {
+        // Hide all sections
+        const sections = document.querySelectorAll('.main-content');
+        sections.forEach(section => {
+            section.style.display = 'none';
+        });
+
+        // Show the selected section
+        const selectedSection = document.getElementById(service);
+        if (selectedSection) {
+            selectedSection.style.display = 'block';
+        }
+    }
+
+    // Show a popup
+    function showPopup(id) {
+        // Close any other open popups
+        const popups = document.querySelectorAll(".popup");
+        popups.forEach(popup => popup.style.display = "none");
+
+        // Display the selected popup
+        const popup = document.getElementById(id);
+        if (popup) {
+            popup.style.display = "flex";
+
+            // Add a click event to the overlay to close the popup
+            popup.addEventListener("click", event => {
+                if (event.target === popup) {
+                    closePopup(id);
+                }
+            });
+        }
+    }
+
+    // Close the popup
+    function closePopup(id) {
+        const popup = document.getElementById(id);
+        if (popup) {
+            popup.style.display = "none";
+        }
+    }
+
+    // On page load, show the 'Ashtaka' section by default
+    document.addEventListener("DOMContentLoaded", () => {
+        showService('ashtaka');
+    });
+
+</script>
+
+</html>

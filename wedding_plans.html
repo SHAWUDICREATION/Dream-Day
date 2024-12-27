@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <link rel="shortcut icon" type="x-icon" href="img/logo.webp">
+    </link>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <title>Wedding Plan Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fdfdfd;
+            color: #333;
+        }
+
+        * {
+            text-decoration: none;
+        }
+
+        nav {
+            padding: 0 2rem;
+            box-sizing: border-box;
+        }
+
+        /* Navigation bar */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            background: #222;
+            height: 80px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2rem;
+        }
+
+        /* Brand logo styling */
+        .navbar-brand {
+            font-family: 'Great Vibes', cursive;
+            font-size: 36px;
+            font-weight: bold;
+            color: #f44770;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+            letter-spacing: 2px;
+            transition: all 0.3s ease-in-out;
+            text-decoration: none;
+        }
+
+        .navbar-brand:hover {
+            color: #ffffff;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+        }
+
+        nav ul {
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+            font-family: "Montserrat", sans-serif;
+        }
+
+        nav ul li a {
+            color: #ffffff;
+            font-size: 17px;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-weight: 300;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        /* Hover and active link styles */
+        nav ul li a:hover,
+        nav ul li a.active {
+            background-color: #ff4081;
+            color: rgb(0, 0, 0);
+        }
+
+        /* menu button */
+        .checkbtn {
+            font-size: 22px;
+            color: white;
+            cursor: pointer;
+            display: none;
+        }
+
+        #check {
+            display: none;
+        }
+
+        /* Responsive menu styles */
+        @media (max-width: 1080px) {
+            .checkbtn {
+                display: block;
+            }
+
+            nav ul {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: #222;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                transition: all 0.5s ease;
+            }
+
+            nav ul li {
+                margin: 15px 0;
+            }
+
+            #check:checked~ul {
+                left: 0;
+            }
+        }
+
+        /* Advertise section styles */
+        .advertise-section {
+            width: 100%;
+            margin: 0;
+            padding-top: 60px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .advertise-banner {
+
+            background-color: #ff9000;
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .icon-container {
+            margin-bottom: 15px;
+            font-size: 60px;
+        }
+
+        .icon-container i {
+            color: white;
+        }
+
+        .advertise-banner h2,
+        .advertise-banner {
+            font-size: 36px;
+            margin: 10px 0;
+            color: #fff;
+            font-weight: 500;
+            text-decoration: none !important;
+        }
+
+        .advertise-banner:hover {
+            cursor: pointer;
+            background-color: #ff7a00;
+        }
+
+     .services-box{
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 30rem;
+    border: .2rem solid var(--sec-bg-color);
+    margin: 3rem;
+    align-items: center;
+    text-align:justify;
+    padding:5rem;
+    border-radius: 2rem;
+    background: linear-gradient(to right, #f582c5,#feb47b, #feb47b);
+    background-size: 150% 100%;
+    transform: all .5s;
+
+}
+
+.services-box:hover{
+    background-position: left bottom;
+    color:rgb(77, 1, 112);
+    border: none;
+    box-shadow: 0 0 30px var(--main-color);
+}
+
+.services-box i {
+    font-size: 9rem;
+    color: var(--main-color);
+}
+
+.services-box img{
+  width: 300px;
+  height: 400px;
+  border-radius: 20px;
+}
+
+.services-box h3{
+    font-size:32px;
+    padding-bottom:1.5rem;
+    padding-top: 1rem;
+}
+
+.services-box p{
+    font-size:20px;
+    color: white;
+    margin: 1rem 0 3rem;
+}
+
+.services-box li{
+  display: list-item;
+    text-align: -webkit-match-parent;
+    unicode-bidi: isolate;
+   list-style-type:square;
+}
+
+
+/* Themes Section */
+
+
+.themes h3 {
+    font-size: 1.5rem;
+    color: #c9006e;
+    text-align: center;
+}
+
+.themes p {
+    margin: 20px;
+    color: #666;
+    font-size: 1.1rem;
+}
+
+.theme-cards {
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.theme-card {
+    text-align: center;
+    margin: 50px;
+}
+
+.theme-image1 {
+    width: 250px;
+    height: 200px;
+    background-color: #a82572; /* Pink Background for theme images */
+    background: url('https://images.pexels.com/photos/17386379/pexels-photo-17386379/free-photo-of-bride-wearing-jewelry.jpeg?auto=compress&cs=tinysrgb&w=600') no-repeat center center/cover;
+    margin-bottom: 20px;
+    border-radius: 15px;
+}
+
+.theme-image2 {
+    width: 250px;
+    height: 200px;
+    background-color: #a82572; /* Pink Background for theme images */
+    background: url('https://cdn.pixabay.com/photo/2017/08/06/20/11/wedding-2595862_640.jpg') no-repeat center center/cover;
+    margin-bottom: 20px;
+    border-radius: 15px;
+}
+.theme-image3 {
+    width: 250px;
+    height: 200px;
+    background-color: #a82572; /* Pink Background for theme images */
+    background: url('https://cdn.pixabay.com/photo/2023/09/12/11/14/customer-8248598_1280.jpg') no-repeat center center/cover;
+    margin-bottom: 20px;
+    border-radius: 15px;
+}
+
+
+        .plans h1 {
+            text-align: center;
+            color: #000000;
+            font-size: 40px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            font-family: 'PT Sans', sans-serif;
+        }
+
+        .container1 {
+            width: 90%;
+            margin: 2rem auto;
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 15px;
+        }
+
+        .plan-details,
+        .form-container {
+            flex: 1;
+            max-height: fit-content;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .plan-details {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .plan-details img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .form-container {
+            padding: 20px;
+            background: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 2rem;
+        }
+
+        .form-container h2,
+        .plan-details h2 {
+            color: #ff758c;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .plan-details h3 {
+            font-size: 18px;
+            text-align: left;
+        }
+
+        ul {
+            list-style: square;
+            padding-left: 20px;
+        }
+
+        input,
+        select,
+        button {
+            width: 90%;
+            margin: 14px;
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input:focus,
+        select:focus {
+            outline: none;
+            border-color: #ff758c;
+            box-shadow: 0 0 5px rgba(255, 117, 140, 0.5);
+        }
+
+        button {
+            background-color: #fa627c;
+            color: white;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+
+        }
+
+        button:hover {
+            background-color: #ff002b;
+        }
+
+        /* Footer styling */
+        footer {
+            background-color: #222;
+            color: #fff;
+            padding: 40px 0 10px 0;
+        }
+
+        footer .container {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+            text-align: left;
+            gap: 30px;
+            padding: auto;
+            /* Adjust gap between sections */
+        }
+
+        .footer-content {
+            flex: 1;
+            max-width: 300px;
+        }
+
+        .footer-content h3 {
+            margin-bottom: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .info-details,
+        .list,
+        .social-icons {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .info-details li,
+        .list li,
+        .social-icons li {
+            margin-bottom: 10px;
+
+        }
+
+        .info-details li i,
+        .social-icons li i {
+            margin-right: 10px;
+            color: #ffffff;
+            /* Pink icon color */
+        }
+
+
+        .info-details li i {
+            background: #f44770;
+            padding: 12px;
+            border-radius: 50%;
+            margin-right: 5px;
+        }
+
+
+
+        .list li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            text-transform: uppercase;
+
+        }
+
+        .list li a:hover {
+            color: #ff4081;
+            /* Add hover effect */
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .social-icons li i {
+            font-size: 20px;
+            background-color: #ff4081;
+            color: #fff;
+            padding: 10px;
+            border-radius: 50%;
+            display: inline-block;
+            text-align: center;
+            line-height: 20px;
+            width: 20px;
+            height: 20px;
+        }
+
+        .bottom-bar {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #aaa;
+            border-top: 1px solid #444;
+            padding-top: 10px;
+        }
+
+
+        .bottom-bar {
+            background: #ff4081;
+            padding: 10px 0;
+        }
+
+        .bottom-bar p {
+            color: #343434;
+            font-size: 14px;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Start header -->
+    <nav>
+        <!-- Checkbox for toggling menu -->
+        <input type="checkbox" id="check">
+
+        <!-- Menu icon -->
+        <label for="check" class="checkbtn">
+            <i class="fas fa-bars"></i>
+        </label>
+
+        <!-- Site logo -->
+        <a class="navbar-brand" href="index.html">Dream Day</a>
+
+        <!-- Navigation links -->
+        <ul>
+            <li><a class="nav-link" href="home_main.html">Home</a></li>
+            <li><a class="nav-link " class="nav-link" href="directory.html">Directory</a></li>
+            <li><a class="nav-link" href="wedding_plans.html">Wedding Plans</a></li>
+            <li><a class="nav-link " href="about.html">About Us</a></li>
+        </ul>
+    </nav>
+
+    <!-- End header -->
+
+    <!--ADVERTISE SECTION-->
+    <div class="advertise-section">
+        <a href="forms.html" class="advertise-banner">
+            <div class="icon-container">
+                <i class="fas fa-hand-pointer"></i>
+            </div>
+            <h2>Advertise with us.</h2>
+        </a>
+    </div>
+
+   
+
+    <!--PLANS SECTION-->
+    <div class="plans">
+        <h1>Our Recommended Plans</h1>
+    </div>
+    <div class="container1">
+        <!-- Plan Details Section -->
+        <div class="plan-details">
+            <h2>Classic Elegance Plan</h2>
+            <p>The Classic Elegance Plan is designed for couples who desire timeless charm and sophistication. This plan
+                features formal and luxurious touches that create a dreamy wedding experience.</p><br>
+
+            <h3>What's Included:</h3>
+            <ul>
+                <li>Elegant Venues: Premium, beautifully decorated indoor venues with traditional floral arrangements.
+                    <strong>Vendor: Timeless Venues Co.</strong>
+                </li>
+                <li>Dinner Reception: A formal dining experience with gourmet cuisine options for guests.
+                    <strong>Vendor: Classic Gourmet Caterers</strong>
+                </li>
+                <li>Hair & Makeup: Professional stylists to ensure you look flawless on your big day.
+                    <strong>Vendor: Graceful Glam Stylists</strong>
+                </li>
+                <li>Wedding Cake: Custom-designed tiered wedding cake with your choice of flavors.
+                    <strong>Vendor: Sweet Elegance Bakers</strong>
+                </li>
+                <li>Invitations & Accessories: Bespoke wedding invitations and matching accessories like name cards.
+                    <strong>Vendor: Refined Invites & Accessories</strong>
+                </li>
+                <li><strong>Price: $24,000</strong></li><br>
+            </ul>
+
+            <h3>Additional Benefits:</h3>
+            <ul>
+                <li>Wedding coordinator to ensure smooth execution.
+                    <strong>Vendor: Serenity Planners</strong>
+                </li>
+                <li>Complimentary champagne for the couple.
+                    <strong>Vendor: Celebration Spirits</strong>
+                </li><br>
+            </ul>
+
+            <img src="Images/home/classic.jpg">
+        </div>
+
+
+        <!-- Form Section -->
+        <div class="form-container">
+            <h2>Wedding Planning Starts Here</h2>
+            <form>
+                <input type="text" placeholder="First name" required>
+                <input type="text" placeholder="Last name" required>
+                <input type="tel" placeholder="Phone number" required>
+                <input type="email" placeholder="youremail@gmail.com" required>
+                <input type="date" placeholder="Wedding Date" required>
+
+                <button type="submit">BOOK NOW</button>
+            </form>
+        </div>
+    </div>
+
+
+    <div class="container1">
+        <!-- Plan Details Section -->
+        <div class="plan-details">
+            <h2>Rustic Charm Plan</h2>
+            <p>Perfect for nature-loving couples, the Rustic Charm Plan focuses on outdoor venues, eco-friendly themes,
+                and a relaxed yet magical ambiance.</p><br>
+
+            <h3>What's Included:</h3>
+            <ul>
+                <li>Venue: Picturesque countryside or garden settings with bohemian-inspired decor.
+                    <strong>Vendor: GreenScape Events</strong>
+                </li>
+                <li>Hair & Makeup: Natural and rustic-themed styles for a soft, romantic look.
+                    <strong>Vendor: Elegant Styles</strong>
+                </li>
+                <li>Wedding Cake: Rustic naked cakes or floral-adorned designs.
+                    <strong>Vendor: Sweet Bliss Bakery</strong>
+                </li>
+                <li>Photographer: Capture candid and professional shots in beautiful natural lighting.
+                    <strong>Vendor: Nature’s Lens</strong>
+                </li>
+                <li>Appetizers & Meal Service: Farm-to-table dining experience with fresh, organic ingredients.
+                    <strong>Vendor: Farm Fresh Caterers</strong>
+                </li>
+                <li>Reception Decor: String lights, wooden accents, and greenery for a cozy vibe.
+                    <strong>Vendor: Rustic Dreams</strong>
+                </li>
+                <li><strong>Price: $39,500</strong></li><br>
+            </ul>
+
+            <h3>Additional Benefits:</h3>
+            <ul>
+                <li>Choice of live acoustic music during the ceremony
+                    <strong>Vendor: Acoustic Harmony</strong>
+                </li>
+                <li>Eco-friendly wedding favors for guests
+                    <strong>Vendor: Green Touch Gifts</strong>
+                </li><br>
+            </ul>
+
+            <img src="Images/home/rustic.jpg">
+        </div>
+
+        <!-- Form Section -->
+        <div class="form-container">
+            <h2>Wedding Planning Starts Here</h2>
+            <form>
+                <input type="text" placeholder="First name" required>
+                <input type="text" placeholder="Last name" required>
+                <input type="tel" placeholder="Phone number" required>
+                <input type="email" placeholder="youremail@gmail.com" required>
+                <input type="date" placeholder="Wedding Date" required>
+
+
+                <button type="submit">BOOK NOW</button>
+            </form>
+        </div>
+    </div>
+
+
+    <div class="container1">
+        <!-- Plan Details Section -->
+        <div class="plan-details">
+            <h2>Luxury Extravaganza Plan</h2>
+            <p>The Luxury Extravaganza Plan is ideal for couples seeking a grand, unforgettable wedding experience
+                filled with opulence and top-tier services.</p><br>
+
+            <h3>What's Included:</h3>
+            <ul>
+                <li>Luxury Venues: High-end venues such as ballrooms, resorts, or private estates.
+                    <strong>Vendor: Opulent Venues Co.</strong>
+                </li>
+                <li>Hair & Makeup: Premium stylists for a glamorous look.
+                    <strong>Vendor: Luxe Bridal Styles</strong>
+                </li>
+                <li>Appetizers & Meal Services: Gourmet multi-course dining, including seafood and international
+                    options.
+                    <strong>Vendor: Elite Culinary Creations</strong>
+                </li>
+                <li>Wedding Cake: Luxury-tiered cake designs with intricate detailing.
+                    <strong>Vendor: Designer Desserts</strong>
+                </li>
+                <li>Bar Service: Open bar with premium beverages, signature cocktails, and bartenders.
+                    <strong>Vendor: Prestige Mixologists</strong>
+                </li>
+                <li>Entertainment: Professional DJ & MC services with customizable playlists.
+                    <strong>Vendor: Premium Beats DJs</strong>
+                </li>
+                <li>Photobooth: Fun, modern photobooth setup for guests with printed photos.
+                    <strong>Vendor: Photo Fun Co.</strong>
+                </li>
+                <li>Invitations & Accessories: Customized luxury invitations and gift sets.
+                    <strong>Vendor: Exquisite Invites</strong>
+                </li>
+                <li><strong>Price: $24,000</strong></li><br>
+            </ul>
+
+            <h3>Additional Benefits:</h3>
+            <ul>
+                <li>Wedding coordinator to ensure smooth execution.
+                    <strong>Vendor: Grand Event Planners</strong>
+                </li>
+                <li>Complimentary champagne for the couple.
+                    <strong>Vendor: Celebration Spirits</strong>
+                </li><br>
+            </ul>
+
+            <img src="Images/home/luxary.avif">
+        </div>
+
+
+        <!-- Form Section -->
+        <div class="form-container">
+            <h2>Wedding Planning Starts Here</h2>
+            <form>
+                <input type="text" placeholder="First name" required>
+                <input type="text" placeholder="Last name" required>
+                <input type="tel" placeholder="Phone number" required>
+                <input type="email" placeholder="youremail@gmail.com" required>
+                <input type="date" placeholder="Wedding Date" required>
+
+
+                <button type="submit">BOOK NOW</button>
+            </form>
+        </div>
+    </div>
+    <div class="container1">
+        <div class="plan-details">
+            <h2>Pre-Shoot Package</h2>
+            <p>Capture your love story with stunning pre-wedding photographs in scenic locations tailored to your theme.
+            </p><br>
+
+            <h3>What's Included:</h3>
+            <ul>
+                <li>Photography: Professional photographers for creative and candid shots.
+                    <strong>Vendor: Timeless Clicks</strong>
+                </li>
+                <li>Location: Choose from romantic beaches, lush gardens, or urban backdrops.
+                    <strong>Vendor: Scenic Locations Co.</strong>
+                </li>
+                <li>Props: Customized props to match your story.
+                    <strong>Vendor: Prop Masters</strong>
+                </li>
+                <li>Outfits: Styling support for coordinated attire.
+                    <strong>Vendor: Style Avenue</strong>
+                </li>
+                <li><strong>Price: $15,000</strong></li><br>
+            </ul>
+
+            <h3>Additional Benefits:</h3>
+            <ul>
+                <li>Photo album with 20 selected photos
+                    <strong>Vendor: Photo Elegance</strong>
+                </li>
+                <li>One short pre-wedding video montage
+                    <strong>Vendor: Visual Vows</strong>
+                </li><br>
+            </ul>
+
+            <img src="Images/home/pre shhot.jpg">
+        </div>
+        <!-- Form Section -->
+        <div class="form-container">
+            <h2>Wedding Planning Starts Here</h2>
+            <form>
+                <input type="text" placeholder="First name" required>
+                <input type="text" placeholder="Last name" required>
+                <input type="tel" placeholder="Phone number" required>
+                <input type="email" placeholder="youremail@gmail.com" required>
+                <input type="date" placeholder="Wedding Date" required>
+
+
+                <button type="submit">BOOK NOW</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="container1">
+        <div class="plan-details">
+            <h2>Overall Wedding Package</h2>
+            <p>A comprehensive package covering every aspect of your wedding day for a seamless, stress-free
+                celebration.</p><br>
+
+            <h3>What's Included:</h3>
+            <ul>
+                <li>Venue: Premium venues for the ceremony and reception.
+                    <strong>Vendor: Grand Occasions</strong>
+                </li>
+                <li>Decor: Customized themes and high-quality decor.
+                    <strong>Vendor: Dream Decorators</strong>
+                </li>
+                <li>Catering: Full-course meals with customizable menus.
+                    <strong>Vendor: Gourmet Bliss Catering</strong>
+                </li>
+                <li>Photography & Videography: Full-day coverage to capture every moment.
+                    <strong>Vendor: Forever Frames</strong>
+                </li>
+                <li>Entertainment: DJs, live bands, and MCs to keep the event lively.
+                    <strong>Vendor: SoundWave Entertainment</strong>
+                </li>
+                <li>Transportation: Luxury cars for the bridal party.
+                    <strong>Vendor: Elite Rides</strong>
+                </li>
+                <li><strong>Price: $150,000</strong></li><br>
+            </ul>
+
+            <h3>Additional Benefits:</h3>
+            <ul>
+                <li>Wedding planner support from start to finish
+                    <strong>Vendor: Perfect Day Planners</strong>
+                </li>
+                <li>Special discounts on honeymoon bookings
+                    <strong>Vendor: Romantic Escapes</strong>
+                </li><br>
+            </ul>
+
+            <img src="Images/home/overall.jpg">
+        </div>
+        <!-- Form Section -->
+        <div class="form-container">
+            <h2>Wedding Planning Starts Here</h2>
+            <form>
+                <input type="text" placeholder="First name" required>
+                <input type="text" placeholder="Last name" required>
+                <input type="tel" placeholder="Phone number" required>
+                <input type="email" placeholder="youremail@gmail.com" required>
+                <input type="date" placeholder="Wedding Date" required>
+
+
+                <button type="submit">BOOK NOW</button>
+            </form>
+        </div>
+    </div>
+
+
+    <div class="services-box">
+        <h3>Theme Wedding Organizers in Sri Lanka</h3>
+        <p>
+          Weddings have come a long way from the traditional and very much conventional function held amidst a crowd of close friends and relatives. Instead, couples today, like to experiment in things, change the script and go offbeat. Theme weddings and conceptualized wedding have become a modern trend that adds a unique touch to the function, as well as leaves a window to present the individualities of the couple. Be it a garden wedding or one to be held on a floating boat,
+           we at Dream Day Wedding Planner as the leading wedding organizers Sri Lanka will assist you with every aspect of the function and help make your dream a reality.
+        </p>
+        
+        <section class="themes">
+          <h3>Select Your Dream Theme</h3>
+      
+          <div class="theme-cards">
+              <div class="theme-card">
+                  <div class="theme-image1"></div>
+                  <h4>Sri Lankan Traditional</h4>
+                  <a href="Theams blogs/srilankan.html" class="btn">Learn More</a>
+              </div>
+              <div class="theme-card">
+                  <div class="theme-image2"></div>
+                  <h4>Western Theme</h4>
+                  <a href="Theams blogs/western.html" class="btn">Learn More</a>
+              </div>
+              <div class="theme-card">
+                  <div class="theme-image3"></div>
+                  <h4>South Indian Theme</h4>
+                  <a href="Theams blogs/south.html" class="btn">Learn More</a>
+              </div>
+          </div>
+      </section>
+   <!-- Slider Section -->
+    </div>
+
+           
+  <!-- FOOTER SECTION -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <h3>Contact Us</h3>
+        <ul class="info-details">
+          <li><i class="fas fa-map-marker-alt"></i><span>123 Pink Street, Nawala, Colombo</span></li>
+          <li><i class="fas fa-phone-alt"></i><span>(123) 456-7890</span></li>
+          <li><i class="fas fa-envelope"></i><span>info@dreamday.com</span></li>
+        </ul>
+      </div>
+      <div class="footer-content">
+        <h3>Quick Links</h3>
+        <ul class="list">
+          <li><a href="home_main.html">Home</a></li>
+          <li><a href="directory.html">Our Services</a></li>
+          <li><a href="vendors_list.html">Our Vendors List</a></li>
+          <li><a href="wedding_plans.html">Wedding Plans</a></li>
+          <li><a href="about.html">About Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-content">
+        <h3>Follow Us</h3>
+        <ul class="social-icons">
+          <li><i class="fab fa-facebook-f"></i></li>
+          <li><i class="fab fa-twitter"></i></li>
+          <li><i class="fab fa-instagram"></i></li>
+          <li><i class="fab fa-linkedin-in"></i></li>
+        </ul>
+      </div>
+    </div>
+    <div class="bottom-bar">
+      <p>© 2024 Dream Day Wedding Planner. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+
+</html>

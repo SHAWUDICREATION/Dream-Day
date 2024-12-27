@@ -80,6 +80,41 @@
     font-size: 20px;
 }
 
+
+.input-box {
+    position: relative;
+    width: 100%;
+    max-width: 100%; 
+    margin-bottom: 20px; 
+}
+
+
+.input-box select,
+.input-box input {
+    width: 100%; 
+    height: 50px; 
+    font-size: 16px; 
+    padding: 0 20px; 
+    color: #fff; 
+    background: transparent; 
+    border: 2px solid rgba(255, 255, 255, 0.2); 
+    border-radius: 40px; 
+    outline: none; 
+    box-sizing: border-box; 
+    transition: all 0.3s ease; 
+}
+
+.input-box select:hover,
+.input-box input:hover {
+    border-color: rgba(255, 255, 255, 0.5); 
+}
+
+.input-box select option {
+    color: #000; 
+    background-color: #fff; 
+}
+
+
 .wrapper :where(.gender-option, .gender) {
     display: flex;
     align-items: center;
@@ -158,7 +193,7 @@
         <div class="wrapper">
            <!-- Login Form -->
            <form id="loginForm" style="display: block;">
-               <h1>Login As User</h1>
+               <h1>Login </h1>
                <div class="input-box">
                    <input type="email" placeholder="E-mail" required>
                    <i class='bx bx-envelope'></i>
@@ -195,7 +230,7 @@
    
            <!-- Register Form -->
            <form id="registerForm" style="display: none;">
-               <h1>Register As User</h1>
+               <h1>Register Now</h1>
                <div class="input-box">
                    <input type="text" placeholder="Name" required>
                    <i class='bx bxs-user'></i>            
@@ -212,23 +247,25 @@
                    <input type="text" placeholder="Address" required>
                    <i class='bx bxs-location-plus'></i>
                </div>
-               <div class="gender-box">
-                   <h4>Gender</h4>
-                   <div class="gender-option">
-                       <div class="gender">
-                           <input type="radio" id="check-male" name="gender" checked/>
-                           <label for="check-male">Male</label>
-                       </div>
-                       <div class="gender">
-                           <input type="radio" id="check-female" name="gender" />
-                           <label for="check-female">Female</label>
-                       </div>
-                       <div class="gender">
-                           <input type="radio" id="check-other" name="gender"/>
-                           <label for="check-other">Prefer not to say</label>
-                       </div>
-                   </div>
-               </div>
+               <div class="input-box">
+                <label for="vendors">Choose Advertising Category</label>
+                <select id="vendors" required>
+                    <option value="">Select Category</option>
+                    <option value="Ashtaka">Ashtaka</option>
+                    <option value="Astrology">Astrology</option>
+                    <option value="Car Renters">Car Renters</option>
+                    <option value="Caterers">Caterers</option>
+                    <option value="Cinematography">Cinematography</option>
+                    <option value="Photography">Photography</option>
+                    <option value="Wedding Cakes">Wedding Cakes</option>
+                    <option value="Dancing Groups">Dancing Groups</option>
+                    <option value="Bands / DJ">Bands / DJ</option>
+                    <option value="Hair Beauty Salons & Spa">Hair Beauty Salons & Spa</option>
+                    <option value="Flowers">Flowers</option>
+                    <option value="Wedding Story Album">Wedding Story Album</option>
+                    
+                </select>
+            </div>
                <div class="input-box">
                    <input type="password" placeholder="Password" required>
                    <i class='bx bx-lock-alt'></i>
