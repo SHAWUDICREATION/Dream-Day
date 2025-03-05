@@ -361,6 +361,75 @@
     }
 }
 
+.form-wrap {
+    background: #ecf0f3;
+    border-radius: 0px 30px 30px 0px;
+    padding: 20px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 8px 8px 16px #cbced1, -8px -8px 16px #ffffff;
+}
+
+.form-title {
+    text-align: left;
+    padding: 10px;
+    font-size: 24px;
+    letter-spacing: 0.5px;
+}
+
+.form-fields {
+    display: table;
+    width: 100%;
+    padding: 15px 5px 5px 5px;
+}
+
+.form-fields input,
+.form-fields select,
+.form-fields textarea {
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 16px;
+    color: #555;
+    padding: 15px 10px 15px 5px;
+    width: 100%;
+}
+
+.form-fields textarea {
+    height: 80px;
+    resize: none;
+}
+
+.form-group {
+    width: 100%;
+    float: left;
+    padding: 0px 20px;
+    margin: 10px 10px;
+    border-radius: 25px;
+    box-shadow: inset 8px 8px 8px #cbced1, inset -8px -8px 8px #ffffff;
+}
+
+.submit-button {
+    display: block;
+    margin: 20px auto;
+    width: 50%;
+    height: 50px;
+    border-radius: 25px;
+    font-size: 18px;
+    font-weight: 700;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    text-align: center;
+    background: #f44770;
+    box-shadow: none;
+    transition: 0.5s;
+}
+
+.submit-button:hover {
+    background: rgb(240, 94, 215);
+}
 </style>
 
 <body>
@@ -415,6 +484,7 @@
                     <li><a href="javascript:void(0)" onclick="showService('flowers')">Flowers</a></li>
                     <li><a href="javascript:void(0)" onclick="showService('album')">Wedding Album</a></li>
                 </ul>
+                <button class="btn btn-primary mt-3" onclick="openChatForm()">Chat with Service Providers</button>
             </div>
 
             <div class="col-md-9">
@@ -692,7 +762,7 @@
                         <!-- Service 1 -->
                         <div class="service">
                             <img src="Images/vendors Images/caters1.jpg" alt="caterers">
-                            <h3>Asiri Hotel</h3>
+                            <h3>Asiri Hotel</h>
                             <button onclick="showPopup('popup-caterers1')">View Details</button>
                         </div>
 
@@ -965,7 +1035,7 @@
                         <!-- Vendor 3 -->
                         <div class="service">
                             <img src="Images/vendors Images/photo3.png" alt="photography">
-                            <h3>Derana Photo House</h3>
+                            <h3>Derana Photo House</h>
                             <button onclick="showPopup('popup-photo3')">View Details</button>
                         </div>
 
@@ -1535,6 +1605,48 @@
                 </div>
             </div>
 
+            <div id="chatFormPopup" class="popup">
+                <div class="popup-content form-wrap">
+                    <span class="close" onclick="closeChatForm()">&times;</span>
+                    <h2 class="form-title">Chat with Service Providers</h2>
+                    <form id="chatForm" action="send_message.php" method="POST" onsubmit="sendMessage(event)">
+                        <div class="form-fields">
+                            <div class="form-group">
+                                <input type="text" id="chatName" name="chatName" placeholder="Name" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" id="chatEmail" name="chatEmail" placeholder="Email" required>
+                            </div>
+                            <div class="form-group">
+                                <select id="chatCategory" name="chatCategory" required onchange="populateVendors()">
+                                    <option value="">Select Category</option>
+                                    <option value="ashtaka">Ashtaka</option>
+                                    <option value="astrology">Astrology</option>
+                                    <option value="carrenters">Car Rentals</option>
+                                    <option value="caterers">Caterers</option>
+                                    <option value="cinematography">Cinematography</option>
+                                    <option value="photography">Photography</option>
+                                    <option value="weddingcakes">Wedding Cakes</option>
+                                    <option value="dancinggroups">Dancing Groups</option>
+                                    <option value="bands">Bands/DJ</option>
+                                    <option value="salon">Hair Beauty Salons & Spa</option>
+                                    <option value="flowers">Flowers</option>
+                                    <option value="album">Wedding Album</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <select id="chatVendor" name="chatVendor" required>
+                                    <option value="">Select Vendor</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <textarea id="chatMessage" name="chatMessage" placeholder="Message" required></textarea>
+                            </div>
+                            <button type="submit" class="submit-button">Send</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
 
             <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
             <script src="scripts.js"></script>
@@ -1588,6 +1700,67 @@
         showService('ashtaka');
     });
 
+    function openChatForm() {
+        document.getElementById('chatFormPopup').style.display = 'flex';
+    }
+
+    function closeChatForm() {
+        document.getElementById('chatFormPopup').style.display = 'none';
+    }
+
+    function populateVendors() {
+        const category = document.getElementById('chatCategory').value;
+        const vendorSelect = document.getElementById('chatVendor');
+        vendorSelect.innerHTML = '<option value="">Select Vendor</option>';
+
+        const vendors = {
+            ashtaka: ['Vipula Kalayathanaya', 'Vishvi Weddings Ashtaka', 'Brilliant Ceylon'],
+            astrology: ['Janasetha Astrology', 'Manjula Perera', 'Iranama Lanka'],
+            carrenters: ['Malkey rent-a-car', 'Ameri Rent A Car', 'Dream Wedding Car'],
+            caterers: ['Asiri Hotel', 'Kavi Sri Lankan Catering', 'Dushan Caterers'],
+            cinematography: ['Native Tribe Studios', 'Studio Siyakroo', 'ShadowFace Studio'],
+            photography: ['Anne Fernando Photography', 'Studio Siyakroo', 'Derana Photo House'],
+            weddingcakes: ['Cake Dreams', 'Party Treats', 'Feather Cakes'],
+            dancinggroups: ['Uththarangi Dancing Ensemble', 'Harshala Dance Academy', 'Nethroo Dance'],
+            bands: ['Flash Music Band', 'Xtreme Band', 'H2 DJ ENTERTAINMENT'],
+            salon: ['Salon Manaali', 'Salon Nisuki', 'Salon Manik'],
+            flowers: ['Artist’s Flora', 'Dilshi Flowers', 'Chamathkara Flora'],
+            album: ['Austriya Printing', 'Daily Mirror']
+        };
+
+        if (vendors[category]) {
+            vendors[category].forEach(vendor => {
+                const option = document.createElement('option');
+                option.value = vendor;
+                option.textContent = vendor;
+                vendorSelect.appendChild(option);
+            });
+        }
+    }
+
+    function sendMessage(event) {
+        event.preventDefault();
+        const form = document.getElementById('chatForm');
+        const formData = new FormData(form);
+
+        fetch('send_message.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert('Message sent successfully!');
+                closeChatForm();
+            } else {
+                alert('Failed to send message. Please try again.');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred. Please try again.');
+        });
+    }
 </script>
 
 </html>

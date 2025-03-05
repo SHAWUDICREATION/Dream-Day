@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendor Plans - DreamDay</title>
+    <script>
+        function goToPage() {
+            window.location.href = "normal_payment.html";
+        }
+
+        function goToPage1() {
+            window.location.href = "premium_payment.html";
+        }
+    </script>
+    </script>
+    <style>
+        body {
+            font-family: "Georgia", serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fdf5f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .pricing-container {
+            text-align: center;
+            padding: 30px;
+            max-width: 1100px;
+            background: linear-gradient(145deg, #fff4f6, #fdf5f8);
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .pricing-container h1 {
+            font-size: 2.5em;
+            color: #c86b85;
+            margin-bottom: 20px;
+        }
+
+        .pricing-container p {
+            font-size: 1.2em;
+            color: #777;
+            margin-bottom: 40px;
+        }
+
+        .plans {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .plan {
+            border: 2px solid #ffe6eb;
+            border-radius: 20px;
+            width: 300px;
+            padding: 25px;
+            background-color: #fff;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .plan:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .plan h2 {
+            font-size: 1.8em;
+            color: #c86b85;
+            margin-bottom: 10px;
+        }
+
+        .plan p {
+            color: #666;
+            margin: 15px 0;
+        }
+
+        .plan ul {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+            text-align: left;
+        }
+
+        .plan ul li {
+            margin: 10px 0;
+            color: #444;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .plan ul li::before {
+            content: "✔";
+            color: #c86b85;
+            font-weight: bold;
+        }
+
+        .plan .price {
+            font-size: 2em;
+            color: #c86b85;
+            margin: 20px 0;
+        }
+
+        .plan button {
+            padding: 10px 20px;
+            font-size: 1em;
+            color: #fff;
+            background-color: #c86b85;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .plan button:hover {
+            background-color: #a6566f;
+        }
+
+        @media (max-width: 768px) {
+            .plans {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="pricing-container">
+        <h1>Advertising packages</h1>
+        <p>Choose the plan that best fits your needs and let us help you shine on DreamDay.</p>
+        <div class="plans">
+           
+            <div class="plan">
+                <h2>Normal</h2>
+                <p>Ideal for vendors just starting out</p>
+                <ul>
+                    <li>Display ads on the Vendors Page</li>
+                    <li>Basic analytics and insights</li>
+                    <li>Standard email support</li>
+                </ul>
+                <div class="price">$10/month</div>
+                <button onclick="goToPage()">Select Plan</button>
+            </div>
+
+            
+            <div class="plan">
+                <h2>Premium</h2>
+                <p>Maximize your reach and visibility</p>
+                <ul>
+                    <li>Display ads on the Home Page</li>
+                    <li>Priority customer support</li>
+                    <li>Detailed analytics and reporting</li>
+                </ul>
+                <div class="price">$30/month</div>
+                <button onclick="goToPage1()">Select Plan</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

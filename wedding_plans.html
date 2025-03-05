@@ -322,14 +322,6 @@
             object-fit: cover;
         }
 
-        .form-container {
-            padding: 20px;
-            background: #f9f9f9;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            padding: 2rem;
-        }
 
         .form-container h2,
         .plan-details h2 {
@@ -347,16 +339,56 @@
             list-style: square;
             padding-left: 20px;
         }
+     
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center; 
+            height: 100vh;
+            background: #f9f9f9;
+            padding: 20px;
+        }
 
+        form {
+            width: 100%;
+            max-width: 1000px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+   
         input,
         select,
         button {
-            width: 90%;
-            margin: 14px;
-            padding: 10px;
+            width: 100%; /* Ensure full width */
+            margin: 10px 0;
+            padding: 12px;
             font-size: 1rem;
             border: 1px solid #ccc;
             border-radius: 5px;
+            display: block;
+            box-sizing: border-box;
+        }
+
+        select {
+            appearance: none; 
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-color: white;
+            padding-right: 40px; 
+        }
+
+
+        select:after {
+            content: "▼";
+            font-size: 14px;
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
         }
 
         input:focus,
@@ -372,11 +404,18 @@
             font-size: 18px;
             border: none;
             cursor: pointer;
-
+            transition: background 0.3s ease;
         }
 
         button:hover {
-            background-color: #ff002b;
+            background-color: #e2556f;
+        }
+
+        .form-container h2 {
+            color: #ff758c;
+            font-size: 28px;
+            margin-bottom: 20px;
+            text-align: center;
         }
 
         /* Footer styling */
@@ -490,6 +529,45 @@
             font-size: 14px;
             margin: 0;
         }
+
+        /* Tabs CSS */
+        .tab {
+            overflow: hidden;
+            border-bottom: 1px solid #ccc;
+            background-color: #f759e2;
+        }
+
+        .tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-size: 17px;
+        }
+
+        .tab button:hover {
+            background-color: #9553ff;
+        }
+
+        .tab button.active {
+            background-color: #6200ff;
+        }
+
+        .tabcontent {
+            display: none;
+            padding: 6px 12px;
+            border-top: none;
+        }
+
+        .tabcontent img {
+    display: block;
+    margin: auto;
+    width: 90%;
+    height: auto;
+}
     </style>
 </head>
 
@@ -534,295 +612,241 @@
     <div class="plans">
         <h1>Our Recommended Plans</h1>
     </div>
-    <div class="container1">
-        <!-- Plan Details Section -->
-        <div class="plan-details">
-            <h2>Classic Elegance Plan</h2>
-            <p>The Classic Elegance Plan is designed for couples who desire timeless charm and sophistication. This plan
-                features formal and luxurious touches that create a dreamy wedding experience.</p><br>
 
-            <h3>What's Included:</h3>
-            <ul>
-                <li>Elegant Venues: Premium, beautifully decorated indoor venues with traditional floral arrangements.
-                    <strong>Vendor: Timeless Venues Co.</strong>
-                </li>
-                <li>Dinner Reception: A formal dining experience with gourmet cuisine options for guests.
-                    <strong>Vendor: Classic Gourmet Caterers</strong>
-                </li>
-                <li>Hair & Makeup: Professional stylists to ensure you look flawless on your big day.
-                    <strong>Vendor: Graceful Glam Stylists</strong>
-                </li>
-                <li>Wedding Cake: Custom-designed tiered wedding cake with your choice of flavors.
-                    <strong>Vendor: Sweet Elegance Bakers</strong>
-                </li>
-                <li>Invitations & Accessories: Bespoke wedding invitations and matching accessories like name cards.
-                    <strong>Vendor: Refined Invites & Accessories</strong>
-                </li>
-                <li><strong>Price: $24,000</strong></li><br>
-            </ul>
-
-            <h3>Additional Benefits:</h3>
-            <ul>
-                <li>Wedding coordinator to ensure smooth execution.
-                    <strong>Vendor: Serenity Planners</strong>
-                </li>
-                <li>Complimentary champagne for the couple.
-                    <strong>Vendor: Celebration Spirits</strong>
-                </li><br>
-            </ul>
-
-            <img src="Images/home/classic.jpg">
-        </div>
-
-
-        <!-- Form Section -->
-        <div class="form-container">
-            <h2>Wedding Planning Starts Here</h2>
-            <form>
-                <input type="text" placeholder="First name" required>
-                <input type="text" placeholder="Last name" required>
-                <input type="tel" placeholder="Phone number" required>
-                <input type="email" placeholder="youremail@gmail.com" required>
-                <input type="date" placeholder="Wedding Date" required>
-
-                <button type="submit">BOOK NOW</button>
-            </form>
-        </div>
+    <!-- Tab links -->
+    <div class="tab">
+        <button class="tablinks" onclick="openPlan(event, 'ClassicElegance')">Classic Elegance Plan</button>
+        <button class="tablinks" onclick="openPlan(event, 'RusticCharm')">Rustic Charm Plan</button>
+        <button class="tablinks" onclick="openPlan(event, 'LuxuryExtravaganza')">Luxury Extravaganza Plan</button>
+        <button class="tablinks" onclick="openPlan(event, 'PreShoot')">Pre-Shoot Package</button>
+        <button class="tablinks" onclick="openPlan(event, 'OverallWedding')">Overall Wedding Package</button>
     </div>
 
+    <!-- Tab content -->
+    <div id="ClassicElegance" class="tabcontent">
+        <h2>Classic Elegance Plan</h2>
+        <p>The Classic Elegance Plan is designed for couples who desire timeless charm and sophistication. This plan
+            features formal and luxurious touches that create a dreamy wedding experience.</p><br>
 
-    <div class="container1">
-        <!-- Plan Details Section -->
-        <div class="plan-details">
-            <h2>Rustic Charm Plan</h2>
-            <p>Perfect for nature-loving couples, the Rustic Charm Plan focuses on outdoor venues, eco-friendly themes,
-                and a relaxed yet magical ambiance.</p><br>
+        <h3>What's Included:</h3>
+        <ul>
+            <li>Elegant Venues: Premium, beautifully decorated indoor venues with traditional floral arrangements.
+                <strong>Vendor: Timeless Venues Co.</strong>
+            </li>
+            <li>Dinner Reception: A formal dining experience with gourmet cuisine options for guests.
+                <strong>Vendor: Classic Gourmet Caterers</strong>
+            </li>
+            <li>Hair & Makeup: Professional stylists to ensure you look flawless on your big day.
+                <strong>Vendor: Graceful Glam Stylists</strong>
+            </li>
+            <li>Wedding Cake: Custom-designed tiered wedding cake with your choice of flavors.
+                <strong>Vendor: Sweet Elegance Bakers</strong>
+            </li>
+            <li>Invitations & Accessories: Bespoke wedding invitations and matching accessories like name cards.
+                <strong>Vendor: Refined Invites & Accessories</strong>
+            </li>
+            <li><strong>Price: $24,000</strong></li><br>
+        </ul>
 
-            <h3>What's Included:</h3>
-            <ul>
-                <li>Venue: Picturesque countryside or garden settings with bohemian-inspired decor.
-                    <strong>Vendor: GreenScape Events</strong>
-                </li>
-                <li>Hair & Makeup: Natural and rustic-themed styles for a soft, romantic look.
-                    <strong>Vendor: Elegant Styles</strong>
-                </li>
-                <li>Wedding Cake: Rustic naked cakes or floral-adorned designs.
-                    <strong>Vendor: Sweet Bliss Bakery</strong>
-                </li>
-                <li>Photographer: Capture candid and professional shots in beautiful natural lighting.
-                    <strong>Vendor: Nature’s Lens</strong>
-                </li>
-                <li>Appetizers & Meal Service: Farm-to-table dining experience with fresh, organic ingredients.
-                    <strong>Vendor: Farm Fresh Caterers</strong>
-                </li>
-                <li>Reception Decor: String lights, wooden accents, and greenery for a cozy vibe.
-                    <strong>Vendor: Rustic Dreams</strong>
-                </li>
-                <li><strong>Price: $39,500</strong></li><br>
-            </ul>
+        <h3>Additional Benefits:</h3>
+        <ul>
+            <li>Wedding coordinator to ensure smooth execution.
+                <strong>Vendor: Serenity Planners</strong>
+            </li>
+            <li>Complimentary champagne for the couple.
+                <strong>Vendor: Celebration Spirits</strong>
+            </li><br>
+        </ul>
 
-            <h3>Additional Benefits:</h3>
-            <ul>
-                <li>Choice of live acoustic music during the ceremony
-                    <strong>Vendor: Acoustic Harmony</strong>
-                </li>
-                <li>Eco-friendly wedding favors for guests
-                    <strong>Vendor: Green Touch Gifts</strong>
-                </li><br>
-            </ul>
-
-            <img src="Images/home/rustic.jpg">
-        </div>
-
-        <!-- Form Section -->
-        <div class="form-container">
-            <h2>Wedding Planning Starts Here</h2>
-            <form>
-                <input type="text" placeholder="First name" required>
-                <input type="text" placeholder="Last name" required>
-                <input type="tel" placeholder="Phone number" required>
-                <input type="email" placeholder="youremail@gmail.com" required>
-                <input type="date" placeholder="Wedding Date" required>
-
-
-                <button type="submit">BOOK NOW</button>
-            </form>
-        </div>
+        <img src="Images/home/classic.jpg">
     </div>
 
+    <div id="RusticCharm" class="tabcontent">
+        <h2>Rustic Charm Plan</h2>
+        <p>Perfect for nature-loving couples, the Rustic Charm Plan focuses on outdoor venues, eco-friendly themes,
+            and a relaxed yet magical ambiance.</p><br>
 
-    <div class="container1">
-        <!-- Plan Details Section -->
-        <div class="plan-details">
-            <h2>Luxury Extravaganza Plan</h2>
-            <p>The Luxury Extravaganza Plan is ideal for couples seeking a grand, unforgettable wedding experience
-                filled with opulence and top-tier services.</p><br>
+        <h3>What's Included:</h3>
+        <ul>
+            <li>Venue: Picturesque countryside or garden settings with bohemian-inspired decor.
+                <strong>Vendor: GreenScape Events</strong>
+            </li>
+            <li>Hair & Makeup: Natural and rustic-themed styles for a soft, romantic look.
+                <strong>Vendor: Elegant Styles</strong>
+            </li>
+            <li>Wedding Cake: Rustic naked cakes or floral-adorned designs.
+                <strong>Vendor: Sweet Bliss Bakery</strong>
+            </li>
+            <li>Photographer: Capture candid and professional shots in beautiful natural lighting.
+                <strong>Vendor: Nature’s Lens</strong>
+            </li>
+            <li>Appetizers & Meal Service: Farm-to-table dining experience with fresh, organic ingredients.
+                <strong>Vendor: Farm Fresh Caterers</strong>
+            </li>
+            <li>Reception Decor: String lights, wooden accents, and greenery for a cozy vibe.
+                <strong>Vendor: Rustic Dreams</strong>
+            </li>
+            <li><strong>Price: $39,500</strong></li><br>
+        </ul>
 
-            <h3>What's Included:</h3>
-            <ul>
-                <li>Luxury Venues: High-end venues such as ballrooms, resorts, or private estates.
-                    <strong>Vendor: Opulent Venues Co.</strong>
-                </li>
-                <li>Hair & Makeup: Premium stylists for a glamorous look.
-                    <strong>Vendor: Luxe Bridal Styles</strong>
-                </li>
-                <li>Appetizers & Meal Services: Gourmet multi-course dining, including seafood and international
-                    options.
-                    <strong>Vendor: Elite Culinary Creations</strong>
-                </li>
-                <li>Wedding Cake: Luxury-tiered cake designs with intricate detailing.
-                    <strong>Vendor: Designer Desserts</strong>
-                </li>
-                <li>Bar Service: Open bar with premium beverages, signature cocktails, and bartenders.
-                    <strong>Vendor: Prestige Mixologists</strong>
-                </li>
-                <li>Entertainment: Professional DJ & MC services with customizable playlists.
-                    <strong>Vendor: Premium Beats DJs</strong>
-                </li>
-                <li>Photobooth: Fun, modern photobooth setup for guests with printed photos.
-                    <strong>Vendor: Photo Fun Co.</strong>
-                </li>
-                <li>Invitations & Accessories: Customized luxury invitations and gift sets.
-                    <strong>Vendor: Exquisite Invites</strong>
-                </li>
-                <li><strong>Price: $24,000</strong></li><br>
-            </ul>
+        <h3>Additional Benefits:</h3>
+        <ul>
+            <li>Choice of live acoustic music during the ceremony
+                <strong>Vendor: Acoustic Harmony</strong>
+            </li>
+            <li>Eco-friendly wedding favors for guests
+                <strong>Vendor: Green Touch Gifts</strong>
+            </li><br>
+        </ul>
 
-            <h3>Additional Benefits:</h3>
-            <ul>
-                <li>Wedding coordinator to ensure smooth execution.
-                    <strong>Vendor: Grand Event Planners</strong>
-                </li>
-                <li>Complimentary champagne for the couple.
-                    <strong>Vendor: Celebration Spirits</strong>
-                </li><br>
-            </ul>
-
-            <img src="Images/home/luxary.avif">
-        </div>
-
-
-        <!-- Form Section -->
-        <div class="form-container">
-            <h2>Wedding Planning Starts Here</h2>
-            <form>
-                <input type="text" placeholder="First name" required>
-                <input type="text" placeholder="Last name" required>
-                <input type="tel" placeholder="Phone number" required>
-                <input type="email" placeholder="youremail@gmail.com" required>
-                <input type="date" placeholder="Wedding Date" required>
-
-
-                <button type="submit">BOOK NOW</button>
-            </form>
-        </div>
-    </div>
-    <div class="container1">
-        <div class="plan-details">
-            <h2>Pre-Shoot Package</h2>
-            <p>Capture your love story with stunning pre-wedding photographs in scenic locations tailored to your theme.
-            </p><br>
-
-            <h3>What's Included:</h3>
-            <ul>
-                <li>Photography: Professional photographers for creative and candid shots.
-                    <strong>Vendor: Timeless Clicks</strong>
-                </li>
-                <li>Location: Choose from romantic beaches, lush gardens, or urban backdrops.
-                    <strong>Vendor: Scenic Locations Co.</strong>
-                </li>
-                <li>Props: Customized props to match your story.
-                    <strong>Vendor: Prop Masters</strong>
-                </li>
-                <li>Outfits: Styling support for coordinated attire.
-                    <strong>Vendor: Style Avenue</strong>
-                </li>
-                <li><strong>Price: $15,000</strong></li><br>
-            </ul>
-
-            <h3>Additional Benefits:</h3>
-            <ul>
-                <li>Photo album with 20 selected photos
-                    <strong>Vendor: Photo Elegance</strong>
-                </li>
-                <li>One short pre-wedding video montage
-                    <strong>Vendor: Visual Vows</strong>
-                </li><br>
-            </ul>
-
-            <img src="Images/home/pre shhot.jpg">
-        </div>
-        <!-- Form Section -->
-        <div class="form-container">
-            <h2>Wedding Planning Starts Here</h2>
-            <form>
-                <input type="text" placeholder="First name" required>
-                <input type="text" placeholder="Last name" required>
-                <input type="tel" placeholder="Phone number" required>
-                <input type="email" placeholder="youremail@gmail.com" required>
-                <input type="date" placeholder="Wedding Date" required>
-
-
-                <button type="submit">BOOK NOW</button>
-            </form>
-        </div>
+        <img src="Images/home/rustic.jpg">
     </div>
 
-    <div class="container1">
-        <div class="plan-details">
-            <h2>Overall Wedding Package</h2>
-            <p>A comprehensive package covering every aspect of your wedding day for a seamless, stress-free
-                celebration.</p><br>
+    <div id="LuxuryExtravaganza" class="tabcontent">
+        <h2>Luxury Extravaganza Plan</h2>
+        <p>The Luxury Extravaganza Plan is ideal for couples seeking a grand, unforgettable wedding experience
+            filled with opulence and top-tier services.</p><br>
 
-            <h3>What's Included:</h3>
-            <ul>
-                <li>Venue: Premium venues for the ceremony and reception.
-                    <strong>Vendor: Grand Occasions</strong>
-                </li>
-                <li>Decor: Customized themes and high-quality decor.
-                    <strong>Vendor: Dream Decorators</strong>
-                </li>
-                <li>Catering: Full-course meals with customizable menus.
-                    <strong>Vendor: Gourmet Bliss Catering</strong>
-                </li>
-                <li>Photography & Videography: Full-day coverage to capture every moment.
-                    <strong>Vendor: Forever Frames</strong>
-                </li>
-                <li>Entertainment: DJs, live bands, and MCs to keep the event lively.
-                    <strong>Vendor: SoundWave Entertainment</strong>
-                </li>
-                <li>Transportation: Luxury cars for the bridal party.
-                    <strong>Vendor: Elite Rides</strong>
-                </li>
-                <li><strong>Price: $150,000</strong></li><br>
-            </ul>
+        <h3>What's Included:</h3>
+        <ul>
+            <li>Luxury Venues: High-end venues such as ballrooms, resorts, or private estates.
+                <strong>Vendor: Opulent Venues Co.</strong>
+            </li>
+            <li>Hair & Makeup: Premium stylists for a glamorous look.
+                <strong>Vendor: Luxe Bridal Styles</strong>
+            </li>
+            <li>Appetizers & Meal Services: Gourmet multi-course dining, including seafood and international
+                options.
+                <strong>Vendor: Elite Culinary Creations</strong>
+            </li>
+            <li>Wedding Cake: Luxury-tiered cake designs with intricate detailing.
+                <strong>Vendor: Designer Desserts</strong>
+            </li>
+            <li>Bar Service: Open bar with premium beverages, signature cocktails, and bartenders.
+                <strong>Vendor: Prestige Mixologists</strong>
+            </li>
+            <li>Entertainment: Professional DJ & MC services with customizable playlists.
+                <strong>Vendor: Premium Beats DJs</strong>
+            </li>
+            <li>Photobooth: Fun, modern photobooth setup for guests with printed photos.
+                <strong>Vendor: Photo Fun Co.</strong>
+            </li>
+            <li>Invitations & Accessories: Customized luxury invitations and gift sets.
+                <strong>Vendor: Exquisite Invites</strong>
+            </li>
+            <li><strong>Price: $24,000</strong></li><br>
+        </ul>
 
-            <h3>Additional Benefits:</h3>
-            <ul>
-                <li>Wedding planner support from start to finish
-                    <strong>Vendor: Perfect Day Planners</strong>
-                </li>
-                <li>Special discounts on honeymoon bookings
-                    <strong>Vendor: Romantic Escapes</strong>
-                </li><br>
-            </ul>
+        <h3>Additional Benefits:</h3>
+        <ul>
+            <li>Wedding coordinator to ensure smooth execution.
+                <strong>Vendor: Grand Event Planners</strong>
+            </li>
+            <li>Complimentary champagne for the couple.
+                <strong>Vendor: Celebration Spirits</strong>
+            </li><br>
+        </ul>
 
-            <img src="Images/home/overall.jpg">
-        </div>
-        <!-- Form Section -->
-        <div class="form-container">
-            <h2>Wedding Planning Starts Here</h2>
-            <form>
-                <input type="text" placeholder="First name" required>
-                <input type="text" placeholder="Last name" required>
-                <input type="tel" placeholder="Phone number" required>
-                <input type="email" placeholder="youremail@gmail.com" required>
-                <input type="date" placeholder="Wedding Date" required>
+        <img src="Images/home/luxary.avif">
+    </div>
 
+    <div id="PreShoot" class="tabcontent">
+        <h2>Pre-Shoot Package</h2>
+        <p>Capture your love story with stunning pre-wedding photographs in scenic locations tailored to your theme.
+        </p><br>
 
-                <button type="submit">BOOK NOW</button>
-            </form>
-        </div>
+        <h3>What's Included:</h3>
+        <ul>
+            <li>Photography: Professional photographers for creative and candid shots.
+                <strong>Vendor: Timeless Clicks</strong>
+            </li>
+            <li>Location: Choose from romantic beaches, lush gardens, or urban backdrops.
+                <strong>Vendor: Scenic Locations Co.</strong>
+            </li>
+            <li>Props: Customized props to match your story.
+                <strong>Vendor: Prop Masters</strong>
+            </li>
+            <li>Outfits: Styling support for coordinated attire.
+                <strong>Vendor: Style Avenue</strong>
+            </li>
+            <li><strong>Price: $15,000</strong></li><br>
+        </ul>
+
+        <h3>Additional Benefits:</h3>
+        <ul>
+            <li>Photo album with 20 selected photos
+                <strong>Vendor: Photo Elegance</strong>
+            </li>
+            <li>One short pre-wedding video montage
+                <strong>Vendor: Visual Vows</strong>
+            </li><br>
+        </ul>
+
+        <img src="Images/home/pre shhot.jpg">
+    </div>
+
+    <div id="OverallWedding" class="tabcontent">
+        <h2>Overall Wedding Package</h2>
+        <p>A comprehensive package covering every aspect of your wedding day for a seamless, stress-free
+            celebration.</p><br>
+
+        <h3>What's Included:</h3>
+        <ul>
+            <li>Venue: Premium venues for the ceremony and reception.
+                <strong>Vendor: Grand Occasions</strong>
+            </li>
+            <li>Decor: Customized themes and high-quality decor.
+                <strong>Vendor: Dream Decorators</strong>
+            </li>
+            <li>Catering: Full-course meals with customizable menus.
+                <strong>Vendor: Gourmet Bliss Catering</strong>
+            </li>
+            <li>Photography & Videography: Full-day coverage to capture every moment.
+                <strong>Vendor: Forever Frames</strong>
+            </li>
+            <li>Entertainment: DJs, live bands, and MCs to keep the event lively.
+                <strong>Vendor: SoundWave Entertainment</strong>
+            </li>
+            <li>Transportation: Luxury cars for the bridal party.
+                <strong>Vendor: Elite Rides</strong>
+            </li>
+            <li><strong>Price: $150,000</strong></li><br>
+        </ul>
+
+        <h3>Additional Benefits:</h3>
+        <ul>
+            <li>Wedding planner support from start to finish
+                <strong>Vendor: Perfect Day Planners</strong>
+            </li>
+            <li>Special discounts on honeymoon bookings
+                <strong>Vendor: Romantic Escapes</strong>
+            </li><br>
+        </ul>
+
+        <img src="Images/home/overall.jpg">
+    </div>
+
+    <!-- Form Section -->
+    <div class="form-container">
+        <h2>Wedding Planning Starts Here</h2>
+        <form class="contact-form" action="wedplans.php" method="POST">
+            <input type="text" name="firstname" placeholder="First name" required>
+            <input type="text" name="lastname" placeholder="Last name" required>
+            <input type="tel" name="phonenum" placeholder="Phone number" required>
+            <input type="email" name="email" placeholder="youremail@gmail.com" required>
+            <input type="date" name="weddingdate" placeholder="Wedding Date" required>
+
+               <!-- Wedding Plan Selection -->
+        <select name = "plan" required>
+            <option value="" disabled selected>Select Your Plan</option>
+            <option value="ClassicElegance">Classic Elegance Plan</option>
+            <option value="RusticCharm">Rustic Charm Plan</option>
+            <option value="LuxuryExtravaganza">Luxury Extravaganza Plan</option>
+            <option value="PreShoot">Pre-Shoot Package</option>
+            <option value="OverallWedding">Overall Wedding Package</option>
+        </select>
+            <button type="submit">BOOK NOW</button>
+        </form>
     </div>
 
 
@@ -893,6 +917,24 @@
       <p>© 2024 Dream Day Wedding Planner. All rights reserved.</p>
     </div>
   </footer>
+  <script>
+    function openPlan(evt, planName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(planName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+
+    // Open the first tab by default
+    document.getElementsByClassName("tablinks")[0].click();
+</script>
 </body>
 
 </html>
