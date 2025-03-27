@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" type="x-icon" href="img/logo.webp">
+  <link rel="shortcut icon" type="x-icon" href="Images/logo.webp">
   <title>About Us</title>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
@@ -125,48 +125,118 @@
       }
     }
 
-     /* Advertise section styles */
-     .advertise-section {
-        width: 100%;
-        margin: 0;
-        padding-top: 60px;
-        position: relative;
-        z-index: 1;
+    /* Advertise section styles */
+    .advertise-section {
+      width: 100%;
+      margin: 0;
+      padding-top: 60px;
+      position: relative;
+      z-index: 1;
     }
 
     .advertise-banner {
 
-        background-color: #ff9000;
-        color: white;
-        text-align: center;
-        padding: 40px 0;
-        font-family: Arial, sans-serif;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+      background-color: #ff9000;
+      color: white;
+      text-align: center;
+      padding: 40px 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
 
     .icon-container {
-        margin-bottom: 15px;
-        font-size: 60px;
+      margin-bottom: 15px;
+      font-size: 60px;
     }
 
     .icon-container i {
-        color: white;
+      color: white;
     }
 
-    .advertise-banner h2, 
-.advertise-banner {
-    font-size: 36px;
-    margin: 10px 0;
-    color: #fff;
-    font-weight: 500;
-    text-decoration: none !important;
-}
+    .advertise-banner h2,
+    .advertise-banner {
+      font-size: 36px;
+      margin: 10px 0;
+      color: #fff;
+      font-weight: 500;
+      text-decoration: none !important;
+    }
+
     .advertise-banner:hover {
-        cursor: pointer;
-        background-color: #ff7a00;
+      cursor: pointer;
+      background-color: #ff7a00;
+    }
+
+    .advertise-images {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+      height: 300px;
+      top: 30px;
+    }
+
+    .advertise-images img {
+      max-width: 100%;
+      max-height: 100%;
+      display: none;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .advertise-images img.active {
+      display: block;
+      opacity: 1;
+    }
+
+    .ad-details {
+      display: none;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .advertise-button {
+      position: fixed; /* Fixed position to stay in the same place when scrolling */
+      top: 100px; /* Adjust based on your header height */
+      right: 20px;
+      z-index: 1000;
+    }
+
+    .advertise-button a {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px; /* Space between the icon and text */
+      padding: 18px 24px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #fff;
+      background-color: #ff4081;
+      border-radius: 12px;
+      text-decoration: none;
+      box-shadow: 0 8px 10px rgba(38, 186, 231, 0.2);
+      transition: all 0.3s ease;
+      animation: pulse 2s infinite;
+    }
+
+    .advertise-button a:hover {
+      background-color: #ff1a66;
+      box-shadow: 0 12px 14px rgba(218, 11, 138, 0.3);
+      transform: scale(1.1);
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+      100% {
+        transform: scale(1);
+      }
     }
 
     /*ABOUT SECTION*/
@@ -411,51 +481,51 @@
 
 
     /* Responsive Media Queries */
-@media (min-width: 768px) {
-  .about {
-    flex-direction: row;
-    margin: 10rem;
-    padding: 5rem;
-  }
+    @media (min-width: 768px) {
+      .about {
+        flex-direction: row;
+        margin: 10rem;
+        padding: 5rem;
+      }
 
-  .about-img {
-    display: block;
-    max-width: 50%;
-    border-radius: 10px;
-  }
+      .about-img {
+        display: block;
+        max-width: 50%;
+        border-radius: 10px;
+      }
 
-  .about-content {
-    padding: 2rem;
-    max-width: 500px;
-    text-align: left;
-  }
+      .about-content {
+        padding: 2rem;
+        max-width: 500px;
+        text-align: left;
+      }
 
-  .heading {
-    font-size: 1.5rem;
-  }
+      .heading {
+        font-size: 1.5rem;
+      }
 
-  .about-content p {
-    font-size: 1.4rem;
-  }
+      .about-content p {
+        font-size: 1.4rem;
+      }
 
-  footer .container {
-    justify-content: space-around;
-    text-align: left;
-  }
-}
+      footer .container {
+        justify-content: space-around;
+        text-align: left;
+      }
+    }
 
-@media (min-width: 1024px) {
-  .form-wrap {
-    padding: 40px;
-    max-width: 600px;
-  }
+    @media (min-width: 1024px) {
+      .form-wrap {
+        padding: 40px;
+        max-width: 600px;
+      }
 
-  .submit-button {
-    width: 40%;
-    height: 60px;
-    font-size: 20px;
-  }
-}
+      .submit-button {
+        width: 40%;
+        height: 60px;
+        font-size: 20px;
+      }
+    }
   </style>
 </head>
 
@@ -476,7 +546,7 @@
     <!-- Navigation links -->
     <ul>
       <li><a class="nav-link" href="home_main.html">Home</a></li>
-      <li><a class="nav-link " class="nav-link" href="directory.html">Directory</a></li>
+      <li><a class="nav-link" href="directory.html">Directory</a></li>
       <li><a class="nav-link" href="wedding_plans.html">Wedding Plans</a></li>
       <li><a class="nav-link active" href="about.html">About Us</a></li>
     </ul>
@@ -484,16 +554,20 @@
 
   <!-- End header -->
 
-   <!--ADVERTISE SECTION-->
+  <!-- Advertise Button -->
+  <div class="advertise-button">
+    <a href="forms.html"><i class="fas fa-hand-pointer"></i> Advertise with Us</a>
+  </div>
 
-   <div class="advertise-section">
-    <a href="forms.html" class="advertise-banner">
-        <div class="icon-container">
-            <i class="fas fa-hand-pointer"></i>
+  <!--ADVERTISE SECTION-->
+
+    <div class="advertise-section">
+        <div class="advertise-images" id="advertise-images"></div>
+        <div class="ad-details" id="ad-details">
+          <h3 id="ad-name"></h3>
+          <p id="ad-description"></p>
         </div>
-        <h2>Advertise with us.</h2>
-    </a>
-</div>
+    </div>
 
   <!--ABOUT US SECTION-->
   <section class="about" id="about">
@@ -587,7 +661,7 @@
   ScrollReveal().reveal(' .about-content, .list, .contact-form', { origin: 'left' });
 
   // Handle form submission with AJAX
-  document.querySelector('.contact-form').addEventListener('submit', function(event) {
+  document.querySelector('.contact-form').addEventListener('submit', function (event) {
     event.preventDefault(); // Prevent default form submission
 
     const formData = new FormData(this);
@@ -596,20 +670,61 @@
       method: 'POST',
       body: formData
     })
-    .then(response => response.text())
-    .then(data => {
-      if (data === 'success') {
-        alert('Message sent successfully!');
-        this.reset();
-      } else {
-        alert('Failed to send message. Please try again.');
-      }
-    })
-    .catch(error => {
-      console.error('Error:', error);
-      alert('An error occurred. Please try again.');
-    });
+      .then(response => response.text())
+      .then(data => {
+        if (data === 'success') {
+          alert('Message sent successfully!');
+          this.reset();
+        } else {
+          alert('Failed to send message. Please try again.');
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert('An error occurred. Please try again.');
+      });
   });
+
+  let currentAdIndex = 0;
+  let ads = [];
+
+  function showAd(index) {
+    const adImages = document.querySelectorAll('.advertise-images img');
+    adImages.forEach((img, i) => {
+      img.classList.remove('active');
+      if (i === index) {
+        img.classList.add('active');
+      }
+    });
+  }
+
+  function nextAd() {
+    currentAdIndex = (currentAdIndex + 1) % ads.length;
+    showAd(currentAdIndex);
+  }
+
+  function displayAdDetails(index) {
+    const ad = ads[index];
+    document.getElementById('ad-name').textContent = ad.name;
+    document.getElementById('ad-description').textContent = ad.description;
+    document.getElementById('ad-details').style.display = 'block';
+  }
+
+  fetch('fetch_ads.php')
+    .then(response => response.json())
+    .then(data => {
+      ads = data;
+      const container = document.getElementById('advertise-images');
+      ads.forEach((ad, index) => {
+        const img = document.createElement('img');
+        img.src = ad.image_url;
+        img.alt = ad.name;
+        img.addEventListener('click', () => displayAdDetails(index));
+        container.appendChild(img);
+      });
+      showAd(currentAdIndex);
+      setInterval(nextAd, 5000); // Change ad every 5 seconds
+    });
 </script>
 
 </html>
