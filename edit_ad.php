@@ -2,25 +2,20 @@
 include 'db.php';
 
 $id = $_GET['id'];
-$sql = "SELECT * FROM ads WHERE id = $id";
+$sql = "SELECT * FROM ads WHERE id=$id";
 $result = $conn->query($sql);
+$row = $result->fetch_assoc();
 
-if ($result->num_rows > 0) {
-    $row = $result->fetch_assoc();
-} else {
-    die("Package not found.");
-}
-
-// Update Package Logic
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $title = $_POST['title'];
+    $name = $_POST['name'];
     $description = $_POST['description'];
+    $image_url = $_POST['image_url'];
 
-    $update_sql = "UPDATE ads SET title='$title', description='$description' WHERE id=$id";
-    if ($conn->query($update_sql)) {
-        echo "<script>alert('advertisement updated successfully'); window.location='ads.php';</script>";
+    $sql = "UPDATE ads SET name='$name', description='$description', image_url='$image_url' WHERE id=$id";
+    if ($conn->query($sql) === TRUE) {
+        header("Location: ads.php");
     } else {
-        echo "Error: " . $conn->error;
+        echo "Error: " . $sql . "<br>" . $conn->error;
     }
 }
 ?>
@@ -30,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>edit ad</title>
+    <title>Edit Advertisement</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -186,11 +181,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div class="container">
             <h2 class="mb-4">Edit Advertisement</h2>
             <form method="POST" action="">
-                <label for="title" class="form-label">Title</label>
-                <input type="text" name="title" id="title" class="form-control" value="<?php echo htmlspecialchars($row['title']); ?>" required>
+                <label for="name" class="form-label">Name</label>
+                <input type="text" name="name" id="name" class="form-control" value="<?php echo htmlspecialchars($row['name']); ?>" required>
 
                 <label for="description" class="form-label">Description</label>
                 <textarea name="description" id="description" class="form-control" rows="5" required><?php echo htmlspecialchars($row['description']); ?></textarea>
+
+                <label for="image_url" class="form-label">Advertisement Image URL</label>
+                <input type="text" name="image_url" id="image_url" class="form-control" value="<?php echo htmlspecialchars($row['image_url']); ?>" required>
 
                 <button type="submit" class="btn btn-submit mt-3">Update</button>
             </form>

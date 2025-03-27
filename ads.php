@@ -1,7 +1,7 @@
 <?php
 include 'db.php';
 
-$sql = "SELECT * FROM ads ORDER BY title DESC ";
+$sql = "SELECT * FROM ads ORDER BY name DESC";
 $result = $conn->query($sql);
 ?>
 <html>
@@ -196,7 +196,6 @@ $result = $conn->query($sql);
     <header>
         <div class="user-info">
             <img src="https://via.placeholder.com/40" alt="User Avatar">
-            <span><b>John </b></span>
         </div>
     </header>
     <div class="main-content">
@@ -218,8 +217,8 @@ $result = $conn->query($sql);
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
                         echo "<div class='package-box'>";
-                        echo "<img src='bride.jpeg' alt='ad Image'>";
-                        echo "<h4>" . htmlspecialchars($row['title']) . "</h4>";
+                        echo "<img src='" . htmlspecialchars($row['image_url']) . "' alt='ad Image'>";
+                        echo "<h4>" . htmlspecialchars($row['name']) . "</h4>";
                         echo "<p>" . htmlspecialchars($row['description']) . "<p>";
                         echo "<div class='btn-container'>";
                         echo "<a href='edit_ad.php?id=" . $row['id'] . "' class='btn edit'>Edit</a>";

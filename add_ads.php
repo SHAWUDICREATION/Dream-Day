@@ -2,12 +2,11 @@
 include 'db.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $title = $_POST['title'];
+    $name = $_POST['name'];
     $description = $_POST['description'];
-    
+    $image_url = $_POST['image_url'];
 
-    $sql = "INSERT INTO ads (title, description)
-            VALUES ('$title', '$description')";
+    $sql = "INSERT INTO ads (name, description, image_url) VALUES ('$name', '$description', '$image_url')";
     if ($conn->query($sql) === TRUE) {
         header("Location: ads.php");
     } else {
@@ -52,21 +51,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
 
         input[type="text"],
-textarea,
-select,
-input[type="date"] {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box; /* Ensures consistent width */
-    font-size: 16px;
-}
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
 
-textarea {
-    height: 100px;
-}
- 
+        textarea {
+            height: 100px;
+        }
 
         button {
             padding: 10px;
@@ -107,15 +103,18 @@ textarea {
     <h1>Add New Advertisement</h1>
     <form method="POST" action="">
         <div class="form-group">
-            <label for="title">Title</label>
-            <input type="text" id="title" name="title" placeholder="Enter the title" required>
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Enter the name" required>
         </div>
         <div class="form-group">
             <label for="description">Description</label>
             <textarea id="description" name="description" placeholder="Enter the description" required></textarea>
         </div>
-        
-        <button type="submit">Add </button>
+        <div class="form-group">
+            <label for="image_url">Advertisement Image URL</label>
+            <input type="text" id="image_url" name="image_url" placeholder="Enter the image URL" required>
+        </div>
+        <button type="submit">Add</button>
     </form>
 </div>
 
