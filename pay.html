@@ -1,0 +1,306 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="x-icon" href="Images/logo.webp">
+    <title>Card Payment</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f8f3f9;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .payment-container {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    width: 95%; 
+    max-width: 500px; 
+    animation: fadeIn 1s ease-in-out;
+}
+
+
+
+        h2 {
+            margin-bottom: 20px;
+            text-align: center;
+            color: #333;
+            font-size: 1.8em;
+        }
+
+        .card-icons {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .card-icons img {
+            width: 50px;
+            margin: 0 10px;
+        }
+
+        .plan-summary {
+            background-color: #f8e7ed;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 1.1em;
+            color: #c86b85;
+            font-weight: 500;
+        }
+
+        .plan-summary p {
+            margin: 5px 0;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            font-size: 1em;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .input-group input:focus {
+            border-color: #c86b85;
+            box-shadow: 0 0 5px rgba(200, 107, 133, 0.5);
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #c86b85;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #a6566f;
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        .secure-note {
+            margin-top: 15px;
+            font-size: 0.9em;
+            text-align: center;
+            color: #777;
+        }
+        .success-modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 300px;
+        }
+
+        .success-modal h3 {
+            color: #28a745;
+            margin-bottom: 10px;
+        }
+
+        .success-modal p {
+            font-size: 1em;
+            color: #333;
+        }
+
+        .success-modal button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .success-modal button:hover {
+            background: #218838;
+        }
+        
+        @media (max-width: 480px) {
+            .payment-container {
+                width: 100%;
+                padding: 20px;
+            }
+
+            .card-icons img {
+                width: 40px;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+    <script>
+        function populatePlanDetails() {
+        const planName = localStorage.getItem('selectedPlanName');
+        const planPrice = localStorage.getItem('selectedPlanPrice');
+
+        if (planName && planPrice) {
+            let discountedPrice = (parseFloat(planPrice) * 0.10).toFixed(2); 
+
+            document.getElementById('plan-name').textContent = planName;
+            document.getElementById('plan-price').textContent = `$${discountedPrice}`;
+            document.getElementById('total').value = discountedPrice;
+        } else {
+            alert('No plan details found. Please select a plan first.');
+            window.location.href = 'wedding_plans.html';
+        }
+    }
+    function processPayment() {
+        const cardNumber = document.getElementById("card-number").value;
+        const cardholderName = document.getElementById("cardholder-name").value;
+        const email = document.getElementById("email").value;
+        const expiryDate = document.getElementById("expiry-date").value;
+        const cvv = document.getElementById("cvv").value;
+        const total = document.getElementById("total").value;
+        
+    
+        if (!cardNumber || !cardholderName || !email || !expiryDate || !cvv || !total  ) {
+            alert("Please fill in all fields.");
+            return;
+        }
+    
+        if (cardNumber.length !== 12 || isNaN(cardNumber)) {
+            alert("Invalid card number. Must be 12 digits.");
+            return;
+        }
+    
+        if (cvv.length !== 3 || isNaN(cvv)) {
+            alert("Invalid CVV. Must be 3 digits.");
+            return;
+        }
+    
+        // Send payment data to PHP
+        fetch("process_payment.php", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body: `email=${email}&total=${total}`
+        })
+        .then(response => response.text())
+            .then(data => {
+                if (data.trim() === "success") {
+                    document.getElementById("success-modal").style.display = "block";
+                } else {
+                    alert("Payment Failed: " + data);
+                }
+            })
+            .catch(error => console.error("Error:", error));
+        }
+        
+        
+
+        function closeModal() {
+            document.getElementById("success-modal").style.display = "none";
+            window.location.href = "wedding_plans.html";
+        }
+    window.onload = populatePlanDetails;
+</script>
+    
+    
+    
+</head>
+<body>
+    <div class="payment-container">
+        <h2>Initial Payment</h2>
+        <!-- Card Icons -->
+        <div class="card-icons">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png" alt="Visa" title="Visa">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Mastercard-logo.png" alt="Mastercard" title="Mastercard">
+        </div>
+        <div class="plan-summary">
+            <p>Plan: <strong id="plan-name"></strong></p>
+            <p>Price(10%): <strong id="plan-price"></strong></p>
+        </div>
+
+        <!-- Payment Form -->
+        <form>
+            <div class="input-group">
+                <label for="card-number">Card Number</label>
+                <input type="text" id="card-number" name="card-number" placeholder="1234 5678 9012 3456" maxlength="12" required aria-label="Card Number">
+            </div>
+            <div class="input-group">
+                <label for="cardholder-name">Cardholder Name</label>
+                <input type="text" id="cardholder-name" name="cardholder-name" placeholder="John Doe" required aria-label="Cardholder Name">
+            </div>
+            <div class="input-group">
+                <label for="cardholder-email">Email</label>
+                <input type="text" id="email" name="email" placeholder="email" required aria-label="email">
+            </div>
+            <div class="input-group">
+                <label for="expiry-date">Expiration Date</label>
+                <input type="text" id="expiry-date" name="expiry-date" placeholder="MM/YY" maxlength="5" required aria-label="Expiration Date">
+            </div>
+            <div class="input-group">
+                <label for="cvv">CVV</label>
+                <input type="text" id="cvv" name="cvv" placeholder="123" maxlength="3" required aria-label="CVV">
+            </div>
+            <div class="input-group">
+                <label for="expiry-date">Total</label>
+                <input type="text" id="total" name="total"  required aria-label="total">
+            </div>
+            <button type="button" onclick="processPayment()">Pay Now</button>
+        </form>
+
+
+        <!-- Secure Note -->
+        <p class="secure-note">Your payment is secure and encrypted.</p>
+    </div>
+
+     <!-- Success Message Modal -->
+     <div id="success-modal" class="success-modal">
+        <h3>Payment Successful!</h3>
+        <p>Your payment has been processed successfully.</p>
+        <button onclick="closeModal()">OK</button>
+    </div>
+</body>
+</html>
