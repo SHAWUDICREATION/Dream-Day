@@ -539,35 +539,38 @@
         }
 
         /* Tabs CSS */
-        .tab {
-            overflow: hidden;
-            border-bottom: 1px solid #ccc;
-            background-color: #f759e2;
-        }
+.tab {
+    overflow: hidden;
+    border-bottom: 1px solid #ccc;
+    background-color: #e7cde3; /* Soft Ivory */
+}
 
-        .tab button {
-            background-color: inherit;
-            float: left;
-            border: none;
-            outline: none;
-            cursor: pointer;
-            padding: 14px 16px;
-            transition: 0.3s;
-            font-size: 17px;
-        }
+.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+    color: #555; 
+}
 
-        .tab button:hover {
-            background-color: #9553ff;
-        }
+.tab button:hover {
+    background-color: #f079e0; 
+    color: #fff;
+}
 
-        .tab button.active {
-            background-color: #6200ff;
-        }
-
+.tab button.active {
+    background-color: #f75e82; 
+    color: #fff;
+}
         .tabcontent {
             display: none;
             padding: 6px 12px;
             border-top: none;
+        
         }
 
         .tabcontent img {
@@ -646,6 +649,37 @@
                 transform: scale(1);
             }
         }
+
+        .budget-button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .budget-button {
+            display: inline-block;
+            padding: 20px 50px;
+            background-color: #28a745;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .budget-button:hover {
+            background-color: #218838;
+            transform: scale(1.1);
+        }
+
+        .budget-description {
+            margin-top: 10px;
+            font-size: 16px;
+            color: #555;
+            text-align: center;
+            line-height: 1.5;
+            padding-bottom: 20px;
+        }
     </style>
 </head>
 
@@ -721,7 +755,7 @@
             <li>Invitations & Accessories: Bespoke wedding invitations and matching accessories like name cards.
                 <strong>Vendor: Refined Invites & Accessories</strong>
             </li>
-            <li><strong>Price: $24,000</strong></li><br>
+            <li><strong>Price: Rs.24,000</strong></li><br>
         </ul>
 
         <h3>Additional Benefits:</h3>
@@ -762,7 +796,7 @@
             <li>Reception Decor: String lights, wooden accents, and greenery for a cozy vibe.
                 <strong>Vendor: Rustic Dreams</strong>
             </li>
-            <li><strong>Price: $39,500</strong></li><br>
+            <li><strong>Price: Rs.39,500</strong></li><br>
         </ul>
 
         <h3>Additional Benefits:</h3>
@@ -810,7 +844,7 @@
             <li>Invitations & Accessories: Customized luxury invitations and gift sets.
                 <strong>Vendor: Exquisite Invites</strong>
             </li>
-            <li><strong>Price: $24,000</strong></li><br>
+            <li><strong>Price: Rs.24,000</strong></li><br>
         </ul>
 
         <h3>Additional Benefits:</h3>
@@ -845,7 +879,7 @@
             <li>Outfits: Styling support for coordinated attire.
                 <strong>Vendor: Style Avenue</strong>
             </li>
-            <li><strong>Price: $15,000</strong></li><br>
+            <li><strong>Price: Rs.15,000</strong></li><br>
         </ul>
 
         <h3>Additional Benefits:</h3>
@@ -886,7 +920,7 @@
             <li>Transportation: Luxury cars for the bridal party.
                 <strong>Vendor: Elite Rides</strong>
             </li>
-            <li><strong>Price: $150,000</strong></li><br>
+            <li><strong>Price: Rs.150,000</strong></li><br>
         </ul>
 
         <h3>Additional Benefits:</h3>
@@ -925,6 +959,12 @@
         </form>
     </div>
 
+ <!-- Budget Planing Section -->
+    <div class="budget-button-container">
+        <a href="index.html" class="budget-button">Go to Budget Planning</a>
+        <p class="budget-description">Easily track your wedding expenses, set a budget, and manage your spending with our Budget Planning tool.</p>
+    </div>
+
     <!-- Ad Display Section -->
     <div class="advertise-images" id="advertise-images"></div>
     <div class="ad-details" id="ad-details">
@@ -932,7 +972,8 @@
         <p id="ad-description"></p>
     </div>
 
-    <div class="services-box">
+
+<div class="services-box">
         <h3>Theme Wedding Organizers in Sri Lanka</h3>
         <p>
             Weddings have come a long way from the traditional and very much conventional function held amidst a crowd
@@ -968,8 +1009,9 @@
         <!-- Slider Section -->
     </div>
 
+    
 
-    <!-- FOOTER SECTION -->
+<!-- FOOTER SECTION -->
     <footer>
         <div class="container">
             <div class="footer-content">
