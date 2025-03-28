@@ -1,3 +1,18 @@
+<?php
+session_start();
+include 'config.php';
+
+// Check if the user is logged in
+if (!isset($_SESSION['user_id'])) {
+    // Redirect to login page if not logged in
+    header("Location: login.php");
+    exit();
+}
+
+// Retrieve the expiration date from the session
+$expiration_date = isset($_SESSION['expiration_date']) ? $_SESSION['expiration_date'] : null;
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,18 +23,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        
         body {
             display: flex;
             flex-direction: column;
-            min-height: 100vh; 
+            min-height: 100vh;
             font-family: 'Roboto', sans-serif;
             background-color: #f8f9fa;
             color: #333;
@@ -27,19 +40,18 @@
 
         .main-content {
             display: flex;
-            flex: 1; 
+            flex: 1;
         }
 
         .content {
             padding: 30px;
             background: #fff;
-            flex-grow: 1; 
+            flex-grow: 1;
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
             margin: 20px;
         }
 
-        
         .sidebar {
             width: 250px;
             min-width: 250px;
@@ -75,7 +87,6 @@
             background: #495057;
         }
 
-        
         header {
             display: flex;
             justify-content: flex-end;
@@ -112,10 +123,32 @@
             padding: 15px;
             background-color: #343a40;
             color: white;
-            margin-top: auto; 
+            margin-top: auto;
         }
 
-       
+        section {
+            background-color: #f8f9fa; /* Light background color */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            margin-bottom: 20px;
+        }
+
+        section h4 {
+            color: #343a40; /* Darker heading color */
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        section p {
+            font-size: 16px;
+            color: #555; /* Neutral text color */
+            line-height: 1.5;
+        }
+
+        section p strong {
+            color: #e0a899; /* Highlighted text color */
+        }
         @media (max-width: 768px) {
             .main-content {
                 flex-direction: column;
@@ -126,35 +159,6 @@
                 text-align: center;
             }
         }
-
-        
-        .message {
-            background: #fff;
-            border: 1px solid #ddd;
-            padding: 20px;
-            margin-bottom: 15px;
-            border-radius: 5px;
-        }
-
-        .message h3 {
-            margin-bottom: 10px;
-            color: #e0a899;
-        }
-
-        .message button {
-            background-color: #e0a899;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .message button:hover {
-            background-color: #c37f6d;
-        }
-
         .popup {
             display: none;
             position: fixed;
@@ -231,37 +235,31 @@
     <div class="main-content">
         <div class="sidebar">
             <h2>Vendor</h2>
-             <a href="home_main.html"><i class="fa-solid fa-house"></i>Home</a>
-            <a href="dashboardads.html"><i class="fas fa-tachometer-alt me-2"></i>Dashboard</a>
-            <a href="events.php"><i class="fas fa-calendar me-2"></i> My Events</a>
-            <a href="premiumads.php"><i class="fas fa-user-cog"></i> Premium Ads Create</a>
-            <a href="normalads.php"><i class="fas fa-user-cog"></i> Normal Ads Create </a>
+            <a href="home_main.html"><i class="fa-solid fa-house"></i>Home</a>
+            <a href="dashboardadsnormal.php"><i class="fas fa-tachometer-alt me-2"></i>Dashboard</a>
+            <a href="normalads.php"><i class="fas fa-user-cog"></i> My Ads</a>
         </div>
 
         <div class="content">
             <h3 class="mb-4">Welcome, <b id="welcomeName">User Name</b></h3>
-        
-            <section>
-                <h4>Messages</h4>
-                <div class="message">
-                    <p>From: Admin</p>
-                    <p>New booking received.</p>
-                    <button>Reply</button>
-                </div>
-                <div class="message">
-                    <p>From: Admin</p>
-                    <p>New booking received.</p>
-                    <button>Reply</button>
-                </div>
-            </section>
+
+            <section>    
+    <div class="container">
+        <h4>Subscription Details</h4>
+        <?php if ($expiration_date): ?>
+            <p><strong>Expiration Date:</strong> <?php echo htmlspecialchars($expiration_date); ?></p>
+        <?php else: ?>
+            <p>No expiration date available.</p>
+        <?php endif; ?>
+    </div>
+</section>
+
         </div>
     </div>
 
     <footer>
         &copy; 2024 Dream Wedding. All rights reserved
     </footer>
-
-    <!-- Profile Popup -->
     <div id="profilePopup" class="popup">
         <div class="popup-content">
             <span class="close" onclick="closeProfilePopup()">&times;</span>
@@ -295,7 +293,6 @@
             </form>
         </div>
     </div>
-
 
     <script>
         function openProfilePopup() {
@@ -333,4 +330,4 @@
         });
     </script>
 </body>
-</html>
+</html> 
