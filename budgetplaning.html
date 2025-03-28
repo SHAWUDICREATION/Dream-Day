@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" type="x-icon" href="components/Images/logo.webp">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="components/style.css">
+    <title>Dream Day Budget Planning</title>
+
+</head>
+<body>
+
+<!-- HEADING TEXT SECTION-->
+    <div class="logo">Budget Planning Made Easy!</div>
+    <section class="head" id="head">
+        <h4>Plan smart, spend wisely, and enjoy your big day without financial worries! </h4>
+        <p>Stay stress-free while planning your dream wedding! Our Budget Management Tool helps you track income sources, expenses, and balance in one place. Set a budget, manage costs, and stay on track effortlessly.</p>
+    </section>
+
+
+<!--BALANCE & BUTTON SECTION-->
+    <section class="expense-tracker">
+        <div class="balance" id="balance"> 
+            <div>
+                <h5>Income</h5>
+                <span id="income">$0.00</span>
+            </div>
+            <div>
+                <h5>Expense</h5>
+                <span id="expense">$0.00</span>
+            </div>
+            <div>
+                <h5>Total Balance</h5>
+                <span id="total-balance">$0.00</span>
+            </div>
+        </div>
+    
+        <div class="buttons">
+            <button id="toggle-income-form">Add Income</button>
+            <button id="toggle-expense-form">Add Expense</button>
+        </div>
+
+<!--FORM SECTION-->    
+        <div class="form-container">
+            <div class="add-item" id="add-income-form" style="display: none;">
+                <form>
+                    <div class="input-box">
+                        <label for="income-category-select">Category:</label>
+                        <select id="income-category-select">
+                            <option disabled selected value="">Select Category</option>
+                            <option value="Personal-Savings">Personal Savings</option>
+                            <option value="Family-Contributions">Family Contributions</option>
+                            <option value="Sponsorships">Sponsorships</option>
+                            <option value="Wedding-Gifts">Wedding Gifts (Monetary)</option>
+                            <option value="Wedding-Loans">Wedding Loans</option>
+                            <option value="Investments-Dividends">Investments/Dividends</option>
+                        </select>
+                        <label for="income-date-input">Date:</label>
+                        <input type="date" id="income-date-input" placeholder="Date">
+                        <label for="income-amount-input">Amount:</label>
+                        <input type="number" placeholder="Amount" id="income-amount-input">
+                        <label for="income-description-input">Description:</label>
+                        <textarea placeholder="Description" id="income-description"></textarea>
+                        <button type="button" id="add-income-btn">Add Income</button>
+                    </div>
+                </form>
+            </div>
+    
+            <div class="add-item" id="add-expense-form" style="display: none;">
+                <form>
+                    <div class="input-box">
+                        <label for="expense-category-select">Category:</label>
+                        <select id="expense-category-select">
+                            <option disabled selected value="">Select Category</option>
+                            <option value="Venue-&-Accommodation">Venue & Accommodation</option>
+                            <option value="Ashtaka-&-Astrology">Ashtaka & Astrology</option>
+                            <option value="Catering-&-Beverages">Catering & Beverages</option>
+                            <option value="Wedding-Attire-&-Accessories">Wedding Attire & Accessories</option>
+                            <option value="Photography-&-Videography">Photography & Videography</option>
+                            <option value="Decorations-&-Floral-Arrangements">Decorations & Floral Arrangements</option>
+                            <option value="Entertainment-&-Music">Entertainment & Music</option>
+                            <option value="Wedding-Invitations-&-Stationery">Wedding Invitations & Stationery</option>
+                            <option value="Transportation">Transportation</option>
+                            <option value="Marriage-License-&-Legal-Fees">Marriage License & Legal Fees</option>
+                            <option value="Gifts-&-Favors">Gifts & Favors</option>
+                            <option value="Honeymoon">Honeymoon</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        <label for="date-input">Date:</label>
+                        <input type="date" id="date-input" placeholder="Date">
+                        <label for="amount-input">Amount:</label>
+                        <input type="number" placeholder="Amount" id="amount-input">
+                        <label for="description">Description:</label>
+                        <textarea placeholder="Description" id="description"></textarea>
+                        <button type="button" id="add-expense-btn">Add Expense</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    
+<!--TABLE SECTION-->
+    <div class="table-container">
+        <div class="table-wrapper">
+            <h2>Income List</h2>
+            <table id="income-table">
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Date</th>
+                        <th>Description</th>
+                        <th>Amount</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="income-table-body"></tbody>
+                
+            </table>
+        </div>
+        <div class="table-wrapper">
+            <h2>Expense List</h2>
+            <table id="expense-table">
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Date</th>
+                        <th>Description</th>
+                        <th>Amount</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="expense-table-body"></tbody>
+            </table>
+        </div>
+    </div>
+
+<!-- FOOTER SECTION -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 My Financial Flow Tracker. All rights reserved.</p>
+        </div>
+    </footer>
+
+<!-- link script file -->   
+    <script src="components/script.js"></script>
+
+<!--SCROLL REVEAL-->
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <script>
+        ScrollReveal({
+            reset: true,
+            distance: '80px',
+            duration: 3000,
+            delay: 300
+        });
+
+        ScrollReveal().reveal('.table-wrapper', { origin: 'bottom' });
+        ScrollReveal().reveal('.head', { origin: 'left' });
+        ScrollReveal().reveal('.buttons', { origin: 'right' });
+    </script>
+</body>
+</html>
