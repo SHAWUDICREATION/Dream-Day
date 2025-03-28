@@ -12,7 +12,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "INSERT INTO wedplans (firstname, lastname, phonenum, email, weddingdate, plan) VALUES ('$firstname', '$lastname', '$phonenum', '$email', '$weddingdate', '$plan')";
 
     if ($conn->query($sql) === TRUE) {
-        echo "Your response is recorded..";
+       
+        header("Location: pay.html");
+        exit(); 
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
