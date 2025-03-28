@@ -1,7 +1,7 @@
 <?php
 include 'db.php';
 
-$sql = "SELECT name, description, image_url FROM ads";
+$sql = "SELECT name, description, image_url FROM premiumads";
 $result = $conn->query($sql);
 
 $ads = [];
