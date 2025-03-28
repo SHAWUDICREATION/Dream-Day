@@ -1,0 +1,334 @@
+<?php
+session_start();
+include 'config.php';
+
+// Check if the user is logged in
+if (!isset($_SESSION['user_id'])) {
+    // Redirect to login page if not logged in
+    header("Location: login.php");
+    exit();
+}
+
+// Retrieve the expiration date from the session
+$expiration_date = isset($_SESSION['expiration_date']) ? $_SESSION['expiration_date'] : null;
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendor Dashboard</title>
+    <link rel="shortcut icon" type="x-icon" href="Images/logo.webp">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            font-family: 'Roboto', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        .main-content {
+            display: flex;
+            flex: 1;
+        }
+
+        .content {
+            padding: 30px;
+            background: #fff;
+            flex-grow: 1;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            margin: 20px;
+        }
+
+        .sidebar {
+            width: 250px;
+            min-width: 250px;
+            background: #343a40;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #f8f9fa;
+        }
+
+        .sidebar a {
+            color: #f8f9fa;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+        .sidebar a i {
+            margin-right: 10px;
+        }
+
+        .sidebar a:hover {
+            background: #495057;
+        }
+
+        header {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #343a40;
+            color: white;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        header .user-info {
+            display: flex;
+            align-items: center;
+        }
+
+        header .user-info img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        header .user-info button {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+            margin-left: 10px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            background-color: #343a40;
+            color: white;
+            margin-top: auto;
+        }
+
+        section {
+            background-color: #f8f9fa; /* Light background color */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            margin-bottom: 20px;
+        }
+
+        section h4 {
+            color: #343a40; /* Darker heading color */
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        section p {
+            font-size: 16px;
+            color: #555; /* Neutral text color */
+            line-height: 1.5;
+        }
+
+        section p strong {
+            color: #e0a899; /* Highlighted text color */
+        }
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                text-align: center;
+            }
+        }
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup-content {
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            width: 400px;
+            max-width: 90%;
+        }
+
+        .popup-content h2 {
+            margin-bottom: 20px;
+        }
+
+        .popup-content .input-box {
+            margin-bottom: 15px;
+        }
+
+        .popup-content .input-box input,
+        .popup-content .input-box select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .popup-content .input-box label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .popup-content .btn {
+            background-color: #343a40;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .popup-content .btn:hover {
+            background-color: #495057;
+        }
+
+        .popup-content .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="user-info">
+            <img id="profilePhoto" src="https://via.placeholder.com/40" alt="User Avatar">
+            <span><b id="vendorName">User Name</b></span>
+            <button onclick="openProfilePopup()">Edit Profile</button>
+        </div>
+    </header>
+
+    <div class="main-content">
+        <div class="sidebar">
+            <h2>Vendor</h2>
+            <a href="home_main.html"><i class="fa-solid fa-house"></i>Home</a>
+            <a href="dashboardadspremium.php"><i class="fas fa-tachometer-alt me-2"></i>Dashboard</a>
+            <a href="events.php"><i class="fas fa-calendar me-2"></i> My Events</a>
+            <a href="ads.php"><i class="fas fa-user-cog"></i> My Ads</a>
+        </div>
+
+        <div class="content">
+            <h3 class="mb-4">Welcome, <b id="welcomeName">User Name</b></h3>
+
+            <section>    
+    <div class="container">
+        <h4>Subscription Details</h4>
+        <?php if ($expiration_date): ?>
+            <p><strong>Expiration Date:</strong> <?php echo htmlspecialchars($expiration_date); ?></p>
+        <?php else: ?>
+            <p>No expiration date available.</p>
+        <?php endif; ?>
+    </div>
+</section>
+
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2024 Dream Wedding. All rights reserved
+    </footer>
+    <div id="profilePopup" class="popup">
+        <div class="popup-content">
+            <span class="close" onclick="closeProfilePopup()">&times;</span>
+            <h2>Edit Profile</h2>
+            <form id="profileForm" action="update_profile.php" method="POST">
+                <div class="input-box">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="input-box">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="input-box">
+                    <label for="phone">Phone</label>
+                    <input type="text" id="phone" name="phone" required>
+                </div>
+                <div class="input-box">
+                    <label for="address">Address</label>
+                    <input type="text" id="address" name="address" required>
+                </div>
+                <div class="input-box">
+                    <label for="profile_photo">Profile Photo URL</label>
+                    <input type="text" id="profile_photo" name="profile_photo" required>
+                </div>
+                <div class="input-box">
+                    <label for="website">Website</label>
+                    <input type="text" id="website" name="website" required>
+                </div>
+                <button type="submit" class="btn">Save Changes</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function openProfilePopup() {
+            document.getElementById('profilePopup').style.display = 'flex';
+            // Fetch profile data and populate the form
+            fetchProfileData();
+        }
+
+        function closeProfilePopup() {
+            document.getElementById('profilePopup').style.display = 'none';
+        }
+
+        function fetchProfileData() {
+            // Fetch profile data from the server
+            fetch('get_profile_data.php')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('name').value = data.name;
+                    document.getElementById('email').value = data.email;
+                    document.getElementById('phone').value = data.phone;
+                    document.getElementById('address').value = data.address;
+                    document.getElementById('profile_photo').value = data.profile_photo;
+                    document.getElementById('website').value = data.website;
+
+                    // Update user-info section
+                    document.getElementById('profilePhoto').src = data.profile_photo;
+                    document.getElementById('vendorName').textContent = data.name;
+                    document.getElementById('welcomeName').textContent = data.name;
+                })
+                .catch(error => console.error('Error fetching profile data:', error));
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            fetchProfileData();
+        });
+    </script>
+</body>
+</html> 
